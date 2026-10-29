@@ -1,5 +1,7 @@
 import type { Preview } from '@storybook/sveltekit';
 
+import '../src/lib/theme/index.css';
+
 const preview: Preview = {
 	parameters: {
 		controls: {
