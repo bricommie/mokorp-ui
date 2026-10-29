@@ -32,7 +32,8 @@
 		".": {
 			"types": "./dist/index.d.ts",
 			"svelte": "./dist/index.js"
-		}
+		},
+		"./theme": "./dist/theme/index.css"
 	},
 	"peerDependencies": {
 		"svelte": "^5.0.0"
