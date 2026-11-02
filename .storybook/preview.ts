@@ -32,15 +32,32 @@ const preview: Preview = {
 				],
 				dynamicTitle: true
 			}
+		},
+		// Teste chaque story avec ET sans mouvement, sans changer le réglage de son OS.
+		motion: {
+			description: 'Réduire les animations (prefers-reduced-motion)',
+			toolbar: {
+				title: 'Mouvement',
+				icon: 'transfer',
+				items: [
+					{ value: 'full', title: 'Complet' },
+					{ value: 'reduced', title: 'Réduit' }
+				],
+				dynamicTitle: true
+			}
 		}
 	},
 	initialGlobals: {
-		theme: 'light'
+		theme: 'light',
+		motion: 'full'
 	},
 	decorators: [
 		(story, context) => {
 			// Même source de vérité que l'app : la classe `.dark` sur `<html>`.
 			document.documentElement.classList.toggle('dark', context.globals.theme === 'dark');
+			// Même contrat que l'app : `data-motion="reduced"` éteint les tokens CSS et `isReducedMotion()`.
+			if (context.globals.motion === 'reduced') document.documentElement.dataset.motion = 'reduced';
+			else delete document.documentElement.dataset.motion;
 			return story();
 		}
 	]

@@ -20,6 +20,7 @@
 @import './tokens/semantic.css';
 @import './tokens/components.css';
 @import './tokens/states.css';
+@import './tokens/motion.css';
 @import './themes/light.css';
 @import './themes/dark.css';
 
