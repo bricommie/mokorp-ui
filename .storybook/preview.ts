@@ -17,7 +17,33 @@ const preview: Preview = {
 			// 'off' - skip a11y checks entirely
 			test: 'todo'
 		}
-	}
+	},
+
+	// Sélecteur de face dans la barre d'outils : chaque story se vérifie en clair ET en sombre.
+	globalTypes: {
+		theme: {
+			description: 'Face du thème Signal',
+			toolbar: {
+				title: 'Face',
+				icon: 'contrast',
+				items: [
+					{ value: 'light', title: 'Claire', icon: 'sun' },
+					{ value: 'dark', title: 'Sombre', icon: 'moon' }
+				],
+				dynamicTitle: true
+			}
+		}
+	},
+	initialGlobals: {
+		theme: 'light'
+	},
+	decorators: [
+		(story, context) => {
+			// Même source de vérité que l'app : la classe `.dark` sur `<html>`.
+			document.documentElement.classList.toggle('dark', context.globals.theme === 'dark');
+			return story();
+		}
+	]
 };
 
 export default preview;
