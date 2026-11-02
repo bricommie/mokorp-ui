@@ -1,22 +1,34 @@
 /*
  * Tokens transverses — §3 « Non-couleur ».
- * Identiques dans tous les thèmes : ils ne dépendent pas du mode (light/dark).
+ * Identiques dans les deux faces : ils ne dépendent pas du mode (light/dark).
+ * Un futur thème peut les redéfinir (ex. `[data-theme="brut"] { --radius-surface: 0 }`)
+ * sans toucher aux composants.
  */
 
 :root {
 	/*
-	 * Géométrie — §5.
-	 * `--radius` = 0 (structurel). L'organique n'a pas de token dédié : il utilise
-	 * `rounded-full` (9999px) directement dans les composants.
+	 * Géométrie — §5. Chaque composant choisit un RÔLE de rayon, jamais une valeur :
+	 * - surface : cartes, alertes, menus, popovers, dialogues
+	 * - field   : champs de saisie et déclencheurs de type champ
+	 * - item    : éléments internes (option de menu, jour du calendrier, case à cocher)
+	 * - control : boutons d'action
+	 * - pill    : formes organiques (badges, avatars, interrupteurs, curseurs)
 	 */
-	--radius: 0px;
+	--radius-surface: 18px;
+	--radius-field: 12px;
+	--radius-item: 8px;
+	--radius-control: 9999px;
+	--radius-pill: 9999px;
+
+	/* Épaisseur unique des bordures de structure. */
+	--border-width: 1.5px;
 
 	/*
 	 * Typographie — §6 : 4 slots sémantiques, re-assignables par projet
 	 * sans toucher aux composants.
 	 */
-	--font-display: 'Chakra Petch', ui-sans-serif, system-ui, sans-serif;
-	--font-body: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+	--font-display: 'Archivo Variable', 'Archivo', ui-sans-serif, system-ui, sans-serif;
+	--font-body: 'Archivo Variable', 'Archivo', ui-sans-serif, system-ui, sans-serif;
 	--font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
 	--font-serif: Georgia, 'Times New Roman', serif;
 }

@@ -27,10 +27,13 @@
 	/* Actions */
 	--color-primary: var(--primary);
 	--color-primary-foreground: var(--primary-foreground);
+	--color-primary-border: var(--primary-border);
+	--color-primary-hover: var(--primary-hover);
 
 	/* Secondaire */
 	--color-secondary: var(--secondary);
 	--color-secondary-foreground: var(--secondary-foreground);
+	--color-secondary-hover: var(--secondary-hover);
 
 	/* Atténué */
 	--color-muted: var(--muted);
@@ -40,14 +43,22 @@
 	--color-accent: var(--accent);
 	--color-accent-foreground: var(--accent-foreground);
 
-	/* Erreur */
+	/* États */
 	--color-destructive: var(--destructive);
 	--color-destructive-foreground: var(--destructive-foreground);
+	--color-destructive-hover: var(--destructive-hover);
+	--color-success: var(--success);
+	--color-success-foreground: var(--success-foreground);
+	--color-warning: var(--warning);
+	--color-warning-foreground: var(--warning-foreground);
 
 	/* Lignes */
 	--color-border: var(--border);
+	--color-border-subtle: var(--border-subtle);
 	--color-input: var(--input);
 	--color-ring: var(--ring);
+	--color-link: var(--link);
+	--color-indicator: var(--indicator);
 
 	/* Graphiques */
 	--color-chart-1: var(--chart-1);
@@ -63,6 +74,13 @@
 	--color-sidebar-accent: var(--sidebar-accent);
 	--color-sidebar-border: var(--sidebar-border);
 	--color-sidebar-ring: var(--sidebar-ring);
+
+	/* Géométrie — §5 : `rounded-surface`, `rounded-field`, `rounded-item`, `rounded-control`, `rounded-pill` */
+	--radius-surface: var(--radius-surface);
+	--radius-field: var(--radius-field);
+	--radius-item: var(--radius-item);
+	--radius-control: var(--radius-control);
+	--radius-pill: var(--radius-pill);
 
 	/* Typographie — §6 */
 	--font-display: var(--font-display);

@@ -1,0 +1,16 @@
+/*
+ * États dérivés — survol des surfaces d'action.
+ *
+ * Dérivés par `color-mix()` plutôt qu'écrits à la main : un thème qui change
+ * `--primary` obtient automatiquement un survol cohérent. Déclarés sur les mêmes
+ * sélecteurs que les thèmes, pour être recalculés dans une zone imbriquée
+ * (`.light` dans `.dark`, et inversement).
+ */
+
+:root,
+.light,
+.dark {
+	--primary-hover: color-mix(in oklch, var(--primary), var(--foreground) 12%);
+	--secondary-hover: color-mix(in oklch, var(--secondary), var(--foreground) 12%);
+	--destructive-hover: color-mix(in oklch, var(--destructive), var(--foreground) 12%);
+}

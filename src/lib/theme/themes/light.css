@@ -1,7 +1,7 @@
 /*
- * Thème « Acid Light » — §4.
- * Sélecteur par défaut `:root` (+ `.light`, pour imbriquer une zone claire dans une page sombre). Sec, imprimé : offset dur, coins nets, encre
- * violet-noir `#240033`.
+ * Thème « Signal » — face claire (§4).
+ * Sélecteur par défaut `:root` (+ `.light`, pour imbriquer une zone claire dans une page sombre).
+ * Neutres teintés de violet, encre presque noire, lime réservé à l'action.
  */
 
 :root,
@@ -9,68 +9,76 @@
 	color-scheme: light;
 
 	/* Surfaces */
-	--background: #aeff4f;
-	--foreground: #240033;
+	--background: #f5f3f7;
+	--foreground: #16111c;
 
 	/* Cartes */
-	--card: #ccff9a;
-	--card-foreground: #240033;
+	--card: #ffffff;
+	--card-foreground: #16111c;
 
 	/* Popover */
-	--popover: #ccff9a;
-	--popover-foreground: #240033;
+	--popover: #ffffff;
+	--popover-foreground: #16111c;
 
-	/* Actions */
-	--primary: #690087;
-	--primary-foreground: #f8f8f8;
+	/* Actions — le lime se fond dans le fond clair (1,07:1) : bordure encre obligatoire. */
+	--primary: #c8ff4d;
+	--primary-foreground: #16111c;
+	--primary-border: #16111c;
 
 	/* Secondaire */
-	--secondary: #f07a00;
-	--secondary-foreground: #330f00;
+	--secondary: #6a2fb0;
+	--secondary-foreground: #ffffff;
 
 	/* Atténué */
-	--muted: #a2d372;
-	--muted-foreground: #4f0b68;
+	--muted: #ebe7ef;
+	--muted-foreground: #5e566a;
 
-	/* Accent */
-	--accent: #690087; /* = primary */
-	--accent-foreground: #f8f8f8;
+	/* Accent (élément survolé ou actif d'une liste) */
+	--accent: #c8ff4d; /* = primary */
+	--accent-foreground: #16111c;
 
-	/* Erreur */
-	--destructive: #dd001d;
-	--destructive-foreground: #f8f8f8;
+	/* États */
+	--destructive: #c4122f;
+	--destructive-foreground: #ffffff;
+	--success: #0f6b3a;
+	--success-foreground: #ffffff;
+	--warning: #a34b00;
+	--warning-foreground: #ffffff;
 
 	/* Lignes */
-	--border: #240033; /* encre */
-	--input: #240033; /* encre */
-	--ring: #690087; /* primary */
+	--border: #8b8396; /* contrôles : 3,29:1 sur le fond */
+	--border-subtle: #e4e0ea; /* séparation de surfaces, décorative */
+	--input: #8b8396;
+	--ring: #16111c;
+	--indicator: #6a2fb0; /* jauges et barres : le lime ferait 1,2:1 sur la piste */
+	--link: #6a2fb0;
 
 	/* Graphiques */
-	--chart-1: #7e00a7;
-	--chart-2: #9ef927;
-	--chart-3: #f38300;
-	--chart-4: #38004c;
-	--chart-5: #ff0013;
+	--chart-1: #6a2fb0;
+	--chart-2: #16111c;
+	--chart-3: #0f6b3a;
+	--chart-4: #a34b00;
+	--chart-5: #c4122f;
 
 	/* Sidebar (toujours sombre) */
-	--sidebar: #150a29;
-	--sidebar-foreground: #eeebf7;
-	--sidebar-primary: #9ef927;
-	--sidebar-border: #2c1e43;
-	/*
-	 * `--sidebar-accent` / `--sidebar-ring` ne sont pas renseignés en §4 : valeurs
-	 * dérivées du thème (élévation légère / = sidebar-primary).
-	 */
-	--sidebar-accent: #2c1e43;
-	--sidebar-ring: #9ef927;
+	--sidebar: #16111c;
+	--sidebar-foreground: #f2eff6;
+	--sidebar-primary: #c8ff4d;
+	--sidebar-accent: #28242f;
+	--sidebar-border: #2c2833;
+	--sidebar-ring: #c8ff4d;
 
-	/* Ombres — offset dur, élévation = décalage, zéro flou, couleur = encre. */
-	--shadow-color: #240033;
-	--shadow-2xs: 1px 1px 0 #240033;
-	--shadow-xs: 2px 2px 0 #240033;
-	--shadow-sm: 3px 3px 0 #240033;
-	--shadow-md: 4px 4px 0 #240033;
-	--shadow-lg: 6px 6px 0 #240033;
-	--shadow-xl: 8px 8px 0 #240033;
-	--shadow-2xl: 12px 12px 0 #240033;
+	/*
+	 * Ombres — aplats sans ombre pour les surfaces posées (cartes, alertes).
+	 * Seules les couches flottantes (menus, popovers, dialogues) gardent une
+	 * ombre douce, pour se détacher du contenu qu'elles recouvrent.
+	 */
+	--shadow-color: #16111c;
+	--shadow-2xs: 0 0 #0000;
+	--shadow-xs: 0 0 #0000;
+	--shadow-sm: 0 0 #0000;
+	--shadow-md: 0 0 #0000;
+	--shadow-lg: 0 12px 32px -12px #16111c40;
+	--shadow-xl: 0 20px 48px -16px #16111c59;
+	--shadow-2xl: 0 28px 64px -20px #16111c66;
 }
