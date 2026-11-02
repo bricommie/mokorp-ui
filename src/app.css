@@ -1,0 +1,5 @@
+/*
+ * Feuille d'entrée de l'application de showcase — §9.1.
+ * Importe le thème de la bibliothèque (tokens + thèmes + fonts + Tailwind).
+ */
+@import './lib/theme/index.css';
