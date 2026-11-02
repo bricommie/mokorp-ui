@@ -4,8 +4,35 @@
 	import { Root } from '#lib/components/menubar/index.js';
 
 	const { Story } = defineMeta({
-		title: 'Components/Menubar',
-		component: Root
+		title: 'Composants/Superpositions/Menubar',
+		component: Root,
+		parameters: {
+			docs: {
+				description: {
+					component:
+						"Barre de menus horizontale façon application de bureau (Fichier, Édition, Affichage).\n\n**Anatomie** : `Menubar.Root` › `Menubar.Menu` › `Trigger` ; `Portal` › `Content` › mêmes parties que `DropdownMenu`.\n\n**Accessibilité** : ← / → passent d'un menu à l'autre, ↓ ouvre."
+				}
+			}
+		},
+		argTypes: {
+			value: {
+				control: 'text',
+				description: 'Menu actuellement ouvert. Utilisable avec `bind:value`.',
+				table: {
+					category: 'Props'
+				}
+			},
+			loop: {
+				control: 'boolean',
+				description: 'Les flèches bouclent du dernier au premier menu.',
+				table: {
+					defaultValue: {
+						summary: 'true'
+					},
+					category: 'Props'
+				}
+			}
+		}
 	});
 </script>
 

@@ -1,0 +1,160 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Guides/Écrire une story" />
+
+# Écrire une story
+
+Une story est **un état d'un composant**, documenté et testable. Les stories de
+mokorp-ui sont écrites en **Svelte CSF** (`@storybook/addon-svelte-csf`), dans
+`src/stories/<Composant>.stories.svelte`.
+
+## Le squelette
+
+```svelte
+<script module lang="ts">
+	import { defineMeta } from '@storybook/addon-svelte-csf';
+	import Badge from '#lib/components/Badge.svelte';
+
+	const { Story } = defineMeta({
+		// Famille / Composant : range la story dans la barre latérale.
+		title: 'Composants/Données et retours/Badge',
+		component: Badge,
+		parameters: {
+			docs: {
+				description: {
+					component: 'Étiquette de statut courte. Ne pas utiliser comme bouton.'
+				}
+			}
+		},
+		argTypes: {
+			variant: {
+				control: 'select',
+				options: ['primary', 'secondary', 'outline', 'success', 'warning', 'destructive'],
+				description: 'Intention du badge.',
+				table: { category: 'Props', defaultValue: { summary: "'primary'" } }
+			}
+		},
+		args: { variant: 'primary' }
+	});
+</script>
+
+<Story name="Default">Nouveau</Story>
+<Story name="Success" args={{ variant: 'success' }}>Publié</Story>
+```
+
+- `<script module>` : la méta est statique, déclarée une fois pour le fichier.
+- La page **Docs** est générée automatiquement pour chaque composant
+  (`tags: ['autodocs']` est global, dans `.storybook/preview.ts`).
+- Le contenu entre `<Story>` et `</Story>` devient le snippet `children` du composant.
+
+## Args et argTypes : la différence
+
+|         | `args`                                                        | `argTypes`                                              |
+| ------- | ------------------------------------------------------------- | ------------------------------------------------------- |
+| C'est…  | Les **valeurs** passées au composant                          | La **description** de chaque prop                       |
+| Sert à… | Définir un état (story par story, ou par défaut dans la méta) | Choisir le contrôle, documenter, ranger dans la table   |
+| Exemple | `args={{ variant: 'success' }}`                               | `{ control: 'select', options: […], description: '…' }` |
+
+Règle d'or : **une prop de design = un `argType` documenté**. Variants, tailles,
+états (`loading`, `disabled`) doivent apparaître dans les Controls avec une
+description en français et leur valeur par défaut.
+
+## Pourquoi la table n'affiche pas tous les attributs HTML
+
+Nos wrappers transmettent `...rest` à Bits UI : ils acceptent les ~430 attributs HTML
+et ARIA. Les afficher noierait l'API. `.storybook/preview.ts` masque donc les
+attributs natifs, **sauf ceux que la story documente avec une catégorie**.
+
+Pour réafficher un attribut natif qui fait partie de l'usage normal du composant,
+déclarez-le avec sa description et sa catégorie :
+
+```ts
+argTypes: {
+	disabled: {
+		control: 'boolean',
+		description: 'Désactive le bouton (perd le focus).',
+		table: { category: 'Props' }
+	},
+	'aria-invalid': {
+		control: 'boolean',
+		description: 'Signale une saisie invalide.',
+		table: { category: 'Props' }
+	}
+}
+```
+
+Pourquoi la catégorie et pas la description ? Le docgen range tout dans une
+catégorie générique (`properties`), et les types HTML de Svelte décrivent déjà
+chaque `aria-*` en anglais : seule une catégorie posée à la main prouve que la prop
+a été choisie. Prenez l'habitude de **toujours** donner une catégorie à vos argTypes.
+
+Les props sont rangées par catégorie : **Props**, **Événements** (`onValueChange`…),
+**Snippets** (`children`, `child`), **Svelte** (`class`, `ref`).
+
+## Décrire le composant
+
+La description de la page Docs vient de `parameters.docs.description.component`. Elle
+répond à trois questions, dans cet ordre :
+
+1. **Quand l'utiliser** (et quand utiliser autre chose) ;
+2. **Anatomie** pour un composant multi-parties (la liste des parties à composer) ;
+3. **Accessibilité** : ce que le consommateur doit fournir (nom, libellé…).
+
+Une story particulière se décrit avec `parameters.docs.description.story`.
+
+## Une story par état utile
+
+Nommez les stories par **état** ou **cas d'usage**, pas par numéro : `Default`,
+`Disabled`, `Loading`, `With icon`, `Error`. Chaque variante visible dans le design
+mérite sa story : c'est elle que Chromatic et les tests visuels compareront.
+
+## Interactions : `play`
+
+Pour vérifier un comportement (clavier, ouverture, valeur), ajoutez une fonction
+`play`. Elle tourne dans l'onglet _Interactions_ et dans les tests Vitest
+(`@storybook/addon-vitest`).
+
+```svelte
+<script module lang="ts">
+	import { expect, userEvent, within } from 'storybook/test';
+</script>
+
+<Story
+	name="Keyboard"
+	play={async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		await userEvent.tab();
+		await expect(canvas.getByRole('button')).toHaveFocus();
+	}}
+>
+	Envoyer
+</Story>
+```
+
+## Composants à état (`bind:`)
+
+Pour une démo interactive, déclarez l'état dans un `<script>` d'instance et utilisez
+une story `asChild` :
+
+```svelte
+<script lang="ts">
+	let open = $state(false);
+</script>
+
+<Story name="Interactive" asChild>
+	<Dialog.Root bind:open>…</Dialog.Root>
+</Story>
+```
+
+Une story `asChild` ignore les `args` : réservez-la aux démonstrations de
+comportement, et gardez une story pilotée par les args pour les Controls.
+
+## Checklist avant de pousser
+
+- [ ] `title` sous `Composants/<Famille>/<Nom>`
+- [ ] Description du composant (quand, anatomie, accessibilité)
+- [ ] `argTypes` documentés pour les props de design, avec `defaultValue`
+- [ ] Une story `Default` pilotée par les args
+- [ ] Vérifiée en **Face Claire** et **Sombre**, et en **Mouvement Réduit**
+- [ ] Panneau **Accessibility** sans violation
+- [ ] `npm run check` et `npm run test:unit` passent

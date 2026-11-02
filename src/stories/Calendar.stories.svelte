@@ -4,8 +4,111 @@
 	import { Root } from '#lib/components/calendar/index.js';
 
 	const { Story } = defineMeta({
-		title: 'Components/Calendar',
-		component: Root
+		title: 'Composants/Dates et heures/Calendar',
+		component: Root,
+		parameters: {
+			docs: {
+				description: {
+					component:
+						"Calendrier **composable** pour choisir une date. Pour l'usage courant, préférez la composition prête à l'emploi `DateCalendar`.\n\n**Anatomie** : `Calendar.Root` (snippet `children` avec `months`, `weekdays`) › `Calendar.Header` (`PrevButton` · `Heading` · `NextButton`) › `Calendar.Grid` › `GridHead` / `GridBody` › `GridRow` › `HeadCell` / `Cell` › `Day`.\n\n**Accessibilité** : grille ARIA, flèches (jour/semaine), Page préc./suiv. (mois). Les valeurs sont des `DateValue` de `@internationalized/date` (pas des `Date` JS : pas de piège de fuseau)."
+				}
+			}
+		},
+		argTypes: {
+			type: {
+				control: 'inline-radio',
+				options: ['single', 'multiple'],
+				description: '`single` : une date ; `multiple` : plusieurs dates.',
+				table: {
+					category: 'Props'
+				}
+			},
+			value: {
+				description: 'Date(s) sélectionnée(s). Utilisable avec `bind:value`.',
+				table: {
+					type: {
+						summary: 'DateValue | DateValue[]'
+					},
+					category: 'Props'
+				}
+			},
+			locale: {
+				control: 'text',
+				description: 'Locale BCP 47 utilisée pour les libellés et le format des dates.',
+				table: {
+					defaultValue: {
+						summary: "'fr-FR'"
+					},
+					category: 'Props'
+				}
+			},
+			minValue: {
+				description: 'Première date sélectionnable (`DateValue` de `@internationalized/date`).',
+				table: {
+					type: {
+						summary: 'DateValue'
+					},
+					category: 'Props'
+				}
+			},
+			maxValue: {
+				description: 'Dernière date sélectionnable.',
+				table: {
+					type: {
+						summary: 'DateValue'
+					},
+					category: 'Props'
+				}
+			},
+			numberOfMonths: {
+				control: 'number',
+				description: 'Nombre de mois affichés côte à côte.',
+				table: {
+					defaultValue: {
+						summary: '1'
+					},
+					category: 'Props'
+				}
+			},
+			fixedWeeks: {
+				control: 'boolean',
+				description: "Toujours 6 semaines : la hauteur ne saute pas d'un mois à l'autre.",
+				table: {
+					defaultValue: {
+						summary: 'false'
+					},
+					category: 'Props'
+				}
+			},
+			weekStartsOn: {
+				control: 'number',
+				description:
+					'Premier jour de la semaine (0 = dimanche, 1 = lundi). Par défaut, celui de la locale.',
+				table: {
+					category: 'Props'
+				}
+			},
+			readonly: {
+				control: 'boolean',
+				description: 'Lecture seule : la valeur est visible et focusable mais ne peut pas changer.',
+				table: {
+					defaultValue: {
+						summary: 'false'
+					},
+					category: 'Props'
+				}
+			},
+			disabled: {
+				control: 'boolean',
+				description: 'Désactive le composant : ni focus, ni interaction.',
+				table: {
+					defaultValue: {
+						summary: 'false'
+					},
+					category: 'Props'
+				}
+			}
+		}
 	});
 </script>
 

@@ -3,8 +3,38 @@
 	import Alert from '#lib/components/Alert.svelte';
 
 	const { Story } = defineMeta({
-		title: 'Components/Alert',
-		component: Alert
+		title: 'Composants/Données et retours/Alert',
+		component: Alert,
+		parameters: {
+			docs: {
+				description: {
+					component:
+						"Message **contextuel** posé dans la page : résultat d'une action, avertissement, erreur. Pour une confirmation bloquante, utilisez `AlertDialog`.\n\nContenu libre (titre + texte) ; un snippet `icon` optionnel s'affiche à gauche.\n\n**Accessibilité** : rôle `alert` (annoncé immédiatement) ; ne l'utilisez que pour un message qui mérite d'interrompre le lecteur d'écran."
+				}
+			}
+		},
+		argTypes: {
+			variant: {
+				control: 'select',
+				options: ['default', 'success', 'warning', 'destructive'],
+				description: 'Intention du message.',
+				table: {
+					defaultValue: {
+						summary: "'default'"
+					},
+					category: 'Props'
+				}
+			},
+			icon: {
+				description: 'Snippet : icône affichée à gauche du contenu.',
+				table: {
+					type: {
+						summary: 'Snippet'
+					},
+					category: 'Snippets'
+				}
+			}
+		}
 	});
 </script>
 

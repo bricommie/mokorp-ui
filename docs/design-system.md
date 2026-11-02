@@ -75,6 +75,9 @@ Règles :
 - Bordure : `--border-width` (utilitaire `border-(length:--border-width)`).
 - Ombres : `--shadow-2xs` … `--shadow-2xl`, plus `--shadow-color`.
 - Typo : `--font-display`, `--font-body`, `--font-mono`, `--font-serif`.
+- Mouvement : `--duration-instant|fast|base|slow`, `--ease-standard|enter|exit|emphasized`
+  (utilitaires `duration-fast`, `ease-enter`…). Voir §6 bis.
+- Espacement : échelle native de Tailwind v4 (`--spacing` = 0.25rem), pas de token dédié.
 
 ---
 
@@ -149,6 +152,29 @@ gardent une ombre douce pour se détacher du contenu recouvert.
 
 ---
 
+## 6 bis. Mouvement
+
+Source : `src/lib/theme/tokens/motion.css` (CSS) et `src/lib/motion/index.ts` (miroir JS).
+
+| Durée     | Valeur | Usage                                          |
+| --------- | ------ | ---------------------------------------------- |
+| `instant` | 90ms   | pression, case cochée                          |
+| `fast`    | 150ms  | survol, couleur, chevron (défaut `transition`) |
+| `base`    | 220ms  | entrée / sortie d'une surface                  |
+| `slow`    | 320ms  | déplacement important (mois, page)             |
+
+| Courbe       | Usage                                |
+| ------------ | ------------------------------------ |
+| `standard`   | ce qui change sur place              |
+| `enter`      | ce qui arrive (décélère)             |
+| `exit`       | ce qui sort (accélère)               |
+| `emphasized` | léger dépassement (relâchement, pop) |
+
+`prefers-reduced-motion: reduce` ou `<html data-motion="reduced">` ramènent toutes les
+durées à `1ms` (pas `0` : `transitionend` doit continuer à se déclencher pour Bits UI).
+
+---
+
 ## 7. Conventions composants
 
 - **API de variants** : `class-variance-authority` (CVA) + `clsx` + `tailwind-merge`
@@ -194,4 +220,7 @@ gardent une ombre douce pour se détacher du contenu recouvert.
    génère pas les classes des composants (Tailwind ignore `node_modules`).
 3. Fonts : `@fontsource-variable/archivo` (axes graisse et largeur) +
    `@fontsource/ibm-plex-mono` (slot `mono`). Georgia = système.
-4. Storybook : la barre d'outils « Face » bascule clair/sombre sur chaque story.
+4. Storybook : la barre d'outils « Face » bascule clair/sombre et « Mouvement »
+   simule le mouvement réduit sur chaque story. La documentation de référence
+   (fondations, guides, autodocs de chaque composant) vit dans Storybook :
+   `src/docs/**/*.mdx` et les `defineMeta` de `src/stories/`.

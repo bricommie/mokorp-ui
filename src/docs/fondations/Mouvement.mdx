@@ -1,0 +1,90 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { MotionTokens, DoDont } from '../../../.storybook/blocks';
+import * as MotionStories from '../../stories/Motion.stories.svelte';
+
+<Meta of={MotionStories} name="Docs" />
+
+# Mouvement
+
+Même logique que les couleurs : un composant choisit un **rôle** de durée et un
+**rôle** de courbe, jamais une valeur en millisecondes ou un `cubic-bezier` écrit à
+la main. Et le réglage système « Réduire les animations » les neutralise **tous**
+d'un coup.
+
+<MotionTokens />
+
+## Voir les tokens en action
+
+Cliquez sur **Jouer**, puis passez **Mouvement → Réduit** dans la barre d'outils :
+tout devient instantané, mais l'état final est le même.
+
+<Canvas of={MotionStories.Tokens} />
+
+## En CSS (Tailwind)
+
+```svelte
+<!-- Toute transition-* sans durée explicite prend duration-fast + ease-standard -->
+<div class="transition-colors hover:bg-muted">…</div>
+
+<!-- Entrée d'une surface -->
+<div class="transition-[opacity,transform] duration-base ease-enter">…</div>
+```
+
+## En JavaScript (`svelte/transition`)
+
+Dès qu'un élément entre ou sort du DOM, la durée vit en JS. Le module `motion`
+garantit qu'elle reste alignée sur les mêmes rôles et tombe à 0 en mouvement réduit.
+
+```svelte
+<script lang="ts">
+	import { pop, duration, easings, isReducedMotion } from 'mokorp-ui';
+	import { fly } from 'svelte/transition';
+</script>
+
+<!-- Surface flottante : fondu + léger zoom ; en mouvement réduit, un fondu très court -->
+<div transition:pop={{ y: -6 }}>…</div>
+
+<!-- Transition Svelte quelconque, alignée sur un rôle -->
+<div in:fly={{ x: 24, duration: duration('slow'), easing: easings.enter }}>…</div>
+
+<!-- Décider d'animer ou non (réactif) -->
+{#if !isReducedMotion()}<Confetti />{/if}
+```
+
+| Export              | Rôle                                                                 |
+| ------------------- | -------------------------------------------------------------------- |
+| `durations`         | Les durées en ms (`durations.base` = 220)                            |
+| `easings`           | Les courbes équivalentes de `svelte/easing`                          |
+| `duration(token)`   | Durée d'un rôle, **0 en mouvement réduit**                           |
+| `isReducedMotion()` | `true` si le système le demande ou si `<html data-motion="reduced">` |
+| `pop`               | Transition des surfaces flottantes                                   |
+
+## Réduire les animations (WCAG 2.3.3)
+
+On ne supprime pas le **retour visuel** (les états changent toujours), on supprime le
+**mouvement**. Les durées tombent à `1ms` plutôt qu'à `0` : les événements
+`transitionend` / `animationend` continuent de se déclencher, et Bits UI, qui attend
+la fin des animations de sortie, ne reste pas bloqué.
+
+Deux déclencheurs, même effet :
+
+- `@media (prefers-reduced-motion: reduce)` : le réglage du système ;
+- `<html data-motion="reduced">` : un réglage dans l'app, les tests visuels, et le
+  bouton **Mouvement** de cette barre d'outils.
+
+<DoDont
+	doThis={
+		<>
+			Le mois suivant glisse depuis la droite : l'animation dit <em>où</em> on va.
+		</>
+	}
+	dontThis={
+		<>
+			Un logo qui rebondit en boucle : aucune information, et une gêne réelle pour les personnes
+			sensibles au mouvement.
+		</>
+	}
+/>
+
+Les animations qui ne répondent pas à une action de l'utilisateur (spinner, barre
+indéterminée) portent en plus `motion-reduce:animate-none`.

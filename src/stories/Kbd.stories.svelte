@@ -3,8 +3,16 @@
 	import Kbd from '#lib/components/Kbd.svelte';
 
 	const { Story } = defineMeta({
-		title: 'Components/Kbd',
-		component: Kbd
+		title: 'Composants/Données et retours/Kbd',
+		component: Kbd,
+		parameters: {
+			docs: {
+				description: {
+					component:
+						'Affiche une **touche** ou un raccourci clavier (`⌘` `K`). Une touche par `Kbd`.'
+				}
+			}
+		}
 	});
 </script>
 

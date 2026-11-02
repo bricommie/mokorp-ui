@@ -3,8 +3,36 @@
 	import Separator from '#lib/components/Separator.svelte';
 
 	const { Story } = defineMeta({
-		title: 'Components/Separator',
-		component: Separator
+		title: 'Composants/Mise en page/Separator',
+		component: Separator,
+		parameters: {
+			docs: {
+				description: {
+					component:
+						"Ligne de séparation entre deux groupes de contenu.\n\n**Accessibilité** : `decorative` (défaut conseillé) le masque aux lecteurs d'écran ; sinon il est annoncé comme `separator`."
+				}
+			}
+		},
+		argTypes: {
+			orientation: {
+				control: 'inline-radio',
+				options: ['horizontal', 'vertical'],
+				description: 'Orientation : détermine aussi les flèches du clavier (←/→ ou ↑/↓).',
+				table: {
+					defaultValue: {
+						summary: 'horizontal'
+					},
+					category: 'Props'
+				}
+			},
+			decorative: {
+				control: 'boolean',
+				description: "Purement visuel : masqué aux technologies d'assistance.",
+				table: {
+					category: 'Props'
+				}
+			}
+		}
 	});
 </script>
 

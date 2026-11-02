@@ -1,0 +1,168 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Démarrer/Utilisation" />
+
+# Utilisation
+
+Tout s'importe depuis `mokorp-ui`. La bibliothèque expose trois formes de composants ;
+savoir les reconnaître évite 90 % des questions.
+
+## 1. Composants simples
+
+Un seul fichier, une seule balise. On les configure par **props**.
+
+```svelte
+<script lang="ts">
+	import { Button, Badge, Input, Label } from 'mokorp-ui';
+	let email = $state('');
+</script>
+
+<Label for="email">E-mail</Label>
+<Input id="email" type="email" bind:value={email} placeholder="vous@exemple.fr" />
+
+<Button variant="primary" size="lg">Envoyer</Button>
+<Badge variant="success">Publié</Badge>
+```
+
+Liste : `Button`, `Badge`, `Input`, `Textarea`, `Label`, `Alert`, `Kbd`, `Skeleton`,
+`Separator`, `Toggle`, `Progress`, `Meter`, `AspectRatio`, `ThemeToggle`, `Navbar`,
+`Card` (et ses parties `CardHeader`, `CardTitle`, `CardDescription`, `CardContent`,
+`CardFooter`).
+
+## 2. Composants multi-parties (namespaces)
+
+Les composants riches (menus, dialogues, sélecteurs…) suivent le modèle de Bits UI :
+un **namespace** avec une partie par élément de l'anatomie. Vous composez la
+structure, la bibliothèque gère le comportement et l'accessibilité.
+
+```svelte
+<script lang="ts">
+	import { Select } from 'mokorp-ui';
+	let fruit = $state('apple');
+</script>
+
+<Select.Root type="single" bind:value={fruit}>
+	<Select.Trigger>
+		<Select.Value placeholder="Choisir un fruit" />
+	</Select.Trigger>
+	<Select.Portal>
+		<Select.Content>
+			<Select.Item value="apple" label="Pomme" />
+			<Select.Item value="banana" label="Banane" />
+		</Select.Content>
+	</Select.Portal>
+</Select.Root>
+```
+
+- **`Root`** porte l'état (`value`, `open`, `checked`…) et les callbacks (`onValueChange`…).
+- **`Portal`** déplace la surface flottante à la fin du `<body>` (pas de problème de
+  `overflow: hidden` ni de `z-index`).
+- Les indicateurs (chevrons, coches, points) sont **déjà intégrés** : ne les ajoutez pas.
+
+La page Docs de chaque composant multi-parties décrit son anatomie.
+
+## 3. Compositions prêtes à l'emploi
+
+Pour les dates, la composition complète représente ~40 lignes. Quatre composants
+l'encapsulent :
+
+```svelte
+<script lang="ts">
+	import { DatePickerField } from 'mokorp-ui';
+	import { today, getLocalTimeZone, type DateValue } from '@internationalized/date';
+
+	let date = $state<DateValue | undefined>(today(getLocalTimeZone()));
+</script>
+
+<DatePickerField label="Date de livraison" bind:value={date} />
+```
+
+`DateCalendar`, `DateRangeCalendar`, `DatePickerField`, `DateRangePickerField`.
+Passez aux parties (`DatePicker.Root`…) seulement si vous avez besoin d'une
+structure différente.
+
+## État : `bind:` ou props contrôlées
+
+Deux façons équivalentes de piloter un composant :
+
+```svelte
+<!-- Liaison bidirectionnelle : le plus court -->
+<Dialog.Root bind:open>…</Dialog.Root>
+
+<!-- Contrôlé : utile pour valider ou journaliser le changement -->
+<Dialog.Root {open} onOpenChange={(next) => (open = next)}>…</Dialog.Root>
+```
+
+Ne mélangez pas les deux sur la même prop.
+
+## Personnaliser : `class`, jamais de couleur
+
+Chaque partie accepte `class`. Les classes sont fusionnées avec `tailwind-merge` :
+votre classe **gagne** sur celle du composant en cas de conflit.
+
+```svelte
+<Button class="w-full">Pleine largeur</Button>
+<!-- ✓ mise en page -->
+<Card class="max-w-md">…</Card>
+<!-- ✓ dimension -->
+<Button class="bg-[#ff0000]">Rouge</Button>
+<!-- ✗ couleur brute -->
+<Button variant="destructive">Supprimer</Button>
+<!-- ✓ l'intention, via une variante -->
+```
+
+Règle : `class` sert à **placer** un composant (largeur, marges, alignement), pas à
+changer son **identité** (couleur, rayon, typographie). Si une variante manque,
+c'est une demande d'évolution du design system, pas un override.
+
+## Snippets : `child` pour changer l'élément rendu
+
+Un `Trigger` rend un `<button>` sans style. Pour qu'il ait l'apparence d'un `Button`,
+passez par le snippet `child` : vous recevez les `props` (ARIA, handlers) à étaler
+sur votre élément.
+
+```svelte
+<Dialog.Trigger>
+	{#snippet child({ props })}
+		<Button variant="outline" {...props}>Ouvrir</Button>
+	{/snippet}
+</Dialog.Trigger>
+```
+
+Oublier `{...props}` casse le clavier et les lecteurs d'écran : c'est la première
+chose à vérifier quand un déclencheur « ne fait rien ».
+
+## Variantes réutilisables hors composant
+
+Les variantes CVA sont exportées : utiles pour donner l'apparence d'un bouton à un
+lien SvelteKit sans dupliquer de classes.
+
+```svelte
+<script lang="ts">
+	import { buttonVariants } from 'mokorp-ui';
+</script>
+
+<a href="/tarifs" class={buttonVariants({ variant: 'outline', size: 'sm' })}>Voir les tarifs</a>
+```
+
+Exportées : `buttonVariants`, `badgeVariants`, `toggleVariants`, `alertVariants`
+(et leurs types `ButtonVariant`, `ButtonSize`…). Le helper `cn()` est exporté aussi.
+
+## Mouvement côté JavaScript
+
+Pour une transition Svelte alignée sur les tokens et qui respecte « Réduire les
+animations » :
+
+```svelte
+<script lang="ts">
+	import { pop, duration } from 'mokorp-ui';
+	import { fade } from 'svelte/transition';
+</script>
+
+{#if open}
+	<div transition:pop>Surface flottante</div>
+	<p transition:fade={{ duration: duration('fast') }}>Texte</p>
+{/if}
+```
+
+Voir [Mouvement](?path=/docs/fondations-mouvement--docs).

@@ -1,0 +1,48 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { SpacingScale } from '../../../.storybook/blocks';
+
+<Meta title="Fondations/Espacements" />
+
+# Espacements
+
+Signal utilise l'échelle d'espacement native de Tailwind v4 : **une seule variable
+`--spacing` (0.25rem = 4px)**, et chaque utilitaire en est un multiple
+(`p-4` = `calc(var(--spacing) * 4)` = 16px). On ne crée pas de nouveaux tokens
+d'espacement : on choisit un **pas** de l'échelle.
+
+<SpacingScale />
+
+## Règles
+
+1. **Toujours un pas de l'échelle.** `p-[13px]` ou `mt-[7px]` signalent un alignement
+   compensé à la main : corrigez la cause (interlignage, bordure) plutôt que le symptôme.
+2. **`gap` plutôt que des marges.** Un conteneur `flex` / `grid` avec `gap-4` espace
+   ses enfants sans qu'aucun ne connaisse son voisin, donc les composants restent
+   réutilisables. Un composant ne pose **jamais** de marge extérieure sur sa racine.
+3. **Proximité = relation.** Plus deux éléments sont liés, plus ils sont proches :
+   label → champ `gap-1.5`, champ → champ `gap-4`, groupe → groupe `gap-8`.
+4. **Cibles tactiles.** Un contrôle interactif fait au moins 24 × 24 px (WCAG 2.5.8),
+   44 px de haut pour les boutons principaux : `Button` fait `h-11` (44px) par défaut.
+
+## Repères dans les composants
+
+| Composant         | Espacement                                     |
+| ----------------- | ---------------------------------------------- |
+| `Button` (défaut) | `h-11 px-5`, `gap-2` entre icône et texte      |
+| `Input`           | `h-10 px-3 py-2`                               |
+| Option de menu    | `px-2 py-1.5`, `gap-2`                         |
+| `Card`            | `p-6`, `gap-6` entre header, contenu et footer |
+| Surface flottante | `sideOffset` de 8px par rapport au déclencheur |
+
+## Changer la densité
+
+Comme tout passe par `--spacing`, un thème « compact » peut redéfinir la base :
+
+```css
+[data-density='compact'] {
+	--spacing: 0.2rem; /* 3,2px : tout se resserre proportionnellement */
+}
+```
+
+À manier avec prudence : les hauteurs de contrôles diminuent aussi, vérifiez les
+cibles tactiles.

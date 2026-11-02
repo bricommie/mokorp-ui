@@ -10,7 +10,7 @@
 <!-- Contenu : hauteur animée (réponse à l'action), padding interne séparé du clip — §7 -->
 <AccordionPrimitive.Content
 	{...rest}
-	class="overflow-hidden font-body text-sm text-foreground data-[state=closed]:animate-[mk-collapse-up_150ms_ease-out] data-[state=open]:animate-[mk-collapse-down_150ms_ease-out] motion-reduce:animate-none"
+	class="overflow-hidden font-body text-sm text-foreground data-[state=closed]:animate-[mk-collapse-up_var(--duration-fast)_var(--ease-standard)] data-[state=open]:animate-[mk-collapse-down_var(--duration-fast)_var(--ease-standard)] motion-reduce:animate-none"
 >
 	<div class={cn('pb-4', className)}>
 		{@render children?.()}

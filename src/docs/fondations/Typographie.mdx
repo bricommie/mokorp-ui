@@ -1,0 +1,80 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { FacePair } from '../../../.storybook/blocks';
+
+<Meta title="Fondations/Typographie" />
+
+# Typographie
+
+Quatre **slots** sémantiques, réassignables par projet sans toucher aux composants.
+
+| Slot             | Utilitaire     | Police                                         | Rôle                                                |
+| ---------------- | -------------- | ---------------------------------------------- | --------------------------------------------------- |
+| `--font-display` | `font-display` | **Archivo** (variable, axes graisse + largeur) | Titres, héros, gros chiffres, logo                  |
+| `--font-body`    | `font-body`    | **Archivo**                                    | Corps de texte, labels, boutons, valeurs            |
+| `--font-mono`    | `font-mono`    | **IBM Plex Mono**                              | Code, données, timestamps, tags                     |
+| `--font-serif`   | `font-serif`   | **Georgia** (système)                          | Accent éditorial : légendes, citations, états vides |
+
+<FacePair
+	render={() => (
+		<div style={{ display: 'grid', gap: 12 }}>
+			<div
+				style={{
+					fontFamily: 'var(--font-display)',
+					fontSize: 40,
+					lineHeight: 0.95,
+					fontWeight: 800
+				}}
+			>
+				Signal
+			</div>
+			<div style={{ fontFamily: 'var(--font-body)', fontSize: 16, lineHeight: 1.5 }}>
+				Le corps de texte se lit à 16px, interlignage 1,5.
+			</div>
+			<div style={{ fontFamily: 'var(--font-body)', fontSize: 14, fontWeight: 600 }}>
+				Libellé de champ
+			</div>
+			<div style={{ fontFamily: 'var(--font-mono)', fontSize: 13 }}>
+				2026-11-02T23:04:00Z · build #4182
+			</div>
+			<div
+				style={{
+					fontFamily: 'var(--font-serif)',
+					fontSize: 15,
+					fontStyle: 'italic',
+					color: 'var(--muted-foreground)'
+				}}
+			>
+				Aucun résultat pour le moment.
+			</div>
+		</div>
+	)}
+/>
+
+## Échelle
+
+| Niveau        | Taille        | Interlignage | Utilitaires conseillés                 |
+| ------------- | ------------- | ------------ | -------------------------------------- |
+| Héros         | 4rem (64px)   | 0.95         | `font-display text-6xl font-black`     |
+| H1            | 3rem (48px)   | 0.95         | `font-display text-5xl font-extrabold` |
+| H2            | 2rem (32px)   | 0.95         | `font-display text-3xl font-bold`      |
+| H3            | 1.5rem (24px) | 0.95         | `font-display text-2xl font-bold`      |
+| Corps         | 16px          | 1.5          | `font-body text-base`                  |
+| Corps compact | 14px          | 1.5          | `font-body text-sm` (contrôles, menus) |
+| Libellé       | 12–14px       | 1.3          | `font-body text-sm font-semibold`      |
+
+`h1` à `h4` reçoivent automatiquement `font-display` et un interlignage de 0.95 (couche
+`base` du thème).
+
+## Le motif Label
+
+`Label` = `font-body text-sm font-semibold`, **en casse normale**. Pas de capitales :
+elles ralentissent la lecture et sont mal épelées par certains lecteurs d'écran.
+
+## Bonnes pratiques
+
+- Les tailles s'expriment en `rem` : elles suivent le réglage de taille de texte du
+  navigateur (WCAG 1.4.4, agrandissement à 200 %).
+- Un seul `h1` par page ; on ne saute pas de niveau (`h2` → `h4`) pour un effet visuel :
+  on change la classe, pas la balise.
+- `font-mono` pour les **données** comparables (montants, identifiants) : les chiffres
+  ont tous la même largeur et s'alignent en colonne.

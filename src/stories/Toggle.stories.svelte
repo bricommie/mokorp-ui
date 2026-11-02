@@ -3,11 +3,68 @@
 	import Toggle from '#lib/components/Toggle.svelte';
 
 	const { Story } = defineMeta({
-		title: 'Components/Toggle',
+		title: 'Composants/Actions/Toggle',
 		component: Toggle,
+		parameters: {
+			docs: {
+				description: {
+					component:
+						"Bouton **à deux états** (activé / désactivé), comme « Gras » dans un éditeur. L'état est porté par `aria-pressed`, donc annoncé par les lecteurs d'écran.\n\nPour un groupe de bascules liées (alignement gauche/centre/droite), utilisez `ToggleGroup`.\n\n**Accessibilité** : le libellé ne doit **pas** changer avec l'état (« Gras », pas « Activer le gras » / « Désactiver le gras »)."
+				}
+			}
+		},
 		argTypes: {
-			variant: { control: 'select', options: ['default', 'outline'] },
-			size: { control: 'select', options: ['default', 'sm', 'lg'] }
+			pressed: {
+				control: 'boolean',
+				description: 'État enfoncé. Utilisable avec `bind:pressed`.',
+				table: {
+					defaultValue: {
+						summary: 'false'
+					},
+					category: 'Props'
+				}
+			},
+			onPressedChange: {
+				description: "Appelé quand l'état change.",
+				table: {
+					type: {
+						summary: '(pressed: boolean) => void'
+					},
+					category: 'Événements'
+				}
+			},
+			variant: {
+				control: 'inline-radio',
+				options: ['default', 'outline'],
+				description: '`default` : sans bordure ; `outline` : bordure de contrôle visible.',
+				table: {
+					defaultValue: {
+						summary: "'default'"
+					},
+					category: 'Props'
+				}
+			},
+			size: {
+				control: 'inline-radio',
+				options: ['default', 'sm', 'lg'],
+				description: 'Taille du bouton.',
+				table: {
+					defaultValue: {
+						summary: "'default'"
+					},
+					category: 'Props'
+				}
+			},
+			disabled: {
+				control: 'boolean',
+				description: 'Désactive le composant : ni focus, ni interaction.',
+				table: {
+					defaultValue: {
+						summary: 'false'
+					},
+					category: 'Props'
+				}
+			}
 		},
 		args: {
 			variant: 'default',

@@ -1,0 +1,132 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Démarrer/Installation" />
+
+# Installation
+
+mokorp-ui se consomme dans une application **Svelte 5** qui utilise **Tailwind CSS v4**.
+Ce point est important : le thème n'est pas une feuille CSS déjà compilée, c'est une
+**source Tailwind** (tokens, `@theme inline`, utilitaires). C'est votre build Tailwind
+qui génère les classes des composants.
+
+## 1. Installer les paquets
+
+```sh
+npm install mokorp-ui bits-ui @internationalized/date
+```
+
+| Paquet                    | Rôle                                                             | Pourquoi l'installer vous-même                                                             |
+| ------------------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| `mokorp-ui`               | Composants, thème, tokens                                        | —                                                                                          |
+| `bits-ui`                 | Primitives headless (comportement + ARIA)                        | `peerDependency` : une seule copie dans l'app, partagée avec vos propres usages de Bits UI |
+| `@internationalized/date` | Objets date (`CalendarDate`, `today()`…) des composants de dates | `peerDependency` : vous créez ces valeurs dans votre code                                  |
+
+Les polices (Archivo, IBM Plex Mono) sont des dépendances directes de mokorp-ui :
+rien à installer de plus.
+
+## 2. Activer Tailwind v4
+
+Si votre app n'a pas encore Tailwind :
+
+```sh
+npm install -D tailwindcss @tailwindcss/vite
+```
+
+```ts
+// vite.config.ts
+import { sveltekit } from '@sveltejs/kit/vite';
+import tailwindcss from '@tailwindcss/vite';
+import { defineConfig } from 'vite';
+
+export default defineConfig({
+	plugins: [tailwindcss(), sveltekit()]
+});
+```
+
+## 3. Importer le thème, une seule fois
+
+Dans la feuille CSS d'entrée de l'app :
+
+```css
+/* src/app.css */
+@import 'mokorp-ui/theme.css';
+
+/* Vos propres styles viennent ensuite : ils peuvent utiliser les mêmes tokens. */
+```
+
+```svelte
+<!-- src/routes/+layout.svelte -->
+<script lang="ts">
+	import '../app.css';
+	let { children } = $props();
+</script>
+
+{@render children()}
+```
+
+`mokorp-ui/theme.css` importe **déjà** `tailwindcss`. Ne gardez pas un second
+`@import 'tailwindcss'` dans `app.css` : vous obtiendriez deux fois la couche de base.
+
+### Pourquoi le thème contient `@source '../components'`
+
+Tailwind n'analyse jamais `node_modules`. Sans indication, votre build ne verrait pas
+les classes écrites dans nos composants (`bg-primary`, `rounded-field`…) et ils
+s'afficheraient sans style. La directive `@source` de `theme.css` pointe vers
+`dist/components` : vous n'avez rien à configurer.
+
+## 4. Éviter le flash de thème (optionnel)
+
+La face sombre s'active avec la classe `.dark` sur `<html>`. Pour l'appliquer **avant**
+le premier rendu, ajoutez ce script dans `src/app.html` :
+
+```html
+<script>
+	(function () {
+		try {
+			var saved = localStorage.getItem('mokorp-theme');
+			var dark = saved ? saved === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+			document.documentElement.classList.toggle('dark', dark);
+		} catch (e) {}
+	})();
+</script>
+```
+
+Le composant `ThemeToggle` et l'objet `theme` (`theme.toggle()`, `theme.set('dark')`)
+lisent et écrivent la même clé `mokorp-theme`. Voir
+[Thèmes et faces](?path=/docs/démarrer-thèmes-et-faces--docs).
+
+## 5. Fournisseur de tooltips (si vous utilisez `Tooltip`)
+
+```svelte
+<script lang="ts">
+	import { Tooltip } from 'mokorp-ui';
+	let { children } = $props();
+</script>
+
+<!-- Un seul fournisseur pour toute l'app : délai partagé entre tooltips voisins -->
+<Tooltip.Provider delayDuration={150}>
+	{@render children()}
+</Tooltip.Provider>
+```
+
+## Vérifier l'installation
+
+```svelte
+<script lang="ts">
+	import { Button } from 'mokorp-ui';
+</script>
+
+<Button>Ça marche</Button>
+```
+
+Le bouton doit être lime, bordé d'encre en face claire, en forme de pilule.
+
+## Dépannage
+
+| Symptôme                                                | Cause probable                                          | Correction                                          |
+| ------------------------------------------------------- | ------------------------------------------------------- | --------------------------------------------------- |
+| Composants sans aucun style                             | Le thème n'est pas importé, ou Tailwind n'est pas actif | Étapes 2 et 3                                       |
+| Certaines classes manquent (ex. survol)                 | Un autre `@import 'tailwindcss'` passe avant le thème   | Ne garder que `@import 'mokorp-ui/theme.css'`       |
+| `bind:value` ne remonte rien                            | Valeur non déclarée avec `$state` côté parent           | `let value = $state(...)` puis `bind:value={value}` |
+| Erreur « Cannot find module '@internationalized/date' » | peerDependency absente                                  | Étape 1                                             |
+| Flash clair au chargement en mode sombre                | Classe `.dark` posée après l'hydratation                | Étape 4                                             |

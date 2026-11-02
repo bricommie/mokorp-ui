@@ -4,8 +4,54 @@
 	import { Root } from '#lib/components/accordion/index.js';
 
 	const { Story } = defineMeta({
-		title: 'Components/Accordion',
+		title: 'Composants/Navigation/Accordion',
 		component: Root,
+		parameters: {
+			docs: {
+				description: {
+					component:
+						'Sections **repliables** empilées : FAQ, réglages avancés. Ne cachez pas dans un accordéon une information que tout le monde doit lire.\n\n**Anatomie** : `Accordion.Root` › `Accordion.Item` › `Accordion.Header` › `Accordion.Trigger` (chevron intégré) ; `Accordion.Content`.\n\n**Accessibilité** : le déclencheur est un bouton avec `aria-expanded`, dans un titre (`Header`). Ouverture animée (hauteur), neutralisée en mouvement réduit.'
+				}
+			}
+		},
+		argTypes: {
+			type: {
+				control: 'inline-radio',
+				options: ['single', 'multiple'],
+				description: '`single` : une section ouverte à la fois ; `multiple` : plusieurs.',
+				table: {
+					category: 'Props'
+				}
+			},
+			value: {
+				description: 'Section(s) ouverte(s). Utilisable avec `bind:value`.',
+				table: {
+					type: {
+						summary: 'string | string[]'
+					},
+					category: 'Props'
+				}
+			},
+			onValueChange: {
+				description: "Appelé quand l'ouverture change.",
+				table: {
+					type: {
+						summary: '(value) => void'
+					},
+					category: 'Événements'
+				}
+			},
+			disabled: {
+				control: 'boolean',
+				description: 'Désactive le composant : ni focus, ni interaction.',
+				table: {
+					defaultValue: {
+						summary: 'false'
+					},
+					category: 'Props'
+				}
+			}
+		},
 		args: {
 			type: 'single'
 		}

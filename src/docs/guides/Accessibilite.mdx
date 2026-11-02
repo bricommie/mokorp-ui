@@ -1,0 +1,115 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { DoDont } from '../../../.storybook/blocks';
+
+<Meta title="Guides/Accessibilité" />
+
+# Accessibilité
+
+Objectif : **WCAG 2.2 niveau AA**. La responsabilité est partagée entre trois couches,
+et savoir laquelle fait quoi évite de croire qu'un composant « accessible » rend
+automatiquement une page accessible.
+
+| Couche                    | Garantit                                                                                                                |
+| ------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| **Bits UI** (primitives)  | Rôles et attributs ARIA, navigation clavier, gestion du focus (piège dans un dialogue, retour au déclencheur), annonces |
+| **Thème Signal** (tokens) | Contrastes 4,5:1 texte, 3:1 bordures de contrôle et focus, dans les deux faces ; mouvement réductible                   |
+| **Vous** (l'app)          | Noms accessibles, structure des titres, libellés, messages d'erreur, ordre de lecture                                   |
+
+## Ce que la bibliothèque fait pour vous
+
+- **Clavier** : tous les composants interactifs sont utilisables au clavier
+  (Tab, flèches, Entrée, Espace, Échap, Début/Fin). Les menus et listes ont un
+  _roving focus_ : Tab entre dans le groupe, les flèches s'y déplacent.
+- **Focus visible** : anneau `ring` à 3:1 avec un liseré `ring-offset-background`,
+  uniquement au clavier (`focus-visible`).
+- **État sélectionné** : jamais porté par la couleur seule (coche, point,
+  remplissage plein vs contour).
+- **Chargement** : `Button loading` utilise `aria-busy` et `aria-disabled` (pas
+  `disabled`) : le focus **reste** sur le bouton, et `loadingLabel` est annoncé.
+- **Mouvement** : tout s'éteint avec `prefers-reduced-motion` (voir
+  [Mouvement](?path=/docs/fondations-mouvement--docs)).
+
+## Ce qui reste à votre charge
+
+### 1. Un nom accessible pour chaque contrôle
+
+Un bouton icône n'a pas de texte : donnez-lui un `aria-label`.
+
+<DoDont
+	doThis={<code>{'<Button size="icon" aria-label="Fermer">✕</Button>'}</code>}
+	dontThis={<code>{'<Button size="icon">✕</Button>'}</code>}
+/>
+
+`ThemeToggle` a un nom par défaut (`label="Basculer le thème"`), `Navbar` aussi
+(`label="Navigation principale"`). Changez-les si la page contient plusieurs
+éléments du même type.
+
+### 2. Un libellé pour chaque champ
+
+```svelte
+<Label for="email">E-mail</Label>
+<Input id="email" type="email" autocomplete="email" />
+```
+
+Le `placeholder` **n'est pas** un libellé : il disparaît à la saisie et son contraste
+est volontairement faible.
+
+### 3. Des erreurs explicites
+
+```svelte
+<Label for="iban">IBAN</Label>
+<Input id="iban" aria-invalid={!!error} aria-describedby="iban-error" />
+{#if error}<p id="iban-error" class="text-sm text-destructive">{error}</p>{/if}
+```
+
+`aria-invalid` colore la bordure en `destructive`, mais c'est le **message** qui
+informe. Un champ rouge sans texte échoue à WCAG 1.4.1 (usage de la couleur).
+
+### 4. Les titres des dialogues
+
+`Dialog.Title` et `AlertDialog.Title` sont obligatoires : ils donnent son nom au
+dialogue. `Description` est fortement recommandée. Pour une action destructive,
+préférez `AlertDialog` : il n'est pas fermable en cliquant à l'extérieur.
+
+### 5. Les déclencheurs composés avec `child`
+
+Quand vous remplacez l'élément d'un `Trigger` via le snippet `child`, étalez
+**toujours** `{...props}` : c'est là que se trouvent `aria-expanded`,
+`aria-controls` et les handlers clavier.
+
+### 6. La langue et les dates
+
+Les composants de dates utilisent `locale="fr-FR"` par défaut. Déclarez la langue de
+la page (`<html lang="fr">`) pour que les lecteurs d'écran prononcent correctement.
+
+## Tester dans Storybook
+
+1. **Panneau Accessibility** : axe-core analyse la story affichée. Les violations
+   apparaissent en rouge (_Violations_), les points à vérifier à la main en jaune
+   (_Incomplete_). Les tests Vitest du Storybook remontent aussi ces violations
+   (`a11y.test: 'todo'` : signalées, pas encore bloquantes).
+2. **Clavier seul** : débranchez la souris mentalement. Tab jusqu'au composant,
+   utilisez-le entièrement, ressortez. Le focus doit toujours être visible et ne
+   jamais disparaître dans un élément caché.
+3. **Face sombre** : refaites le test avec **Face → Sombre**. Les contrastes sont
+   recalculés.
+4. **Mouvement réduit** : **Mouvement → Réduit**. Plus rien ne doit bouger, mais
+   tous les états doivent rester perceptibles.
+5. **Zoom 200 %** : rien ne doit être coupé ni se chevaucher.
+
+axe-core détecte environ un tiers des problèmes. Les étapes 2 à 5 sont
+indispensables : elles trouvent ce qu'un outil ne peut pas juger (ordre logique,
+pertinence d'un libellé).
+
+## Référence rapide clavier
+
+| Composant                              | Touches                                                                                    |
+| -------------------------------------- | ------------------------------------------------------------------------------------------ |
+| Button, Toggle, Switch, Checkbox       | Espace (et Entrée pour Button)                                                             |
+| RadioGroup, Tabs, ToggleGroup, Toolbar | Flèches pour se déplacer, Tab pour sortir du groupe                                        |
+| Menus (Dropdown, Context, Menubar)     | Flèches, Entrée, Échap ; → / ← ouvrent / ferment un sous-menu ; saisie d'une lettre = saut |
+| Select, Combobox                       | Flèches, Entrée, Échap ; Combobox filtre à la frappe                                       |
+| Dialog, AlertDialog, Popover           | Échap ferme ; le focus est piégé dans le dialogue puis rendu au déclencheur                |
+| Calendar                               | Flèches (jour / semaine), Page préc./suiv. (mois), Début/Fin (semaine)                     |
+| Slider                                 | Flèches (pas), Page préc./suiv. (grand pas), Début/Fin (min/max)                           |
+| Accordion, Collapsible                 | Entrée / Espace ouvre ; flèches entre les en-têtes (Accordion)                             |

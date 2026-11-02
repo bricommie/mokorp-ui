@@ -4,8 +4,37 @@
 	import { Root } from '#lib/components/dropdown-menu/index.js';
 
 	const { Story } = defineMeta({
-		title: 'Components/DropdownMenu',
-		component: Root
+		title: 'Composants/Superpositions/DropdownMenu',
+		component: Root,
+		parameters: {
+			docs: {
+				description: {
+					component:
+						"Menu d'**actions** ouvert depuis un bouton (« … », menu de compte). Pour choisir une **valeur** de formulaire, utilisez `Select`.\n\n**Anatomie** : `DropdownMenu.Root` › `Trigger` ; `Portal` › `Content` › `Item` · `Group` › `GroupHeading` · `Separator` · `CheckboxItem` · `RadioGroup` › `RadioItem` · `Sub` › `SubTrigger` + `SubContent` · `Shortcut`.\n\n**Accessibilité** : flèches, Entrée, Échap, → / ← pour les sous-menus, saisie d'une lettre pour sauter. Coches et points sont intégrés."
+				}
+			}
+		},
+		argTypes: {
+			open: {
+				control: 'boolean',
+				description: 'Ouverture du menu. Utilisable avec `bind:open`.',
+				table: {
+					defaultValue: {
+						summary: 'false'
+					},
+					category: 'Props'
+				}
+			},
+			onOpenChange: {
+				description: "Appelé à chaque changement d'ouverture, avec le nouvel état.",
+				table: {
+					type: {
+						summary: '(open: boolean) => void'
+					},
+					category: 'Événements'
+				}
+			}
+		}
 	});
 </script>
 

@@ -1,0 +1,74 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { DoDont } from '../../../.storybook/blocks';
+
+<Meta title="Fondations/Principes" />
+
+# Principes
+
+Un design system tient par ses règles plus que par ses composants. Celles-ci sont
+**non négociables** : chacune est soit testée automatiquement, soit vérifiée en revue.
+
+## 1. Tokens d'abord
+
+Un changement visuel = **une ligne dans le thème**, pas 40 fichiers. Les composants ne
+connaissent que des noms de tokens (`bg-primary`, `rounded-field`, `duration-fast`),
+jamais des valeurs.
+
+<DoDont
+	doThis={<code>class="bg-card text-card-foreground border-border-subtle"</code>}
+	dontThis={<code>class="bg-white text-[#16111c] border-gray-200"</code>}
+/>
+
+**Garde-fou** : `src/lib/components/colors.test.ts` échoue si un fichier de `src/lib`
+contient un littéral de couleur (hex, `rgb()`, `oklch()`…). Lancez `npm run test:unit`.
+
+## 2. La sémantique est stable
+
+On ne renomme **jamais** un token sémantique ; on change sa valeur. Le nom décrit un
+**rôle** (`--destructive`, `--border-subtle`), pas une apparence (`--red`, `--gray-200`).
+Un rôle survit à un changement de marque ; une couleur, non.
+
+## 3. Un rôle par composant
+
+Chaque composant choisit **un rôle** de rayon (`surface`, `field`, `item`, `control`,
+`pill`) et **un rôle** de durée (`instant`, `fast`, `base`, `slow`). Jamais une valeur
+en pixels ou en millisecondes.
+
+<DoDont
+	doThis={<code>rounded-field · duration-base ease-enter</code>}
+	dontThis={<code>rounded-[12px] · duration-[220ms] ease-[cubic-bezier(0,0,.2,1)]</code>}
+/>
+
+## 4. La couleur se mérite
+
+Le lime (`--primary`) signale **ce qui agit** : bouton principal, élément survolé d'un
+menu, sélection. Une page qui contient trois boutons lime n'a plus d'action principale.
+
+- Une action principale par vue ; le reste en `secondary`, `outline` ou `ghost`.
+- Un état sélectionné n'est **jamais** porté par la couleur seule : toujours un
+  indicateur (coche, point, remplissage plein vs contour). Voir
+  [Accessibilité](?path=/docs/guides-accessibilité--docs).
+
+## 5. Même comportement, deux faces
+
+Clair et sombre partagent les mêmes rôles et les mêmes interactions. Si un composant
+a besoin d'une règle `dark:` pour rester lisible, c'est le **token** qui est faux,
+pas le composant.
+
+## 6. L'accessibilité est une fonctionnalité
+
+Bits UI fournit le clavier et l'ARIA ; le thème fournit les contrastes (4,5:1 texte,
+3:1 bordures et focus). Un composant qui casse l'un des deux n'est pas terminé.
+
+## 7. Le mouvement informe
+
+Une animation dit **d'où vient** ou **où va** quelque chose (le mois suivant arrive
+par la droite, un menu sort de son déclencheur). Une animation décorative est retirée.
+Toute animation s'éteint avec « Réduire les animations », sans perte d'information.
+
+## 8. Composer plutôt que configurer
+
+Un composant multi-parties (`Select.Root`, `Select.Trigger`, `Select.Item`) se
+compose ; on n'ajoute pas de prop booléenne pour chaque cas (`showIcon`,
+`hasFooter`…). Quand une composition revient partout (les dates), on la livre
+**en plus**, comme composition prête à l'emploi (`DatePickerField`).

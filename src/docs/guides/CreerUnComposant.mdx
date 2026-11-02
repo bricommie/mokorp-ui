@@ -1,0 +1,82 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Guides/Créer un composant" />
+
+# Créer un composant
+
+Le guide complet (recettes de classes, leçons de l'audit) est dans
+[`docs/component-guide.md`](https://github.com/bricommie/mokorp-ui/blob/main/docs/component-guide.md).
+Cette page en donne le parcours.
+
+## 1. Partir de Bits UI
+
+Lisez `node_modules/bits-ui/dist/bits/<kebab>/exports.d.ts` : il donne le nom exact
+des parties (`Root`, `Trigger`, `Content`…) et de leurs types (`RootProps`…). Ne
+devinez jamais un nom de partie.
+
+## 2. Choisir la structure
+
+| Cas               | Fichiers                                                          |
+| ----------------- | ----------------------------------------------------------------- |
+| Une seule partie  | `src/lib/components/<PascalCase>.svelte`                          |
+| Plusieurs parties | `src/lib/components/<kebab>/<kebab>-<partie>.svelte` + `index.ts` |
+| Variantes         | `src/lib/components/<kebab>.ts` avec `cva()`                      |
+
+## 3. Écrire le wrapper
+
+```svelte
+<script lang="ts">
+	import { Tabs as TabsPrimitive } from 'bits-ui';
+	import { cn } from '../../cn.js';
+
+	type Props = TabsPrimitive.TriggerProps;
+
+	let { class: className, ...rest }: Props = $props();
+</script>
+
+<TabsPrimitive.Trigger
+	{...rest}
+	class={cn(
+		'rounded-item px-3 py-1.5 font-body text-sm transition-colors',
+		'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+		'data-[state=active]:bg-primary data-[state=active]:text-primary-foreground',
+		className
+	)}
+/>
+```
+
+Points de vigilance Svelte 5 :
+
+- **Props bindables** : une prop `bind:`-able (`value`, `open`, `checked`) doit être
+  déclarée avec `$bindable()` et **le même défaut que Bits UI**, puis liée
+  explicitement. Un simple `{...rest}` casse `bind:value`.
+- **`class` en dernier** dans `cn()` : la classe du consommateur gagne.
+- **Styles par état** via les attributs `data-*` de Bits UI (`data-[state=open]`,
+  `data-[highlighted]`, `data-[disabled]`), pas via des props booléennes.
+- **Pas de `$effect` pour dériver** une valeur : `$derived` suffit et ne provoque pas
+  de rendu en cascade.
+
+## 4. Choisir les tokens
+
+- Un rôle de **rayon** (voir [Rayons et bordures](?path=/docs/fondations-rayons-et-bordures--docs)) ;
+- des couleurs **sémantiques** uniquement, en couples `bg-x text-x-foreground` ;
+- un rôle de **durée** et de **courbe** pour toute transition ;
+- aucune valeur arbitraire (`[13px]`, `[#…]`).
+
+## 5. Exporter
+
+Ajoutez l'export dans `src/lib/index.ts` : `export { default as X }` pour un composant
+simple, `export * as X from './components/x/index.js'` pour un namespace.
+
+## 6. Documenter
+
+Écrivez la story en suivant [Écrire une story](?path=/docs/guides-écrire-une-story--docs) :
+description, anatomie, `argTypes`, une story par état.
+
+## 7. Vérifier
+
+```sh
+npm run check       # svelte-check : 0 erreur
+npm run test:unit   # dont le garde-fou « aucune couleur brute »
+npm run storybook   # Face claire/sombre, Mouvement réduit, panneau Accessibility
+```

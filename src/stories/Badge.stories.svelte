@@ -3,12 +3,28 @@
 	import Badge from '#lib/components/Badge.svelte';
 
 	const { Story } = defineMeta({
-		title: 'Components/Badge',
+		title: 'Composants/Données et retours/Badge',
 		component: Badge,
+		parameters: {
+			docs: {
+				description: {
+					component:
+						'Étiquette courte de **statut** ou de catégorie (« Publié », « Bêta »). Non interactif : pour une action, utilisez `Button`.\n\n**Accessibilité** : le texte porte le sens, pas la couleur seule (« Échec », pas un badge rouge vide).'
+				}
+			}
+		},
 		argTypes: {
 			variant: {
 				control: 'select',
-				options: ['primary', 'secondary', 'outline', 'success', 'warning', 'destructive']
+				options: ['primary', 'secondary', 'outline', 'success', 'warning', 'destructive'],
+				description:
+					'Intention du badge. `success` / `warning` / `destructive` pour un statut ; `outline` pour une catégorie neutre.',
+				table: {
+					defaultValue: {
+						summary: "'primary'"
+					},
+					category: 'Props'
+				}
 			}
 		},
 		args: {
