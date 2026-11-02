@@ -76,3 +76,15 @@ export * as Tooltip from './components/tooltip/index.js';
 
 // Icônes internes (traits carrés, `currentColor`).
 export * as Icons from './components/icons/index.js';
+
+// Mouvement : tokens JS, transition `pop`, détection du mouvement réduit.
+export {
+	durations,
+	easings,
+	duration,
+	isReducedMotion,
+	pop,
+	type DurationToken,
+	type EasingToken
+} from './motion/index.js';
+export { default as Navbar, type NavbarItem } from './components/Navbar.svelte';

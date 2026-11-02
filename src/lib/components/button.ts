@@ -8,11 +8,15 @@ import { cva, type VariantProps } from 'class-variance-authority';
  * compression à la pression. Le même comportement dans les deux faces : un
  * thème change des valeurs, jamais une métaphore d'interaction.
  *
+ * Mouvement : la pression compresse en `duration-instant`, le relâchement
+ * revient avec `ease-emphasized` (petit rebond). Tout passe par les tokens,
+ * donc tout s'éteint avec `prefers-reduced-motion` sans classe dédiée.
+ *
  * `primary` porte `border-primary-border` : une bordure encre en face claire
  * (le lime ne se détache pas du fond clair), transparente en face sombre.
  */
 export const buttonVariants = cva(
-	'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-control border-(length:--border-width) font-body font-semibold transition-[transform,background-color,border-color,color] active:scale-[0.98] motion-reduce:transition-none motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
+	'relative inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-control border-(length:--border-width) font-body font-semibold transition-[transform,background-color,border-color,color,box-shadow] duration-fast ease-emphasized active:scale-[0.96] active:duration-instant active:ease-standard motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
 	{
 		variants: {
 			variant: {
