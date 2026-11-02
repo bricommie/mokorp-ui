@@ -17,7 +17,5 @@
 	)}
 >
 	{@render children?.()}
-	<ChevronDown
-		class="size-4 shrink-0 transition-transform duration-150 motion-reduce:transition-none"
-	/>
+	<ChevronDown class="size-4 shrink-0 transition-transform duration-fast" />
 </AccordionPrimitive.Trigger>

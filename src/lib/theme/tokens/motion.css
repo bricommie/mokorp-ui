@@ -1,0 +1,111 @@
+/*
+ * Tokens de mouvement — §3 « Non-couleur ».
+ *
+ * Même logique que les couleurs : les composants choisissent un RÔLE
+ * (durée « rapide », courbe « sortie »…), jamais une valeur en ms ou un
+ * cubic-bezier écrit à la main. Un thème peut redéfinir ces valeurs ; le
+ * réglage système « Réduire les animations » les neutralise TOUTES d'un coup.
+ *
+ * Durées :
+ * - instant  : retour immédiat (pression, case cochée)
+ * - fast     : changement d'état local (survol, couleur, chevron)
+ * - base     : entrée/sortie d'une surface (popover, menu, panneau)
+ * - slow     : déplacement important (changement de mois, page)
+ *
+ * Courbes :
+ * - standard   : par défaut, pour ce qui change sur place
+ * - enter      : décélère — ce qui ARRIVE à l'écran
+ * - exit       : accélère — ce qui QUITTE l'écran (sortie plus courte)
+ * - emphasized : léger dépassement, pour un retour « vivant » (indicateur, pop)
+ */
+
+:root {
+	--duration-instant: 90ms;
+	--duration-fast: 150ms;
+	--duration-base: 220ms;
+	--duration-slow: 320ms;
+
+	--ease-standard: cubic-bezier(0.2, 0, 0, 1);
+	--ease-enter: cubic-bezier(0, 0, 0.2, 1);
+	--ease-exit: cubic-bezier(0.4, 0, 1, 1);
+	--ease-emphasized: cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+
+/*
+ * WCAG 2.3.3 (Animation from Interactions) : on ne supprime pas le retour
+ * visuel (les états changent toujours), on supprime le MOUVEMENT.
+ * Quasi-zéro plutôt que 0 : les événements `transitionend` / `animationend`
+ * continuent de se déclencher (Bits UI attend la fin des animations de sortie).
+ */
+@media (prefers-reduced-motion: reduce) {
+	:root {
+		--duration-instant: 1ms;
+		--duration-fast: 1ms;
+		--duration-base: 1ms;
+		--duration-slow: 1ms;
+	}
+}
+
+/*
+ * Forçage manuel (Storybook, tests visuels, préférence utilisateur dans l'app) :
+ * `<html data-motion="reduced">` a le même effet que le réglage système.
+ */
+:root[data-motion='reduced'] {
+	--duration-instant: 1ms;
+	--duration-fast: 1ms;
+	--duration-base: 1ms;
+	--duration-slow: 1ms;
+}
+
+/* Exposés à Tailwind : `ease-standard`, `ease-enter`… (namespace `--ease-*` natif). */
+@theme inline {
+	/* Toute classe `transition-*` sans durée explicite suit les tokens (et donc reduced-motion). */
+	--default-transition-duration: var(--duration-fast);
+	--default-transition-timing-function: var(--ease-standard);
+
+	--ease-standard: var(--ease-standard);
+	--ease-enter: var(--ease-enter);
+	--ease-exit: var(--ease-exit);
+	--ease-emphasized: var(--ease-emphasized);
+}
+
+/*
+ * Tailwind n'a pas de namespace de thème pour les durées : on déclare des
+ * utilitaires dédiés, `duration-instant` … `duration-slow`.
+ */
+@utility duration-instant {
+	transition-duration: var(--duration-instant);
+}
+@utility duration-fast {
+	transition-duration: var(--duration-fast);
+}
+@utility duration-base {
+	transition-duration: var(--duration-base);
+}
+@utility duration-slow {
+	transition-duration: var(--duration-slow);
+}
+
+/* Entrée / sortie des surfaces flottantes pilotées par `data-state` (Bits UI). */
+@keyframes mk-pop-in {
+	from {
+		opacity: 0;
+		transform: translateY(var(--mk-pop-y, -4px)) scale(0.96);
+	}
+}
+@keyframes mk-pop-out {
+	to {
+		opacity: 0;
+		transform: translateY(var(--mk-pop-y, -4px)) scale(0.96);
+	}
+}
+@keyframes mk-spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+@keyframes mk-day-pop {
+	from {
+		transform: scale(0.8);
+	}
+}
