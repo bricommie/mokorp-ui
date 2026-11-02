@@ -2,16 +2,17 @@
 	import { DropdownMenu as DropdownMenuPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';
 
-	type Props = DropdownMenuPrimitive.ItemProps;
+	type Props = DropdownMenuPrimitive.ItemProps & { inset?: boolean };
 
-	let { class: className, ...rest }: Props = $props();
+	let { class: className, inset = false, ...rest }: Props = $props();
 </script>
 
-<!-- Élément de menu (coins nets) — §3 -->
+<!-- Élément de menu (coins nets) — survol/focus inversé (primary) — §3 -->
 <DropdownMenuPrimitive.Item
 	{...rest}
 	class={cn(
-		'relative flex cursor-pointer select-none items-center gap-2 px-2 py-1.5 font-body text-sm text-foreground outline-none data-[highlighted]:bg-muted data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+		'relative flex cursor-pointer select-none items-center gap-2 px-2 py-1.5 font-body text-sm text-foreground outline-none data-[highlighted]:bg-primary data-[highlighted]:text-primary-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+		inset && 'pl-8',
 		className
 	)}
 />

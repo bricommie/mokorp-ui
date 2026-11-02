@@ -49,19 +49,19 @@ Règles :
 
 ### Couleurs (par thème)
 
-| Groupe | Tokens |
-|---|---|
-| Surfaces | `--background`, `--foreground` |
-| Cartes | `--card`, `--card-foreground` |
-| Popover | `--popover`, `--popover-foreground` |
-| Actions | `--primary`, `--primary-foreground` |
-| Secondaire | `--secondary`, `--secondary-foreground` |
-| Atténué | `--muted`, `--muted-foreground` |
-| Accent | `--accent`, `--accent-foreground` |
-| Erreur | `--destructive`, `--destructive-foreground` |
-| Lignes | `--border` (encre), `--input`, `--ring` (focus) |
-| Graphiques | `--chart-1` … `--chart-5` |
-| Sidebar | `--sidebar`, `--sidebar-foreground`, `--sidebar-primary`, `--sidebar-accent`, `--sidebar-border`, `--sidebar-ring` |
+| Groupe     | Tokens                                                                                                             |
+| ---------- | ------------------------------------------------------------------------------------------------------------------ |
+| Surfaces   | `--background`, `--foreground`                                                                                     |
+| Cartes     | `--card`, `--card-foreground`                                                                                      |
+| Popover    | `--popover`, `--popover-foreground`                                                                                |
+| Actions    | `--primary`, `--primary-foreground`                                                                                |
+| Secondaire | `--secondary`, `--secondary-foreground`                                                                            |
+| Atténué    | `--muted`, `--muted-foreground`                                                                                    |
+| Accent     | `--accent`, `--accent-foreground`                                                                                  |
+| Erreur     | `--destructive`, `--destructive-foreground`                                                                        |
+| Lignes     | `--border` (encre), `--input`, `--ring` (focus)                                                                    |
+| Graphiques | `--chart-1` … `--chart-5`                                                                                          |
+| Sidebar    | `--sidebar`, `--sidebar-foreground`, `--sidebar-primary`, `--sidebar-accent`, `--sidebar-border`, `--sidebar-ring` |
 
 ### Non-couleur (transverses)
 
@@ -75,68 +75,68 @@ Règles :
 
 ### Light (sélecteur `:root`)
 
-| Token | Valeur |
-|---|---|
-| `background` | `#AEFF4F` |
-| `foreground` | `#240033` |
-| `card` | `#CCFF9A` |
-| `card-foreground` | `#240033` |
-| `popover` | `#CCFF9A` |
-| `popover-foreground` | `#240033` |
-| `primary` | `#690087` |
-| `primary-foreground` | `#F8F8F8` |
-| `secondary` | `#F07A00` |
-| `secondary-foreground` | `#330F00` |
-| `muted` | `#A2D372` |
-| `muted-foreground` | `#4F0B68` |
-| `accent` | `#690087` ( = primary) |
-| `accent-foreground` | `#F8F8F8` |
-| `destructive` | `#DD001D` |
-| `destructive-foreground` | `#F8F8F8` |
-| `border` | `#240033` (encre) |
-| `input` | `#240033` (encre) |
-| `ring` | `#690087` (primary) |
-| `chart-1…5` | `#7E00A7 · #9EF927 · #F38300 · #38004C · #FF0013` |
-| `sidebar` | `#150A29` (toujours sombre) |
-| `sidebar-foreground` | `#EEEBF7` |
-| `sidebar-primary` | `#9EF927` |
-| `sidebar-border` | `#2C1E43` |
+| Token                    | Valeur                                            |
+| ------------------------ | ------------------------------------------------- |
+| `background`             | `#AEFF4F`                                         |
+| `foreground`             | `#240033`                                         |
+| `card`                   | `#CCFF9A`                                         |
+| `card-foreground`        | `#240033`                                         |
+| `popover`                | `#CCFF9A`                                         |
+| `popover-foreground`     | `#240033`                                         |
+| `primary`                | `#690087`                                         |
+| `primary-foreground`     | `#F8F8F8`                                         |
+| `secondary`              | `#F07A00`                                         |
+| `secondary-foreground`   | `#330F00`                                         |
+| `muted`                  | `#A2D372`                                         |
+| `muted-foreground`       | `#4F0B68`                                         |
+| `accent`                 | `#690087` ( = primary)                            |
+| `accent-foreground`      | `#F8F8F8`                                         |
+| `destructive`            | `#DD001D`                                         |
+| `destructive-foreground` | `#F8F8F8`                                         |
+| `border`                 | `#240033` (encre)                                 |
+| `input`                  | `#240033` (encre)                                 |
+| `ring`                   | `#690087` (primary)                               |
+| `chart-1…5`              | `#7E00A7 · #9EF927 · #F38300 · #38004C · #FF0013` |
+| `sidebar`                | `#150A29` (toujours sombre)                       |
+| `sidebar-foreground`     | `#EEEBF7`                                         |
+| `sidebar-primary`        | `#9EF927`                                         |
+| `sidebar-border`         | `#2C1E43`                                         |
 
 ### Dark (sélecteur `.dark`)
 
-| Token | Valeur |
-|---|---|
-| `background` | `#300041` |
-| `foreground` | `#ADFF42` |
-| `card` | `#230033` |
-| `card-foreground` | `#F1EEFF` |
-| `popover` | `#230033` |
-| `popover-foreground` | `#F1EEFF` |
-| `primary` | `#A3FF1F` |
-| `primary-foreground` | `#210033` |
-| `secondary` | `#FB7E00` |
-| `secondary-foreground` | `#330F00` |
-| `muted` | `#430458` |
-| `muted-foreground` | `#91D347` |
-| `accent` | `#A3FF1F` ( = primary) |
-| `accent-foreground` | `#210033` |
-| `destructive` | `#FF1329` |
-| `destructive-foreground` | `#F8F8F8` |
-| `border` | `#F1EEFF` (encre, dosée à l'opacité) |
-| `input` | `#F1EEFF` |
-| `ring` | `#A3FF1F` (primary) |
-| `chart-1…5` | `#C72CFF · #A3FF1F · #FF8700 · #752F8F · #FF2835` |
-| `sidebar` | `#11082B` |
-| `sidebar-foreground` | `#F1F0F9` |
-| `sidebar-primary` | `#A3FF1F` |
-| `sidebar-border` | `#1C122E` |
+| Token                    | Valeur                                            |
+| ------------------------ | ------------------------------------------------- |
+| `background`             | `#300041`                                         |
+| `foreground`             | `#ADFF42`                                         |
+| `card`                   | `#230033`                                         |
+| `card-foreground`        | `#F1EEFF`                                         |
+| `popover`                | `#230033`                                         |
+| `popover-foreground`     | `#F1EEFF`                                         |
+| `primary`                | `#A3FF1F`                                         |
+| `primary-foreground`     | `#210033`                                         |
+| `secondary`              | `#FB7E00`                                         |
+| `secondary-foreground`   | `#330F00`                                         |
+| `muted`                  | `#430458`                                         |
+| `muted-foreground`       | `#91D347`                                         |
+| `accent`                 | `#A3FF1F` ( = primary)                            |
+| `accent-foreground`      | `#210033`                                         |
+| `destructive`            | `#FF1329`                                         |
+| `destructive-foreground` | `#F8F8F8`                                         |
+| `border`                 | `#F1EEFF` (encre, dosée à l'opacité)              |
+| `input`                  | `#F1EEFF`                                         |
+| `ring`                   | `#A3FF1F` (primary)                               |
+| `chart-1…5`              | `#C72CFF · #A3FF1F · #FF8700 · #752F8F · #FF2835` |
+| `sidebar`                | `#11082B`                                         |
+| `sidebar-foreground`     | `#F1F0F9`                                         |
+| `sidebar-primary`        | `#A3FF1F`                                         |
+| `sidebar-border`         | `#1C122E`                                         |
 
 ### Ombres
 
-- **Light** — offset dur, *élévation = décalage*, zéro flou, couleur = encre `#240033` :
+- **Light** — offset dur, _élévation = décalage_, zéro flou, couleur = encre `#240033` :
   - `2xs: 1px 1px 0` · `xs: 2px 2px 0` · `sm: 3px 3px 0` · `md: 4px 4px 0` ·
     `lg: 6px 6px 0` · `xl: 8px 8px 0` · `2xl: 12px 12px 0`.
-- **Dark** — glow lime, *élévation = étendue*, réservé aux éléments **élevés**
+- **Dark** — glow lime, _élévation = étendue_, réservé aux éléments **élevés**
   (cartes, modales, popovers, boutons), opacité ≤ 1, couleur = primary `#A3FF1F` :
   - `2xs/xs: aucun` · `sm: 0 0 12px -3px` · `md: 0 0 16px -4px` ·
     `lg: 0 0 24px -4px` · `xl: 0 0 32px -6px` · `2xl: 0 0 48px -8px`.
@@ -146,11 +146,11 @@ Règles :
 ## 5. Géométrie
 
 - **Radius** : `0` structurel (cartes, boutons, inputs, champs) · `9999px` organique
-  (avatars, badges-compteurs, toggles, chips/pills). Règle : *un composant est soit
-  structurel, soit organique.*
+  (avatars, badges-compteurs, toggles, chips/pills). Règle : _un composant est soit
+  structurel, soit organique._
 - **Bordures** : `--border` = encre, **2px**, nette, pour la structure. `--ring` =
-  primary, réservé à l'interaction (survol / focus / sélection). Règle : *structure =
-  encre, interaction = primary.*
+  primary, réservé à l'interaction (survol / focus / sélection). Règle : _structure =
+  encre, interaction = primary._
 
 ---
 
@@ -158,21 +158,21 @@ Règles :
 
 4 slots sémantiques (re-assignables par projet sans toucher aux composants) :
 
-| Slot | Police | Rôle |
-|---|---|---|
-| `display` | **Chakra Petch** | titres, héros, gros chiffres, logo |
-| `body` | **IBM Plex Mono** | corps de texte, labels, boutons, valeurs |
-| `mono` | **IBM Plex Mono** | code, données, timestamps, tags |
-| `serif` | **Georgia** | accent éditorial (légendes, citations, états vides) |
+| Slot      | Police            | Rôle                                                |
+| --------- | ----------------- | --------------------------------------------------- |
+| `display` | **Chakra Petch**  | titres, héros, gros chiffres, logo                  |
+| `body`    | **IBM Plex Mono** | corps de texte, labels, boutons, valeurs            |
+| `mono`    | **IBM Plex Mono** | code, données, timestamps, tags                     |
+| `serif`   | **Georgia**       | accent éditorial (légendes, citations, états vides) |
 
 Échelle :
 
-| Niveau | Taille | Leading |
-|---|---|---|
-| hero | `4rem` | `0.95` |
-| h1 / h2 / h3 | `3rem` / `2rem` / `1.5rem` | `0.95` |
-| body | `16px` (sm `14px`) | `1.5` |
-| label | `12px` | `1.3` |
+| Niveau       | Taille                     | Leading |
+| ------------ | -------------------------- | ------- |
+| hero         | `4rem`                     | `0.95`  |
+| h1 / h2 / h3 | `3rem` / `2rem` / `1.5rem` | `0.95`  |
+| body         | `16px` (sm `14px`)         | `1.5`   |
+| label        | `12px`                     | `1.3`   |
 
 **Motif signature — `Label`** : `font-mono · text-xs · uppercase · tracking-[0.08em]`.
 Pas de tracking global sur le corps (le mono a déjà son rythme).
@@ -188,6 +188,19 @@ Pas de tracking global sur le corps (le mono a déjà son rythme).
 - **Stack** : SvelteKit 5 (runes) + Tailwind v4 + Storybook.
 - **Composants d'amorçage** (ordre de construction) : `Label`, `Button`, `Card`,
   `Badge`, `Input`.
+
+---
+
+## 7 bis. États interactifs (ajout)
+
+- **Survol / focus d'un item** (menu, select, combobox, command) : inversion
+  `bg-primary` + `text-primary-foreground` — comme une sélection de terminal.
+- **État sélectionné** : jamais une couleur de fond seule ; toujours un indicateur
+  (coche, point, remplissage plein vs contour pour le `RatingGroup`).
+- **Bouton plein** : survol = décalage de −2px et ombre `lg` ; pression = décalage de
+  +4px et ombre supprimée (le bouton « tombe » sur son ombre).
+- **Thème imbriquable** : `.light` et `.dark` peuvent être posés sur n'importe quel
+  conteneur pour forcer une face dans une page de l'autre thème.
 
 ---
 

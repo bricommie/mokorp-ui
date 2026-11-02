@@ -8,4 +8,4 @@
 </script>
 
 <!-- Séparateur de menu — §3 -->
-<DropdownMenuPrimitive.Separator {...rest} class={cn('h-px bg-border my-1', className)} />
+<DropdownMenuPrimitive.Separator {...rest} class={cn('-mx-1 my-1 h-0.5 bg-border', className)} />

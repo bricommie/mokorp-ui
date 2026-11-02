@@ -23,33 +23,16 @@
 			{#each segments as { part, value }}
 				<DatePicker.Segment {part}>{value}</DatePicker.Segment>
 			{/each}
-			<DatePicker.Trigger>
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					viewBox="0 0 24 24"
-					fill="none"
-					stroke="currentColor"
-					stroke-width="2"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					class="size-4"
-					aria-hidden="true"
-				>
-					<path d="M8 2v4" />
-					<path d="M16 2v4" />
-					<rect width="18" height="18" x="3" y="4" rx="2" />
-					<path d="M3 10h18" />
-				</svg>
-			</DatePicker.Trigger>
+			<DatePicker.Trigger></DatePicker.Trigger>
 		{/snippet}
 	</DatePicker.Input>
 	<DatePicker.Content>
 		<DatePicker.Calendar>
 			{#snippet children({ months, weekdays }: { months: Month<DateValue>[]; weekdays: string[] })}
 				<DatePicker.Header>
-					<DatePicker.PrevButton>←</DatePicker.PrevButton>
+					<DatePicker.PrevButton />
 					<DatePicker.Heading />
-					<DatePicker.NextButton>→</DatePicker.NextButton>
+					<DatePicker.NextButton />
 				</DatePicker.Header>
 				{#each months as month}
 					<DatePicker.Grid>
@@ -64,7 +47,7 @@
 							{#each month.weeks as weekDates}
 								<DatePicker.GridRow>
 									{#each weekDates as date}
-										<DatePicker.Cell date={date} month={month.value}>
+										<DatePicker.Cell {date} month={month.value}>
 											<DatePicker.Day />
 										</DatePicker.Cell>
 									{/each}

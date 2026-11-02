@@ -12,6 +12,9 @@
 </script>
 
 <!-- Motif signature — §6 : font-mono · text-xs · uppercase · tracking-[0.08em] -->
-<LabelPrimitive.Root {...rest} class={cn('font-mono text-xs uppercase tracking-[0.08em]', className)}>
+<LabelPrimitive.Root
+	{...rest}
+	class={cn('font-mono text-xs uppercase tracking-[0.08em]', className)}
+>
 	{@render children?.()}
 </LabelPrimitive.Root>

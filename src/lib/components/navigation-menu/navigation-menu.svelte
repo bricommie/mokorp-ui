@@ -4,11 +4,12 @@
 
 	type Props = NavigationMenuPrimitive.RootProps;
 
-	let { class: className, ...rest }: Props = $props();
+	let { class: className, value = $bindable(''), ...rest }: Props = $props();
 </script>
 
 <!-- Racine du menu de navigation (coins nets) — §4 -->
 <NavigationMenuPrimitive.Root
+	bind:value={value as never}
 	{...rest}
 	class={cn('relative z-10 flex max-w-max flex-1 items-center justify-center font-body', className)}
 />

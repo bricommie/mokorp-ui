@@ -3,8 +3,8 @@
 
 	type Props = AccordionPrimitive.RootProps;
 
-	let { ...rest }: Props = $props();
+	let { value = $bindable(), ...rest }: Props = $props();
 </script>
 
-<!-- Racine sémantique : pas de style (passthrough) — §7 -->
-<AccordionPrimitive.Root {...rest} />
+<!-- Passthrough + props bindables (bind:value fonctionne) — §7 -->
+<AccordionPrimitive.Root bind:value={value as never} {...rest} />

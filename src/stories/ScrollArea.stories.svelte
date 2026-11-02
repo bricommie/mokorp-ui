@@ -16,8 +16,8 @@
 	<ScrollArea.Root type="scroll" class="h-48 w-64 border-2 border-border">
 		<ScrollArea.Viewport class="p-4">
 			<p class="font-body text-sm">
-				Contenu long à faire défiler dans une zone à coins nets. Le scrollbar
-				structurel (encre 2px) apparaît à droite et en bas.
+				Contenu long à faire défiler dans une zone à coins nets. Le scrollbar structurel (encre 2px)
+				apparaît à droite et en bas.
 			</p>
 			{#each Array.from({ length: 20 }) as _, i}
 				<p class="mt-2 font-mono text-xs text-muted-foreground">Ligne {i + 1}</p>

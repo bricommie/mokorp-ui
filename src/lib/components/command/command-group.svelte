@@ -8,7 +8,4 @@
 </script>
 
 <!-- Groupe de commandes — §4 -->
-<CommandPrimitive.Group
-	{...rest}
-	class={cn('overflow-hidden p-1 text-foreground', className)}
-/>
+<CommandPrimitive.Group {...rest} class={cn('overflow-hidden p-1 text-foreground', className)} />

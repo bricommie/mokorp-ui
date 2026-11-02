@@ -13,11 +13,29 @@ export { default as Meter } from './components/Meter.svelte';
 export { default as Progress } from './components/Progress.svelte';
 export { default as Separator } from './components/Separator.svelte';
 export { default as Toggle } from './components/Toggle.svelte';
+export { default as Textarea } from './components/Textarea.svelte';
+export { default as Alert } from './components/Alert.svelte';
+export { default as Kbd } from './components/Kbd.svelte';
+export { default as Skeleton } from './components/Skeleton.svelte';
+export { default as DateCalendar } from './components/DateCalendar.svelte';
+export { default as DateRangeCalendar } from './components/DateRangeCalendar.svelte';
+export { default as DatePickerField } from './components/DatePickerField.svelte';
+export { default as DateRangePickerField } from './components/DateRangePickerField.svelte';
+export { default as ThemeToggle } from './components/ThemeToggle.svelte';
+export { default as CardHeader } from './components/CardHeader.svelte';
+export { default as CardTitle } from './components/CardTitle.svelte';
+export { default as CardDescription } from './components/CardDescription.svelte';
+export { default as CardContent } from './components/CardContent.svelte';
+export { default as CardFooter } from './components/CardFooter.svelte';
 
 // Variants (CVA) + types — §7.
 export { buttonVariants, type ButtonVariant, type ButtonSize } from './components/button.js';
 export { badgeVariants, type BadgeVariant } from './components/badge.js';
 export { toggleVariants, type ToggleVariant, type ToggleSize } from './components/toggle.js';
+export { alertVariants, type AlertVariant } from './components/alert.js';
+
+// État du thème (light / dark) — §9.6.
+export { theme, type Theme } from './theme.svelte.js';
 
 // Composants multi-parties (namespaces `X.Root`, `X.Item`, `X.Trigger`…).
 export * as Accordion from './components/accordion/index.js';
@@ -53,4 +71,8 @@ export * as TimeField from './components/time-field/index.js';
 export * as TimeRangeField from './components/time-range-field/index.js';
 export * as ToggleGroup from './components/toggle-group/index.js';
 export * as Toolbar from './components/toolbar/index.js';
+export * as Table from './components/table/index.js';
 export * as Tooltip from './components/tooltip/index.js';
+
+// Icônes internes (traits carrés, `currentColor`).
+export * as Icons from './components/icons/index.js';

@@ -7,11 +7,11 @@
 	let { class: className, ...rest }: Props = $props();
 </script>
 
-<!-- Jour : cellule interactive d'une plage — structurel + ring primary — §5 -->
+<!-- Jour de plage : début/fin = primary plein, milieu = muted (spécificité doublée) — §5 -->
 <RangeCalendarPrimitive.Day
 	{...rest}
 	class={cn(
-		'inline-flex size-9 items-center justify-center text-center font-body text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background data-[selected]:bg-primary data-[selected]:text-primary-foreground data-[today]:border-2 data-[today]:border-border data-[disabled]:opacity-50 data-[unavailable]:opacity-50 data-[highlighted]:bg-muted data-[range-start]:bg-primary data-[range-start]:text-primary-foreground data-[range-end]:bg-primary data-[range-end]:text-primary-foreground data-[range-middle]:bg-muted hover:bg-muted',
+		'inline-flex size-9 items-center justify-center text-center font-body text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background data-[today]:border-2 data-[today]:border-border data-[outside-month]:text-muted-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-40 data-[unavailable]:pointer-events-none data-[unavailable]:line-through data-[unavailable]:opacity-40 not-data-[selected]:hover:bg-muted not-data-[selected]:data-[highlighted]:bg-muted data-[selected]:data-[range-middle]:bg-muted data-[selected]:data-[range-middle]:text-foreground data-[selected]:data-[range-start]:bg-primary data-[selected]:data-[range-start]:text-primary-foreground data-[selected]:data-[range-end]:bg-primary data-[selected]:data-[range-end]:text-primary-foreground',
 		className
 	)}
 />

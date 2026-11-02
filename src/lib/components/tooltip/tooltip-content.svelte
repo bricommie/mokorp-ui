@@ -4,14 +4,15 @@
 
 	type Props = TooltipPrimitive.ContentProps;
 
-	let { class: className, ...rest }: Props = $props();
+	let { class: className, sideOffset = 8, ...rest }: Props = $props();
 </script>
 
 <!-- Surface flottante (structurel, coins nets) — §3 -->
 <TooltipPrimitive.Content
 	{...rest}
+	{sideOffset}
 	class={cn(
-		'border-2 border-border bg-popover px-2 py-1 font-body text-xs text-popover-foreground shadow-lg',
+		'z-50 border-2 border-border bg-popover px-2 py-1 font-body text-xs text-popover-foreground shadow-lg',
 		className
 	)}
 />

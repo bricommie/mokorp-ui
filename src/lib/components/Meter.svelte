@@ -14,7 +14,7 @@
 	{value}
 	{max}
 	{...rest}
-	class={cn('relative h-2 w-full overflow-hidden border-2 border-border bg-muted', className)}
+	class={cn('relative h-3 w-full overflow-hidden border-2 border-border bg-muted', className)}
 >
 	{@render children?.()}
 	<div class="h-full bg-primary transition-all" style:width={`${percent}%`}></div>

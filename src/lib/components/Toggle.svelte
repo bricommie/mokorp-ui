@@ -12,10 +12,15 @@
 		variant = 'default',
 		size = 'default',
 		class: className,
+		pressed = $bindable(false),
 		...rest
 	}: Props = $props();
 </script>
 
 <!-- Organique (pill) — variantes via `toggleVariants` (§7). Les enfants (snippet `{ pressed }`) sont
 	transmis par `rest` pour conserver le paramètre du snippet primitif. -->
-<TogglePrimitive.Root {...rest} class={cn(toggleVariants({ variant, size }), className)} />
+<TogglePrimitive.Root
+	bind:pressed
+	{...rest}
+	class={cn(toggleVariants({ variant, size }), className)}
+/>

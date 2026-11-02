@@ -11,7 +11,7 @@
 <SliderPrimitive.Thumb
 	{...rest}
 	class={cn(
-		'block size-5 shrink-0 rounded-full border-2 border-border bg-background shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+		'block size-5 shrink-0 rounded-full border-2 border-border bg-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
 		className
 	)}
 />

@@ -10,13 +10,54 @@ primitives headless `bits-ui@2.20.2`, selon le design system « Acid Terminal »
    Uniquement les utilitaires Tailwind sémantiques (`bg-card`, `text-foreground`,
    `border-border`, `ring-ring`, `shadow-md`…). Un test Vitest
    (`src/lib/components/colors.test.ts`) échoue sinon.
-2. **Ne pas modifier** `src/lib/index.ts`, `package.json`, ni les composants déjà
+2. **Ne pas modifier (phase d’amorçage ; l’audit a depuis corrigé ces fichiers)** `src/lib/index.ts`, `package.json`, ni les composants déjà
    existants à la racine (`Button.svelte`, `Label.svelte`, `Card.svelte`,
    `Badge.svelte`, `Input.svelte`, `button.ts`, `badge.ts`).
 3. **Stack** : Svelte 5 (runes `$props()`), TypeScript strict. Pas de `<script>` en
    JS, toujours `<script lang="ts">`.
 4. Pas de dépendances nouvelles. Imports : `bits-ui`, `../../cn.js` (ou `../cn.js`
    pour un fichier à la racine de `components/`), `#lib/...` dans les stories.
+
+## 0 bis. Leçons de l'audit (à respecter pour tout nouveau wrapper)
+
+1. **Les props bindables doivent être déclarées.** `let { ...rest } = $props()` suivi de
+   `{...rest}` casse `bind:value` / `bind:open` / `bind:checked` : la valeur ne remonte
+   jamais au parent. Pour chaque `Root`, déclarer les props bindables **avec le même
+   défaut que bits-ui** puis les lier :
+
+   ```svelte
+   let { value = $bindable(''), ...rest }: Props = $props();
+   <TabsPrimitive.Root bind:value={value as never} {...rest} />
+   ```
+
+   Un défaut différent de celui de bits-ui (ex. `undefined` au lieu de `''`) plante au
+   montage : « Cannot do `bind:value={undefined}` when `value` has a fallback value ».
+   Les défauts se lisent dans `node_modules/bits-ui/dist/bits/<kebab>/components/*.svelte`.
+
+2. **Un item doit afficher son contenu.** `Select.Item` / `Combobox.Item` reçoivent
+   `label` : le wrapper l'affiche par défaut et ajoute la coche si l'item est sélectionné.
+3. **Les indicateurs sont intégrés** (chevron des triggers, coche/point des items de menu,
+   chevron des sous-menus et des boutons de navigation). Ne pas les redemander au
+   consommateur. Les icônes vivent dans `components/icons/` (traits carrés, `currentColor`).
+4. **Survol / focus d'un item = inversion primary** (`data-[highlighted]:bg-primary
+data-[highlighted]:text-primary-foreground`), pas `bg-muted` (trop proche du fond).
+5. **États qui se contredisent** : ne jamais empiler `hover:bg-muted` et
+   `data-[selected]:bg-primary` sur le même élément sans `not-data-[selected]:`.
+6. **Surfaces flottantes** : `z-50`, `sideOffset` par défaut de 8 (l'ombre dure a besoin de
+   respirer), largeur du Select/Combobox calée sur le trigger via
+   `w-(--bits-select-anchor-width)`.
+7. **Grilles et flex** : un enfant de grille ou de flex qui contient du contenu large doit
+   porter `min-w-0` (ou la grille `grid-cols-1`), sinon la page déborde en mobile.
+8. **Mouvement** : toute animation non déclenchée par l'utilisateur est neutralisée par
+   `motion-reduce:`. Les keyframes (`mk-*`) sont dans `theme/tokens/components.css`.
+9. **Triggers** : `Dialog`, `AlertDialog`, `Popover`, `DropdownMenu` et `ContextMenu` ont un
+   `Trigger` sans style. Pour un bouton, utiliser le snippet `child` :
+
+   ```svelte
+   <Dialog.Trigger>
+   	{#snippet child({ props })}<Button variant="outline" {...props}>Ouvrir</Button>{/snippet}
+   </Dialog.Trigger>
+   ```
 
 ## 1. Structure des fichiers
 
@@ -65,10 +106,7 @@ classe stylée :
 
 <AccordionPrimitive.Trigger
 	{...rest}
-	class={cn(
-		'flex flex-1 items-center justify-between gap-2 py-4 font-body text-sm ...',
-		className
-	)}
+	class={cn('flex flex-1 items-center justify-between gap-2 py-4 font-body text-sm ...', className)}
 />
 ```
 
@@ -107,27 +145,33 @@ ou en redéclarant — optionnel.)
 ## 3. Recettes de style (chaînes exactes à réutiliser)
 
 ### Focus (toute partie focusable)
+
 ```
 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background
 ```
 
 ### Surface flottante (contenu de popover/menu/dialog/tooltip/select/combobox/date)
+
 ```
 border-2 border-border bg-popover text-popover-foreground shadow-lg
 ```
 
 ### Élément de menu / option (item de select/combobox/menu)
+
 Base : `relative flex cursor-pointer select-none items-center gap-2 px-2 py-1.5 font-body text-sm text-foreground outline-none`
 (coins **nets**, donc AUCUN `rounded-*`).
 
 États via attributs data de bits-ui :
+
 - survolé/focus : `data-[highlighted]:bg-muted`
 - coché/sélectionné : `data-[state=checked]:bg-muted` (menu) ou
   `data-[selected]:bg-muted` (combobox)
 - désactivé : `data-[disabled]:pointer-events-none data-[disabled]:opacity-50`
 
 ### Indicateur de contrôle (coche checkbox, point radio, pouce switch/slider)
+
 Organique = `rounded-full`. Bordure encre 2px, fond selon état :
+
 - non coché : `border-2 border-border bg-background`
 - coché : `border-2 border-border bg-primary text-primary-foreground`
 
@@ -141,7 +185,7 @@ Organique = `rounded-full`. Bordure encre 2px, fond selon état :
   navigation-menu, link-preview, alert-dialog, collapsible, aspect-ratio, meter,
   rating-group, date-field/picker, time-field.
 
-Règle : *un composant est soit structurel, soit organique.* Ne pas mélanger.
+Règle : _un composant est soit structurel, soit organique._ Ne pas mélanger.
 
 ## 5. Typographie
 
@@ -166,13 +210,13 @@ Règle : *un composant est soit structurel, soit organique.* Ne pas mélanger.
 </script>
 ```
 
-- Mono-partie : `<Story name="Default" args={{...}}>Contenu</Story>` (comme les
+- Mono-partie : `<Story name="Default" args={...}>Contenu</Story>` (comme les
   stories existantes Button/Input).
 - Multi-parties : `component: Comp.Root`, puis le contenu (les `<Comp.Item>`…) est
   passé en enfants du `<Story>` :
 
 ```svelte
-<Story name="Default" args={{ type: 'single' }}>
+<Story name="Default" args={ type: 'single' }>
 	<Comp.Item value="a">
 		<Comp.Trigger>…</Comp.Trigger>
 		<Comp.Content>…</Comp.Content>

@@ -8,7 +8,7 @@
 		argTypes: {
 			variant: {
 				control: 'select',
-				options: ['primary', 'secondary', 'outline', 'ghost', 'destructive']
+				options: ['primary', 'secondary', 'outline', 'ghost', 'link', 'destructive']
 			},
 			size: {
 				control: 'select',
@@ -26,6 +26,7 @@
 <Story name="Secondary" args={{ variant: 'secondary' }}>Secondary</Story>
 <Story name="Outline" args={{ variant: 'outline' }}>Outline</Story>
 <Story name="Ghost" args={{ variant: 'ghost' }}>Ghost</Story>
+<Story name="Link" args={{ variant: 'link' }}>Link</Story>
 <Story name="Destructive" args={{ variant: 'destructive' }}>Destructive</Story>
 <Story name="Small" args={{ size: 'sm' }}>Small</Story>
 <Story name="Large" args={{ size: 'lg' }}>Large</Story>

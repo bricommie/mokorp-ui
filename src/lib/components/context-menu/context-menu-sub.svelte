@@ -3,8 +3,8 @@
 
 	type Props = ContextMenuPrimitive.SubProps;
 
-	let { ...rest }: Props = $props();
+	let { open = $bindable(false), ...rest }: Props = $props();
 </script>
 
-<!-- Sous-menu : pas de style (passthrough) — §7 -->
-<ContextMenuPrimitive.Sub {...rest} />
+<!-- Passthrough + props bindables (bind:open fonctionne) — §7 -->
+<ContextMenuPrimitive.Sub bind:open {...rest} />

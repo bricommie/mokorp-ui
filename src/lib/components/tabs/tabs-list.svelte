@@ -7,8 +7,11 @@
 	let { class: className, ...rest }: Props = $props();
 </script>
 
-<!-- Liste d'onglets : séparateur encre 2px — §5 -->
+<!-- Liste d'onglets : filet encre 2px (ombre interne, pour pouvoir défiler sans rogner le soulignement) — §5 -->
 <TabsPrimitive.List
 	{...rest}
-	class={cn('inline-flex items-center border-b-2 border-border', className)}
+	class={cn(
+		'flex items-stretch overflow-x-auto overflow-y-hidden shadow-[inset_0_-2px_0_0_var(--border)]',
+		className
+	)}
 />

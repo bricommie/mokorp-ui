@@ -3,8 +3,8 @@
 
 	type Props = DropdownMenuPrimitive.SubProps;
 
-	let { ...rest }: Props = $props();
+	let { open = $bindable(false), ...rest }: Props = $props();
 </script>
 
-<!-- Sous-menu : pas de style (passthrough) — §7 -->
-<DropdownMenuPrimitive.Sub {...rest} />
+<!-- Passthrough + props bindables (bind:open fonctionne) — §7 -->
+<DropdownMenuPrimitive.Sub bind:open {...rest} />

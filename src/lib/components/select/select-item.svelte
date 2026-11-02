@@ -1,17 +1,28 @@
 <script lang="ts">
 	import { Select as SelectPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';
+	import Check from '../icons/check.svelte';
 
 	type Props = SelectPrimitive.ItemProps;
 
-	let { class: className, ...rest }: Props = $props();
+	let { class: className, label, children: childrenProp, ...rest }: Props = $props();
 </script>
 
-<!-- Élément du select (coins nets) — §3 -->
+<!-- Option (coins nets) : survol inversé, coche si sélectionnée, `label` affiché par défaut — §3 -->
 <SelectPrimitive.Item
 	{...rest}
+	{label}
 	class={cn(
-		'relative flex cursor-pointer select-none items-center gap-2 px-2 py-1.5 font-body text-sm text-foreground outline-none data-[highlighted]:bg-muted data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+		'relative flex cursor-pointer select-none items-center gap-2 px-2 py-1.5 font-body text-sm text-foreground outline-none data-[highlighted]:bg-primary data-[highlighted]:text-primary-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
 		className
 	)}
-/>
+>
+	{#snippet children({ selected, highlighted })}
+		{#if childrenProp}
+			{@render childrenProp({ selected, highlighted })}
+		{:else}
+			<span class="truncate">{label ?? rest.value}</span>
+		{/if}
+		{#if selected}<Check class="ml-auto size-4" />{/if}
+	{/snippet}
+</SelectPrimitive.Item>

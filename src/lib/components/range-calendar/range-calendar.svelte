@@ -3,8 +3,12 @@
 
 	type Props = RangeCalendarPrimitive.RootProps;
 
-	let { ...rest }: Props = $props();
+	let { value = $bindable(), placeholder = $bindable(), ...rest }: Props = $props();
 </script>
 
-<!-- Racine sémantique : pas de style (passthrough) — structurel (coins nets) -->
-<RangeCalendarPrimitive.Root {...rest} />
+<!-- Passthrough + props bindables (bind:value fonctionne) — §7 -->
+<RangeCalendarPrimitive.Root
+	bind:value={value as never}
+	bind:placeholder={placeholder as never}
+	{...rest}
+/>

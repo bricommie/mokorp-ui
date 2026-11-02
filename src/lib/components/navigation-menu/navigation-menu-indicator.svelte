@@ -7,8 +7,10 @@
 	let { class: className, ...rest }: Props = $props();
 </script>
 
-<!-- Indicateur (flèche) du menu de navigation — §3 -->
+<!-- Indicateur : soulignement primary sous l'entrée active — §3 -->
 <NavigationMenuPrimitive.Indicator
 	{...rest}
-	class={cn('top-full z-[1] flex h-1.5 items-end justify-center overflow-hidden', className)}
-/>
+	class={cn('top-full z-[1] flex h-1 items-end justify-center overflow-hidden', className)}
+>
+	<div class="h-1 w-full bg-primary"></div>
+</NavigationMenuPrimitive.Indicator>

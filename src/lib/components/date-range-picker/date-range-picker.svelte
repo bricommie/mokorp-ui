@@ -3,8 +3,18 @@
 
 	type Props = DateRangePickerPrimitive.RootProps;
 
-	let { ...rest }: Props = $props();
+	let {
+		value = $bindable(),
+		open = $bindable(false),
+		placeholder = $bindable(),
+		...rest
+	}: Props = $props();
 </script>
 
-<!-- Racine sémantique : pas de style (passthrough) — structurel -->
-<DateRangePickerPrimitive.Root {...rest} />
+<!-- Passthrough + props bindables (bind:value fonctionne) — §7 -->
+<DateRangePickerPrimitive.Root
+	bind:value={value as never}
+	bind:open
+	bind:placeholder={placeholder as never}
+	{...rest}
+/>

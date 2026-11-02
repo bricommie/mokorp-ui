@@ -1,10 +1,11 @@
 /*
  * Thème « Acid Light » — §4.
- * Sélecteur par défaut `:root`. Sec, imprimé : offset dur, coins nets, encre
+ * Sélecteur par défaut `:root` (+ `.light`, pour imbriquer une zone claire dans une page sombre). Sec, imprimé : offset dur, coins nets, encre
  * violet-noir `#240033`.
  */
 
-:root {
+:root,
+.light {
 	color-scheme: light;
 
 	/* Surfaces */

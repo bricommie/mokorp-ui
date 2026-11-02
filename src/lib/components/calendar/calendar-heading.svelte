@@ -8,4 +8,7 @@
 </script>
 
 <!-- Titre mois/année : typo display — §6 -->
-<CalendarPrimitive.Heading {...rest} class={cn('font-display text-sm', className)} />
+<CalendarPrimitive.Heading
+	{...rest}
+	class={cn('font-display text-sm font-semibold capitalize', className)}
+/>
