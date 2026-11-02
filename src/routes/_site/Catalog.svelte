@@ -18,7 +18,10 @@
 	};
 </script>
 
-<section id="composants" class="scroll-mt-20 border-t-2 border-border bg-muted/40">
+<section
+	id="composants"
+	class="scroll-mt-20 border-t-(length:--border-width) border-border bg-muted/40"
+>
 	<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-24">
 		<div class="max-w-2xl">
 			<h2
@@ -36,7 +39,7 @@
 			{#each groups as g, i (g.id)}
 				<div id={g.id} class="scroll-mt-24">
 					<div
-						class="mb-6 flex flex-wrap items-end justify-between gap-x-8 gap-y-2 border-b-2 border-border pb-3"
+						class="mb-6 flex flex-wrap items-end justify-between gap-x-8 gap-y-2 border-b-(length:--border-width) border-border pb-3"
 					>
 						<h3 class="font-display text-3xl font-bold tracking-[-0.01em]">{g.label}</h3>
 						<p class="max-w-md font-serif text-base italic text-muted-foreground">{intro[g.id]}</p>

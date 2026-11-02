@@ -11,7 +11,7 @@
 	<title>mokorp-ui : composants Svelte 5, une pièce à deux faces</title>
 	<meta
 		name="description"
-		content="Bibliothèque de composants Svelte 5 sur bits-ui, thème Acid Terminal : vert acide et violet, imprimé le jour, néon la nuit."
+		content="Bibliothèque de composants Svelte 5 sur bits-ui, thème Signal : brut, minimaliste, lime réservé à l’action, en clair comme en sombre."
 	/>
 </svelte:head>
 

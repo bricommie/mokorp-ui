@@ -1,12 +1,12 @@
 # mokorp-ui
 
-Bibliothèque de composants Svelte 5 pour le design system **« Acid Terminal »**
-(néo-brutalisme acide). Chaque composant est un wrapper stylé autour des primitives
+Bibliothèque de composants Svelte 5 pour le design system **« Signal »**
+(minimalisme brut, lime réservé à l'action). Chaque composant est un wrapper stylé autour des primitives
 headless [`bits-ui`](https://www.bits-ui.com), selon la spec figée dans
 [`docs/design-system.md`](docs/design-system.md).
 
 - **Stack** : SvelteKit 5 (runes) + Tailwind CSS v4 + Storybook.
-- **Thème** : tokens sémantiques (jamais de valeur brute), thème `acid` en
+- **Thème** : tokens sémantiques (jamais de valeur brute), thème `signal` en
   `:root` / `.dark`, structure prête pour `[data-theme="…"]`.
 
 ## Installation
@@ -31,7 +31,7 @@ import 'mokorp-ui/theme.css';
 	import { Button, Accordion, Select } from 'mokorp-ui';
 </script>
 
-<Button variant="primary">Acid</Button>
+<Button variant="primary">Envoyer</Button>
 
 <Accordion.Root type="single">
 	<Accordion.Item value="a">
@@ -78,5 +78,5 @@ npm run build        # build + package (svelte-package) + publint
 Voir [`docs/component-guide.md`](docs/component-guide.md) (implémentation des
 wrappers) et [`docs/design-system.md`](docs/design-system.md) (tokens et règles
 d'or). Règles non négociables : jamais de couleur brute dans un composant
-(utiliser uniquement les tokens sémantiques), et un composant est soit structurel
-(coins nets) soit organique (`rounded-full`).
+(utiliser uniquement les tokens sémantiques), et un composant choisit un rôle de rayon
+(`rounded-surface`, `rounded-field`, `rounded-item`, `rounded-control`, `rounded-pill`).

@@ -158,7 +158,7 @@
 					<LinkPreview.Content class="w-72">
 						<p class="font-display text-lg font-bold">mokorp-ui</p>
 						<p class="mt-1 text-sm text-muted-foreground">
-							Composants Svelte 5, thème Acid Terminal, tokens sémantiques.
+							Composants Svelte 5, thème Signal, tokens sémantiques.
 						</p>
 						<div class="mt-3 flex gap-2">
 							<Badge variant="outline">Svelte 5</Badge><Badge variant="outline">Tailwind 4</Badge>
@@ -220,7 +220,7 @@
 
 			<ContextMenu.Root>
 				<ContextMenu.Trigger
-					class="flex h-36 w-full items-center justify-center border-2 border-dashed border-border bg-background px-4 text-center font-serif text-sm italic text-muted-foreground"
+					class="flex h-36 w-full items-center justify-center border-(length:--border-width) border-dashed border-border bg-background px-4 text-center font-serif text-sm italic text-muted-foreground"
 				>
 					Clic droit ici
 				</ContextMenu.Trigger>
@@ -245,7 +245,7 @@
 		class="md:col-span-6"
 		caption="Command : palette de recherche avec groupes, état vide et raccourcis."
 	>
-		<LazyMount fallbackClass="h-72 border-2 border-border bg-popover">
+		<LazyMount fallbackClass="h-72 border-(length:--border-width) border-border bg-popover">
 			<Command.Root class="h-72">
 				<Command.Input placeholder="Chercher une action…" />
 				<Command.List>

@@ -18,7 +18,7 @@
 </script>
 
 <div
-	class="relative min-w-0 max-w-full border-2 border-border bg-sidebar text-sidebar-foreground shadow-md"
+	class="relative min-w-0 max-w-full border-(length:--border-width) border-border bg-sidebar text-sidebar-foreground shadow-md"
 >
 	<pre
 		class="p-4 pr-32 font-mono text-sm leading-relaxed {wrap

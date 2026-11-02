@@ -30,7 +30,10 @@ ${'<'}/script>
 </Dialog.Root>`;
 </script>
 
-<section id="installer" class="scroll-mt-20 border-t-2 border-border bg-muted/40">
+<section
+	id="installer"
+	class="scroll-mt-20 border-t-(length:--border-width) border-border bg-muted/40"
+>
 	<div
 		class="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-4 py-16 sm:px-6 lg:grid-cols-12 lg:py-24"
 	>

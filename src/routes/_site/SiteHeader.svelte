@@ -7,7 +7,7 @@
 	}
 </script>
 
-<header class="sticky top-0 z-40 border-b-2 border-border bg-background">
+<header class="sticky top-0 z-40 border-b-(length:--border-width) border-border bg-background">
 	<div class="mx-auto flex h-16 max-w-7xl items-center gap-3 px-4 sm:px-6">
 		<a
 			href="#haut"
@@ -59,7 +59,7 @@
 				<DropdownMenu.Root>
 					<DropdownMenu.Trigger
 						aria-label="Ouvrir la navigation"
-						class="inline-flex h-10 items-center gap-1.5 border-2 border-foreground bg-background px-3 font-body text-sm font-semibold"
+						class="inline-flex h-10 items-center gap-1.5 border-(length:--border-width) border-foreground bg-background px-3 font-body text-sm font-semibold"
 					>
 						Menu <Icons.ChevronDown class="size-3.5" />
 					</DropdownMenu.Trigger>
