@@ -1,9 +1,9 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import type { HTMLLabelAttributes } from 'svelte/elements';
+	import { Label as LabelPrimitive } from 'bits-ui';
 	import { cn } from '../cn.js';
 
-	type Props = Omit<HTMLLabelAttributes, 'class'> & {
+	type Props = LabelPrimitive.RootProps & {
 		class?: string;
 		children?: Snippet;
 	};
@@ -12,6 +12,6 @@
 </script>
 
 <!-- Motif signature — §6 : font-mono · text-xs · uppercase · tracking-[0.08em] -->
-<label {...rest} class={cn('font-mono text-xs uppercase tracking-[0.08em]', className)}>
+<LabelPrimitive.Root {...rest} class={cn('font-mono text-xs uppercase tracking-[0.08em]', className)}>
 	{@render children?.()}
-</label>
+</LabelPrimitive.Root>
