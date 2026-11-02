@@ -37,7 +37,10 @@
 	bind:placeholder
 	{locale}
 	{...rest}
-	class={cn('inline-block border-2 border-border bg-card p-3 text-card-foreground', className)}
+	class={cn(
+		'rounded-surface inline-block border-(length:--border-width) border-border-subtle bg-card p-3 text-card-foreground',
+		className
+	)}
 >
 	{#snippet children({ months, weekdays }: { months: Month<DateValue>[]; weekdays: string[] })}
 		<Calendar.Header class="mb-2">

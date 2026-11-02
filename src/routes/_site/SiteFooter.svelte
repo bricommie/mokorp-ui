@@ -3,7 +3,7 @@
 	import { groups, REPO } from './groups.js';
 </script>
 
-<footer class="border-t-2 border-border bg-sidebar text-sidebar-foreground">
+<footer class="border-t-(length:--border-width) border-border bg-sidebar text-sidebar-foreground">
 	<div class="mx-auto max-w-7xl px-4 py-14 sm:px-6">
 		<div class="grid gap-10 md:grid-cols-12">
 			<div class="md:col-span-6">
@@ -38,7 +38,9 @@
 				</ul>
 			</nav>
 		</div>
-		<p class="mt-12 border-t-2 border-sidebar-border pt-5 font-serif text-sm italic opacity-80">
+		<p
+			class="mt-12 border-t-(length:--border-width) border-sidebar-border pt-5 font-serif text-sm italic opacity-80"
+		>
 			mokorp-ui, version 0.0.1. Svelte 5, bits-ui et Tailwind 4.
 		</p>
 	</div>

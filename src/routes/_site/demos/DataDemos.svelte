@@ -114,7 +114,7 @@
 			<p class="ml-auto text-sm"><Kbd>⌘</Kbd> <Kbd>K</Kbd></p>
 		</div>
 		<div class="flex items-center gap-3">
-			<Skeleton class="size-12 shrink-0 rounded-full" />
+			<Skeleton class="size-12 shrink-0 rounded-pill" />
 			<div class="grid flex-1 gap-2">
 				<Skeleton class="h-4 w-3/4" /><Skeleton class="h-4 w-1/2" />
 			</div>
@@ -141,7 +141,7 @@
 
 	<Plate class="md:col-span-7" caption="ScrollArea, Separator et AspectRatio.">
 		<div class="grid gap-5 sm:grid-cols-2">
-			<ScrollArea.Root class="h-44 border-2 border-border bg-background">
+			<ScrollArea.Root class="h-44 border-(length:--border-width) border-border bg-background">
 				<ScrollArea.Viewport class="p-3">
 					<ul class="grid gap-2 font-mono text-xs">
 						{#each logs as line (line)}<li>{line}</li>{/each}
@@ -151,7 +151,7 @@
 			</ScrollArea.Root>
 			<AspectRatio
 				ratio={4 / 3}
-				class="border-2 border-border bg-[repeating-linear-gradient(135deg,var(--muted)_0_10px,var(--card)_10px_20px)]"
+				class="border-(length:--border-width) border-border bg-[repeating-linear-gradient(135deg,var(--muted)_0_10px,var(--card)_10px_20px)]"
 			>
 				<div class="flex h-full items-center justify-center font-serif text-sm italic">
 					Ratio 4 : 3

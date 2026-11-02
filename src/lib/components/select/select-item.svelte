@@ -8,12 +8,12 @@
 	let { class: className, label, children: childrenProp, ...rest }: Props = $props();
 </script>
 
-<!-- Option (coins nets) : survol inversé, coche si sélectionnée, `label` affiché par défaut — §3 -->
+<!-- Option : survol inversé, coche si sélectionnée, `label` affiché par défaut — §3 -->
 <SelectPrimitive.Item
 	{...rest}
 	{label}
 	class={cn(
-		'relative flex cursor-pointer select-none items-center gap-2 px-2 py-1.5 font-body text-sm text-foreground outline-none data-[highlighted]:bg-primary data-[highlighted]:text-primary-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+		'rounded-item relative flex cursor-pointer select-none items-center gap-2 px-2 py-1.5 font-body text-sm text-foreground outline-none data-[highlighted]:bg-primary data-[highlighted]:text-primary-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
 		className
 	)}
 >

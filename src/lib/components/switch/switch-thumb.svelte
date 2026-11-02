@@ -7,11 +7,11 @@
 	let { class: className, ...rest }: Props = $props();
 </script>
 
-<!-- Pouce organique (rounded-full) + encre 2px — §3 / §4 -->
+<!-- Pouce organique (rounded-pill) + bordure `--border-width` — §3 / §4 -->
 <SwitchPrimitive.Thumb
 	{...rest}
 	class={cn(
-		'pointer-events-none block h-5 w-5 rounded-full border-2 border-border bg-background ring-0 transition-transform data-[state=checked]:translate-x-5 data-[state=unchecked]:translate-x-0',
+		'pointer-events-none block h-5 w-5 rounded-pill border-(length:--border-width) border-border bg-background ring-0 transition-transform data-[state=checked]:translate-x-5 data-[state=unchecked]:translate-x-0',
 		className
 	)}
 />

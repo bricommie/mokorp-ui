@@ -7,11 +7,11 @@
 	let { class: className, ...rest }: Props = $props();
 </script>
 
-<!-- Surface flottante statique (coins nets) — §3 -->
+<!-- Surface flottante statique — §3 -->
 <ContextMenuPrimitive.ContentStatic
 	{...rest}
 	class={cn(
-		'z-50 min-w-32 overflow-hidden border-2 border-border bg-popover p-1 text-popover-foreground shadow-lg',
+		'rounded-surface z-50 min-w-32 overflow-hidden border-(length:--border-width) border-border-subtle bg-popover p-1 text-popover-foreground shadow-lg',
 		className
 	)}
 />

@@ -7,12 +7,12 @@
 	let { class: className, checked = $bindable(false), ...rest }: Props = $props();
 </script>
 
-<!-- Piste organique (rounded-full) — primary coché, background sinon — §4 / §5 -->
+<!-- Piste organique (rounded-pill) — primary coché, background sinon — §4 / §5 -->
 <SwitchPrimitive.Root
 	bind:checked
 	{...rest}
 	class={cn(
-		'inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border-2 border-border bg-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 data-[state=checked]:bg-primary',
+		'inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-pill border-(length:--border-width) border-border bg-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 data-[state=checked]:border-primary-border data-[state=checked]:bg-primary',
 		className
 	)}
 />

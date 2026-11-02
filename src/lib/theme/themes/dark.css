@@ -1,75 +1,78 @@
 /*
- * Thème « Acid Dark » — §4.
- * Sélecteur `.dark`. Électrique, néon : glow lime `#a3ff1f`, fond violet
- * profond `#300041`.
+ * Thème « Signal » — face sombre (§4).
+ * Sélecteur `.dark`. Même rôles qu'en clair : seules les valeurs changent.
  */
 
 .dark {
 	color-scheme: dark;
 
 	/* Surfaces */
-	--background: #300041;
-	--foreground: #adff42;
+	--background: #121016;
+	--foreground: #f2eff6;
 
 	/* Cartes */
-	--card: #230033;
-	--card-foreground: #f1eeff;
+	--card: #1c1922;
+	--card-foreground: #f2eff6;
 
 	/* Popover */
-	--popover: #230033;
-	--popover-foreground: #f1eeff;
+	--popover: #1c1922;
+	--popover-foreground: #f2eff6;
 
-	/* Actions */
-	--primary: #a3ff1f;
-	--primary-foreground: #210033;
+	/* Actions — le lime ressort seul sur fond sombre : pas de bordure. */
+	--primary: #c8ff4d;
+	--primary-foreground: #16111c;
+	--primary-border: transparent;
 
 	/* Secondaire */
-	--secondary: #fb7e00;
-	--secondary-foreground: #330f00;
+	--secondary: #b48cff;
+	--secondary-foreground: #16111c;
 
 	/* Atténué */
-	--muted: #430458;
-	--muted-foreground: #91d347;
+	--muted: #28242f;
+	--muted-foreground: #aaa2b5;
 
 	/* Accent */
-	--accent: #a3ff1f; /* = primary */
-	--accent-foreground: #210033;
+	--accent: #c8ff4d; /* = primary */
+	--accent-foreground: #16111c;
 
-	/* Erreur */
-	--destructive: #ff1329;
-	--destructive-foreground: #f8f8f8;
+	/* États */
+	--destructive: #ff6b7d;
+	--destructive-foreground: #16111c;
+	--success: #4ade80;
+	--success-foreground: #16111c;
+	--warning: #ffb347;
+	--warning-foreground: #16111c;
 
-	/* Lignes — encre dosée à l'opacité (voir composants). */
-	--border: #f1eeff;
-	--input: #f1eeff;
-	--ring: #a3ff1f; /* primary */
+	/* Lignes */
+	--border: #6f6779;
+	--border-subtle: #2c2833;
+	--input: #6f6779;
+	--ring: #c8ff4d;
+	--indicator: #c8ff4d;
+	--link: #b48cff;
 
 	/* Graphiques */
-	--chart-1: #c72cff;
-	--chart-2: #a3ff1f;
-	--chart-3: #ff8700;
-	--chart-4: #752f8f;
-	--chart-5: #ff2835;
+	--chart-1: #b48cff;
+	--chart-2: #c8ff4d;
+	--chart-3: #4ade80;
+	--chart-4: #ffb347;
+	--chart-5: #ff6b7d;
 
 	/* Sidebar */
-	--sidebar: #11082b;
-	--sidebar-foreground: #f1f0f9;
-	--sidebar-primary: #a3ff1f;
-	--sidebar-border: #1c122e;
-	/*
-	 * `--sidebar-accent` / `--sidebar-ring` ne sont pas renseignés en §4 : valeurs
-	 * dérivées du thème (élévation légère / = sidebar-primary).
-	 */
-	--sidebar-accent: #1c122e;
-	--sidebar-ring: #a3ff1f;
+	--sidebar: #0d0b10;
+	--sidebar-foreground: #f2eff6;
+	--sidebar-primary: #c8ff4d;
+	--sidebar-accent: #28242f;
+	--sidebar-border: #2c2833;
+	--sidebar-ring: #c8ff4d;
 
-	/* Ombres — glow lime, réservé aux éléments élevés, couleur = primary. */
-	--shadow-color: #a3ff1f;
-	--shadow-2xs: 0 0 #0000; /* aucun */
-	--shadow-xs: 0 0 #0000; /* aucun */
-	--shadow-sm: 0 0 12px -3px #a3ff1f;
-	--shadow-md: 0 0 16px -4px #a3ff1f;
-	--shadow-lg: 0 0 24px -4px #a3ff1f;
-	--shadow-xl: 0 0 32px -6px #a3ff1f;
-	--shadow-2xl: 0 0 48px -8px #a3ff1f;
+	/* Ombres — en sombre, une ombre noire se voit peu : on la renforce. */
+	--shadow-color: #000000;
+	--shadow-2xs: 0 0 #0000;
+	--shadow-xs: 0 0 #0000;
+	--shadow-sm: 0 0 #0000;
+	--shadow-md: 0 0 #0000;
+	--shadow-lg: 0 12px 32px -12px #000000b3;
+	--shadow-xl: 0 20px 48px -16px #000000cc;
+	--shadow-2xl: 0 28px 64px -20px #000000d9;
 }

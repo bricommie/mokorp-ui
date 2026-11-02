@@ -9,13 +9,16 @@
 	const percent = $derived(Math.min(100, Math.max(0, (value / max) * 100)));
 </script>
 
-<!-- Structurel (coins nets) + piste encre + barre primary — §4 / §5 -->
+<!-- Structurel + piste encre + barre primary — §4 / §5 -->
 <MeterPrimitive.Root
 	{value}
 	{max}
 	{...rest}
-	class={cn('relative h-3 w-full overflow-hidden border-2 border-border bg-muted', className)}
+	class={cn(
+		'relative h-3 w-full overflow-hidden rounded-pill border-(length:--border-width) border-border bg-muted',
+		className
+	)}
 >
 	{@render children?.()}
-	<div class="h-full bg-primary transition-all" style:width={`${percent}%`}></div>
+	<div class="h-full bg-indicator transition-all" style:width={`${percent}%`}></div>
 </MeterPrimitive.Root>

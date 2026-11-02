@@ -3,18 +3,21 @@ import { cva, type VariantProps } from 'class-variance-authority';
 /**
  * Variants du `Badge` — §7.
  *
- * Organique (pills `rounded-full`) + motif Label (`font-mono`).
- * Aucune valeur brute.
+ * Organique (`rounded-pill`), en casse normale. Un badge d'état (`success`,
+ * `warning`, `destructive`) doit toujours porter un libellé explicite : la
+ * couleur seule ne suffit pas (WCAG 1.4.1). Aucune valeur brute.
  */
 export const badgeVariants = cva(
-	'inline-flex items-center gap-1 rounded-full border-2 px-2.5 py-0.5 font-mono text-xs font-semibold uppercase tracking-[0.08em]',
+	'inline-flex items-center gap-1 rounded-pill border-(length:--border-width) px-2.5 py-0.5 font-body text-xs font-semibold',
 	{
 		variants: {
 			variant: {
-				primary: 'bg-primary text-primary-foreground border-foreground',
-				secondary: 'bg-secondary text-secondary-foreground border-foreground',
-				outline: 'bg-transparent text-foreground border-foreground',
-				destructive: 'bg-destructive text-destructive-foreground border-foreground'
+				primary: 'border-primary-border bg-primary text-primary-foreground',
+				secondary: 'border-transparent bg-secondary text-secondary-foreground',
+				outline: 'border-input bg-transparent text-foreground',
+				success: 'border-transparent bg-success text-success-foreground',
+				warning: 'border-transparent bg-warning text-warning-foreground',
+				destructive: 'border-transparent bg-destructive text-destructive-foreground'
 			}
 		},
 		defaultVariants: {

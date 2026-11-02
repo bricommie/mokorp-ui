@@ -41,8 +41,7 @@
 	</div>
 
 	<div class="grid gap-2">
-		<span class="font-mono text-xs uppercase tracking-[0.08em]" id={`${id}-env`}>Environnement</span
-		>
+		<span class="font-body text-sm font-semibold" id={`${id}-env`}>Environnement</span>
 		<ToggleGroup.Root type="single" bind:value={shared.env} aria-labelledby={`${id}-env`}>
 			{#each envs as e (e.value)}
 				<ToggleGroup.Item value={e.value}>{e.label}</ToggleGroup.Item>
@@ -52,9 +51,7 @@
 
 	<div class="grid gap-3">
 		<div class="flex items-baseline justify-between">
-			<span class="font-mono text-xs uppercase tracking-[0.08em]" id={`${id}-traffic`}
-				>Trafic servi</span
-			>
+			<span class="font-body text-sm font-semibold" id={`${id}-traffic`}>Trafic servi</span>
 			<span class="font-display text-2xl font-bold tabular-nums">{shared.traffic} %</span>
 		</div>
 		<Slider.Root
@@ -71,7 +68,7 @@
 	</div>
 
 	<div class="grid gap-2">
-		<div class="flex items-baseline justify-between font-mono text-xs uppercase tracking-[0.08em]">
+		<div class="flex items-baseline justify-between font-body text-sm font-semibold">
 			<span>Build</span><span class="tabular-nums">{shared.build} %</span>
 		</div>
 		<Progress value={shared.build} aria-label="Progression du build" />

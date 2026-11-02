@@ -7,12 +7,12 @@
 	let { class: className, value = $bindable(''), ...rest }: Props = $props();
 </script>
 
-<!-- Barre de menus (coins nets) — §4 -->
+<!-- Barre de menus — §4 -->
 <MenubarPrimitive.Root
 	bind:value={value as never}
 	{...rest}
 	class={cn(
-		'flex items-center gap-1 border-2 border-border bg-background p-1 font-body',
+		'flex items-center gap-1 rounded-field border-(length:--border-width) border-border bg-background p-1 font-body',
 		className
 	)}
 />

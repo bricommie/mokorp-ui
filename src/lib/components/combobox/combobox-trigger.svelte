@@ -12,7 +12,7 @@
 <ComboboxPrimitive.Trigger
 	{...rest}
 	class={cn(
-		'-ml-0.5 inline-flex size-10 shrink-0 items-center justify-center border-2 border-input bg-background text-foreground transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>svg]:rotate-180',
+		'rounded-field -ml-0.5 inline-flex size-10 shrink-0 items-center justify-center border-(length:--border-width) border-input bg-background text-foreground transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>svg]:rotate-180',
 		className
 	)}
 >

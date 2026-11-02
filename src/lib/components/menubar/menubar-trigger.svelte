@@ -7,7 +7,7 @@
 	let { class: className, ...rest }: Props = $props();
 </script>
 
-<!-- Déclencheur de menu de barre (coins nets) — §3 -->
+<!-- Déclencheur de menu de barre — §3 -->
 <MenubarPrimitive.Trigger
 	{...rest}
 	class={cn(

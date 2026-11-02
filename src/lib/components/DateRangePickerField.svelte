@@ -44,7 +44,7 @@
 	<div class={cn('grid gap-1.5', className)}>
 		{#if label}<DateRangePicker.Label>{label}</DateRangePicker.Label>{/if}
 		<div
-			class="flex flex-wrap items-center gap-2 border-2 border-input bg-background px-3 py-2 font-body text-sm focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 focus-within:ring-offset-background"
+			class="rounded-field flex flex-wrap items-center gap-2 border-(length:--border-width) border-input bg-background px-3 py-2 font-body text-sm focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 focus-within:ring-offset-background"
 		>
 			<DateRangePicker.Input
 				type="start"

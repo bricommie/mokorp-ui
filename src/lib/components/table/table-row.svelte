@@ -14,7 +14,7 @@
 <tr
 	{...rest}
 	class={cn(
-		'border-b-2 border-border transition-colors hover:bg-muted/60 data-[state=selected]:bg-muted',
+		'border-b-(length:--border-width) border-border-subtle transition-colors hover:bg-muted/60 data-[state=selected]:bg-muted',
 		className
 	)}
 >

@@ -14,9 +14,9 @@
 	let { variant = 'default', class: className, icon, children, ...rest }: Props = $props();
 </script>
 
-<!-- `role="alert"` pour le destructive (annoncé), `status` sinon — §7 -->
+<!-- `role="alert"` pour destructive et warning (annoncés), `status` sinon — §7 -->
 <div
-	role={variant === 'destructive' ? 'alert' : 'status'}
+	role={variant === 'destructive' || variant === 'warning' ? 'alert' : 'status'}
 	{...rest}
 	class={cn(alertVariants({ variant }), !icon && 'grid-cols-1', className)}
 >

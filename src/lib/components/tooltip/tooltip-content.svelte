@@ -7,12 +7,12 @@
 	let { class: className, sideOffset = 8, ...rest }: Props = $props();
 </script>
 
-<!-- Surface flottante (structurel, coins nets) — §3 -->
+<!-- Surface flottante (rounded-surface) — §3 -->
 <TooltipPrimitive.Content
 	{...rest}
 	{sideOffset}
 	class={cn(
-		'z-50 border-2 border-border bg-popover px-2 py-1 font-body text-xs text-popover-foreground shadow-lg',
+		'rounded-item z-50 border-(length:--border-width) border-border bg-popover px-2 py-1 font-body text-xs text-popover-foreground shadow-lg',
 		className
 	)}
 />

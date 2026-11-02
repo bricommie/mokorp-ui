@@ -12,5 +12,5 @@
 	{...rest}
 	class={cn('top-full z-[1] flex h-1 items-end justify-center overflow-hidden', className)}
 >
-	<div class="h-1 w-full bg-primary"></div>
+	<div class="h-1 w-full bg-indicator"></div>
 </NavigationMenuPrimitive.Indicator>

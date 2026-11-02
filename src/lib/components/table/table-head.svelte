@@ -14,7 +14,7 @@
 <th
 	{...rest}
 	class={cn(
-		'h-10 px-3 text-left align-middle font-mono text-xs font-semibold uppercase tracking-[0.08em]',
+		'h-10 px-3 text-left align-middle font-body text-sm font-semibold text-muted-foreground',
 		className
 	)}
 >

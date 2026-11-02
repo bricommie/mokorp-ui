@@ -7,5 +7,5 @@
 	let { class: className, ...rest }: Props = $props();
 </script>
 
-<!-- Structurel (coins nets) — conteneur à ratio, clippe le contenu — §4 -->
+<!-- Structurel — conteneur à ratio, clippe le contenu — §4 -->
 <AspectRatioPrimitive.Root {...rest} class={cn('overflow-hidden', className)} />

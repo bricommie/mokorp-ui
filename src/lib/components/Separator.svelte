@@ -7,7 +7,7 @@
 	let { class: className, ...rest }: Props = $props();
 </script>
 
-<!-- Structurel (coins nets) + ligne encre 2px, orientation via data-orientation — §4 -->
+<!-- Structurel + ligne bordure `--border-width`, orientation via data-orientation — §4 -->
 <SeparatorPrimitive.Root
 	{...rest}
 	class={cn(

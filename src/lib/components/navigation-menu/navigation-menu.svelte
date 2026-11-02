@@ -7,7 +7,7 @@
 	let { class: className, value = $bindable(''), ...rest }: Props = $props();
 </script>
 
-<!-- Racine du menu de navigation (coins nets) — §4 -->
+<!-- Racine du menu de navigation — §4 -->
 <NavigationMenuPrimitive.Root
 	bind:value={value as never}
 	{...rest}

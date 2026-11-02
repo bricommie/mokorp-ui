@@ -1,7 +1,7 @@
 # Guide d'implémentation des wrappers bits-ui
 
 Référence unique pour créer les wrappers stylés (façon shadcn-svelte) autour des
-primitives headless `bits-ui@2.20.2`, selon le design system « Acid Terminal »
+primitives headless `bits-ui@2.20.2`, selon le design system « Signal »
 (`docs/design-system.md`).
 
 ## 0. Règles d'or (non négociables)
@@ -153,7 +153,7 @@ focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-vi
 ### Surface flottante (contenu de popover/menu/dialog/tooltip/select/combobox/date)
 
 ```
-border-2 border-border bg-popover text-popover-foreground shadow-lg
+rounded-surface border-(length:--border-width) border-border-subtle bg-popover text-popover-foreground shadow-lg
 ```
 
 ### Élément de menu / option (item de select/combobox/menu)
@@ -170,28 +170,33 @@ Base : `relative flex cursor-pointer select-none items-center gap-2 px-2 py-1.5 
 
 ### Indicateur de contrôle (coche checkbox, point radio, pouce switch/slider)
 
-Organique = `rounded-full`. Bordure encre 2px, fond selon état :
+Bordure `--border-width`, fond selon état :
 
-- non coché : `border-2 border-border bg-background`
-- coché : `border-2 border-border bg-primary text-primary-foreground`
+- non coché : `border-(length:--border-width) border-border bg-background`
+- coché : `border-primary-border bg-primary text-primary-foreground` (le lime est
+  bordé d'encre en face claire)
 
-## 4. Radius : organique vs structurel (verrouillé)
+## 4. Rayons par rôle (verrouillé)
 
-- **Organique** (`rounded-full`) : avatar, badge, switch (piste + pouce), slider
-  (pouce), toggle, progress (barre), radio (rond), pagination (items).
-- **Structurel** (coins **nets**, aucun `rounded-*`) : tout le reste — checkbox,
-  card, button, input, dialog, menus, accordion, tabs, select, combobox, command,
-  tooltip, separator, scroll-area, calendar, pin-input, toolbar, menubar,
-  navigation-menu, link-preview, alert-dialog, collapsible, aspect-ratio, meter,
-  rating-group, date-field/picker, time-field.
+Chaque composant choisit un **rôle**, jamais une valeur :
 
-Règle : _un composant est soit structurel, soit organique._ Ne pas mélanger.
+- `rounded-surface` : card, alert, dialog, alert-dialog, menus, popover, select et
+  combobox (contenu), command, link-preview, date pickers, calendrier, table.
+- `rounded-field` : input, textarea, déclencheurs de type champ, date/time fields,
+  pin-input, menubar.
+- `rounded-item` : option de menu, jour de calendrier, checkbox, toolbar,
+  toggle-group, kbd, tooltip, skeleton, segments de date.
+- `rounded-control` : button, collapsible-trigger.
+- `rounded-pill` : avatar, badge, switch, slider, toggle, progress, meter, radio,
+  pagination.
+
+Bordure : toujours `border-(length:--border-width)`, jamais `border-2`.
 
 ## 5. Typographie
 
 - Corps/contrôles : `font-body text-sm` (le body hérite déjà `font-body`, l'utiliser
   est sans danger pour l'explicitation).
-- Motif « Label » : `font-mono text-xs uppercase tracking-[0.08em]`.
+- Motif « Label » : `font-body text-sm font-semibold` (casse normale).
 - Titres : `font-display`.
 
 ## 6. Stories (obligatoire, au moins une « Default »)

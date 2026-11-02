@@ -11,6 +11,9 @@
 	let { class: className, children, ...rest }: Props = $props();
 </script>
 
-<thead {...rest} class={cn('[&_tr]:border-b-2 [&_tr]:border-border', className)}>
+<thead
+	{...rest}
+	class={cn('[&_tr]:border-b-(length:--border-width) [&_tr]:border-border-subtle', className)}
+>
 	{@render children?.()}
 </thead>

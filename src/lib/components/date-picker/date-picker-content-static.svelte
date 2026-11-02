@@ -10,5 +10,8 @@
 <!-- Surface flottante statique du popover — §3 -->
 <DatePickerPrimitive.ContentStatic
 	{...rest}
-	class={cn('border-2 border-border bg-popover p-2 text-popover-foreground shadow-lg', className)}
+	class={cn(
+		'rounded-surface border-(length:--border-width) border-border-subtle bg-popover p-2 text-popover-foreground shadow-lg',
+		className
+	)}
 />

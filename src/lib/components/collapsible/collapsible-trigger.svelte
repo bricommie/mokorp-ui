@@ -7,11 +7,11 @@
 	let { class: className, ...rest }: Props = $props();
 </script>
 
-<!-- Déclencheur structurel (coins nets) — §5 -->
+<!-- Déclencheur structurel — §5 -->
 <CollapsiblePrimitive.Trigger
 	{...rest}
 	class={cn(
-		'inline-flex items-center justify-center gap-2 border-2 border-border bg-background px-4 py-2 font-body text-sm font-semibold text-foreground shadow-md transition-[box-shadow,transform,background-color] hover:bg-muted active:translate-x-1 active:translate-y-1 active:shadow-none motion-reduce:transition-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50',
+		'inline-flex items-center justify-center gap-2 rounded-control border-(length:--border-width) border-input bg-background px-4 py-2 font-body text-sm font-semibold text-foreground transition-[transform,background-color] hover:bg-muted active:scale-[0.98] motion-reduce:transition-none motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50',
 		className
 	)}
 />

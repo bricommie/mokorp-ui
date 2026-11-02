@@ -8,4 +8,4 @@
 </script>
 
 <!-- Repère discret (point) — §4 -->
-<SliderPrimitive.Tick {...rest} class={cn('block size-1.5 rounded-full bg-border', className)} />
+<SliderPrimitive.Tick {...rest} class={cn('block size-1.5 rounded-pill bg-border', className)} />

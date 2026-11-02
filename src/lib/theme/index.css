@@ -1,5 +1,5 @@
 /*
- * Entrée du thème — « Acid Terminal ».
+ * Entrée du thème — « Signal ».
  *
  * À importer une seule fois (Showcase via `app.css`, Storybook via `preview.ts`,
  * ou par un consommateur via `@import 'mokorp-ui/theme.css'`).
@@ -10,18 +10,22 @@
 
 @import 'tailwindcss';
 
-/* Fonts — §6 (Georgia = système, non embarquée). */
-@import '@fontsource/chakra-petch/400.css';
-@import '@fontsource/chakra-petch/600.css';
-@import '@fontsource/chakra-petch/700.css';
+/* Fonts — §6 (Georgia = système, non embarquée). Plex Mono ne sert plus qu'au slot `mono`. */
+@import '@fontsource-variable/archivo/wdth.css'; /* axes graisse + largeur */
 @import '@fontsource/ibm-plex-mono/400.css';
-@import '@fontsource/ibm-plex-mono/500.css';
 @import '@fontsource/ibm-plex-mono/600.css';
-@import '@fontsource/ibm-plex-mono/700.css';
 
 /* Tokens (transverses, sémantique, base) puis thèmes. */
 @import './tokens/global.css';
 @import './tokens/semantic.css';
 @import './tokens/components.css';
+@import './tokens/states.css';
 @import './themes/light.css';
 @import './themes/dark.css';
+
+/*
+ * Tailwind n'analyse jamais `node_modules`. Sans cette ligne, une app qui installe
+ * Mokorp-ui ne générerait pas les classes utilisées dans nos composants.
+ * Chemin relatif à CE fichier : `src/lib/components` ici, `dist/components` une fois publié.
+ */
+@source '../components';

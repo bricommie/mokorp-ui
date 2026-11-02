@@ -100,7 +100,11 @@
 		class="md:col-span-7"
 		caption="Accordion : le chevron pivote et la hauteur s’anime, sauf si le mouvement est réduit."
 	>
-		<Accordion.Root type="single" bind:value={openPanel} class="border-t-2 border-border">
+		<Accordion.Root
+			type="single"
+			bind:value={openPanel}
+			class="border-t-(length:--border-width) border-border"
+		>
 			<Accordion.Item value="install">
 				<Accordion.Header
 					><Accordion.Trigger>Comment installer le thème ?</Accordion.Trigger></Accordion.Header
@@ -139,14 +143,20 @@
 					<Icons.ChevronDown class="size-4 transition-transform {moreOpen ? 'rotate-180' : ''}" />
 				</Collapsible.Trigger>
 			</div>
-			<p class="border-2 border-border bg-background px-3 py-2 font-mono text-xs">
+			<p
+				class="border-(length:--border-width) border-border bg-background px-3 py-2 font-mono text-xs"
+			>
 				src/lib/components/Button.svelte
 			</p>
 			<Collapsible.Content class="grid gap-3">
-				<p class="border-2 border-border bg-background px-3 py-2 font-mono text-xs">
+				<p
+					class="border-(length:--border-width) border-border bg-background px-3 py-2 font-mono text-xs"
+				>
 					src/lib/components/select/select-item.svelte
 				</p>
-				<p class="border-2 border-border bg-background px-3 py-2 font-mono text-xs">
+				<p
+					class="border-(length:--border-width) border-border bg-background px-3 py-2 font-mono text-xs"
+				>
 					src/lib/theme/tokens/components.css
 				</p>
 			</Collapsible.Content>

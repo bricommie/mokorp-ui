@@ -12,7 +12,7 @@
 	<NavigationMenuPrimitive.Viewport
 		{...rest}
 		class={cn(
-			'relative mt-2 shrink-0 h-(--bits-navigation-menu-viewport-height) w-full overflow-hidden border-2 border-border bg-popover text-popover-foreground shadow-lg data-[state=closed]:hidden md:w-(--bits-navigation-menu-viewport-width)',
+			'rounded-surface relative mt-2 shrink-0 h-(--bits-navigation-menu-viewport-height) w-full overflow-hidden border-(length:--border-width) border-border-subtle bg-popover text-popover-foreground shadow-lg data-[state=closed]:hidden md:w-(--bits-navigation-menu-viewport-width)',
 			className
 		)}
 	/>

@@ -1,4 +1,4 @@
-# Système de design — « Acid Terminal »
+# Système de design — « Signal »
 
 > Spec figée issue d'une session de design. Autonome et portable : à déposer dans le
 > repo de la bibliothèque de composants. Toute implémentation doit s'y référer.
@@ -7,15 +7,19 @@
 
 ## 1. Identité
 
-Néo-brutalisme **acide**, construit sur une **paire complémentaire vert ⇄ violet inversée**
-entre les modes. Deux faces d'une même pièce :
+Minimalisme **brut**, inspiré de la sobriété de Wero : des neutres teintés de violet,
+une encre presque noire, et **une seule couleur d'action, le lime**. La couleur se
+mérite : elle signale ce qui est cliquable ou ce qui demande l'attention.
 
-- **Light** = sec, imprimé : offset dur, coins nets, encre violet-noir.
-- **Dark** = électrique, néon : glow lime, fond violet profond.
+- **Clair** : fond gris violacé, cartes blanches, lime **bordé d'encre** (le lime seul
+  se fond dans un fond clair, 1,07:1).
+- **Sombre** : fond profond, cartes à peine relevées, lime seul.
 
-Le style ne repose pas sur « une couleur de marque », mais sur **la paire** elle-même.
-Consequence à trancher plus tard (hors spec) : le « représentant » de la paire hors
-contexte (logo, favicon, bannière marketing).
+Les deux faces partagent les mêmes rôles et le même comportement d'interaction :
+seules les valeurs changent.
+
+> Historique : ce thème remplace « Acid Terminal » (néo-brutalisme acide). La revue
+> de design qui a mené au choix est dans le fil « Critiquer et améliorer le design ».
 
 ---
 
@@ -25,7 +29,7 @@ Objectif : ajouter un thème plus tard = écrire **un bloc CSS**, sans toucher a
 
 ```
 [THÈME]        ensemble nommé de valeurs concrètes
-    │          ex. "acid-light", "acid-dark", puis "mono", "pastel", "ocean"…
+    │          ex. "signal-light", "signal-dark", puis "mono", "pastel", "ocean"…
     ▼
 [SÉMANTIQUE]   le CONTRAT : noms stables consommés par les composants
     │          ex. --background, --primary, --border, --ring, --radius…
@@ -49,108 +53,75 @@ Règles :
 
 ### Couleurs (par thème)
 
-| Groupe     | Tokens                                                                                                             |
-| ---------- | ------------------------------------------------------------------------------------------------------------------ |
-| Surfaces   | `--background`, `--foreground`                                                                                     |
-| Cartes     | `--card`, `--card-foreground`                                                                                      |
-| Popover    | `--popover`, `--popover-foreground`                                                                                |
-| Actions    | `--primary`, `--primary-foreground`                                                                                |
-| Secondaire | `--secondary`, `--secondary-foreground`                                                                            |
-| Atténué    | `--muted`, `--muted-foreground`                                                                                    |
-| Accent     | `--accent`, `--accent-foreground`                                                                                  |
-| Erreur     | `--destructive`, `--destructive-foreground`                                                                        |
-| Lignes     | `--border` (encre), `--input`, `--ring` (focus)                                                                    |
-| Graphiques | `--chart-1` … `--chart-5`                                                                                          |
-| Sidebar    | `--sidebar`, `--sidebar-foreground`, `--sidebar-primary`, `--sidebar-accent`, `--sidebar-border`, `--sidebar-ring` |
+| Groupe     | Tokens                                                                                                                                       |
+| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| Surfaces   | `--background`, `--foreground`                                                                                                               |
+| Cartes     | `--card`, `--card-foreground`                                                                                                                |
+| Popover    | `--popover`, `--popover-foreground`                                                                                                          |
+| Actions    | `--primary`, `--primary-foreground`, `--primary-border`, `--primary-hover`                                                                   |
+| Secondaire | `--secondary`, `--secondary-foreground`, `--secondary-hover`                                                                                 |
+| Atténué    | `--muted`, `--muted-foreground`                                                                                                              |
+| Accent     | `--accent`, `--accent-foreground`                                                                                                            |
+| États      | `--destructive`, `--destructive-foreground`, `--destructive-hover`, `--success`, `--success-foreground`, `--warning`, `--warning-foreground` |
+| Lignes     | `--border` (contrôles, ≥ 3:1), `--border-subtle` (surfaces), `--input`, `--ring` (focus)                                                     |
+| Divers     | `--link` (liens), `--indicator` (jauges, barres de progression, curseurs)                                                                    |
+| Graphiques | `--chart-1` … `--chart-5`                                                                                                                    |
+| Sidebar    | `--sidebar`, `--sidebar-foreground`, `--sidebar-primary`, `--sidebar-accent`, `--sidebar-border`, `--sidebar-ring`                           |
 
 ### Non-couleur (transverses)
 
-- Rayon : `--radius` (structurel) — l'organique utilise `rounded-full` (9999px).
+- Rayons par rôle : `--radius-surface`, `--radius-field`, `--radius-item`,
+  `--radius-control`, `--radius-pill` (utilitaires `rounded-surface`, etc.).
+- Bordure : `--border-width` (utilitaire `border-(length:--border-width)`).
 - Ombres : `--shadow-2xs` … `--shadow-2xl`, plus `--shadow-color`.
 - Typo : `--font-display`, `--font-body`, `--font-mono`, `--font-serif`.
 
 ---
 
-## 4. Thème « Acid » (premier thème, light + dark)
+## 4. Thème « Signal » (clair + sombre)
 
-### Light (sélecteur `:root`)
+Les valeurs vivent dans `src/lib/theme/themes/light.css` et `dark.css` : c'est la
+source de vérité, ce tableau n'en est qu'un résumé.
 
-| Token                    | Valeur                                            |
-| ------------------------ | ------------------------------------------------- |
-| `background`             | `#AEFF4F`                                         |
-| `foreground`             | `#240033`                                         |
-| `card`                   | `#CCFF9A`                                         |
-| `card-foreground`        | `#240033`                                         |
-| `popover`                | `#CCFF9A`                                         |
-| `popover-foreground`     | `#240033`                                         |
-| `primary`                | `#690087`                                         |
-| `primary-foreground`     | `#F8F8F8`                                         |
-| `secondary`              | `#F07A00`                                         |
-| `secondary-foreground`   | `#330F00`                                         |
-| `muted`                  | `#A2D372`                                         |
-| `muted-foreground`       | `#4F0B68`                                         |
-| `accent`                 | `#690087` ( = primary)                            |
-| `accent-foreground`      | `#F8F8F8`                                         |
-| `destructive`            | `#DD001D`                                         |
-| `destructive-foreground` | `#F8F8F8`                                         |
-| `border`                 | `#240033` (encre)                                 |
-| `input`                  | `#240033` (encre)                                 |
-| `ring`                   | `#690087` (primary)                               |
-| `chart-1…5`              | `#7E00A7 · #9EF927 · #F38300 · #38004C · #FF0013` |
-| `sidebar`                | `#150A29` (toujours sombre)                       |
-| `sidebar-foreground`     | `#EEEBF7`                                         |
-| `sidebar-primary`        | `#9EF927`                                         |
-| `sidebar-border`         | `#2C1E43`                                         |
+| Token                  | Clair (`:root`, `.light`) | Sombre (`.dark`) |
+| ---------------------- | ------------------------- | ---------------- |
+| `background`           | `#F5F3F7`                 | `#121016`        |
+| `foreground`           | `#16111C`                 | `#F2EFF6`        |
+| `card` / `popover`     | `#FFFFFF`                 | `#1C1922`        |
+| `primary`              | `#C8FF4D`                 | `#C8FF4D`        |
+| `primary-foreground`   | `#16111C`                 | `#16111C`        |
+| `primary-border`       | `#16111C`                 | `transparent`    |
+| `secondary`            | `#6A2FB0`                 | `#B48CFF`        |
+| `secondary-foreground` | `#FFFFFF`                 | `#16111C`        |
+| `muted`                | `#EBE7EF`                 | `#28242F`        |
+| `muted-foreground`     | `#5E566A`                 | `#AAA2B5`        |
+| `destructive`          | `#C4122F`                 | `#FF6B7D`        |
+| `success`              | `#0F6B3A`                 | `#4ADE80`        |
+| `warning`              | `#A34B00`                 | `#FFB347`        |
+| `border` / `input`     | `#8B8396`                 | `#6F6779`        |
+| `border-subtle`        | `#E4E0EA`                 | `#2C2833`        |
+| `ring`                 | `#16111C`                 | `#C8FF4D`        |
+| `link`                 | `#6A2FB0`                 | `#B48CFF`        |
+| `indicator`            | `#6A2FB0`                 | `#C8FF4D`        |
 
-### Dark (sélecteur `.dark`)
-
-| Token                    | Valeur                                            |
-| ------------------------ | ------------------------------------------------- |
-| `background`             | `#300041`                                         |
-| `foreground`             | `#ADFF42`                                         |
-| `card`                   | `#230033`                                         |
-| `card-foreground`        | `#F1EEFF`                                         |
-| `popover`                | `#230033`                                         |
-| `popover-foreground`     | `#F1EEFF`                                         |
-| `primary`                | `#A3FF1F`                                         |
-| `primary-foreground`     | `#210033`                                         |
-| `secondary`              | `#FB7E00`                                         |
-| `secondary-foreground`   | `#330F00`                                         |
-| `muted`                  | `#430458`                                         |
-| `muted-foreground`       | `#91D347`                                         |
-| `accent`                 | `#A3FF1F` ( = primary)                            |
-| `accent-foreground`      | `#210033`                                         |
-| `destructive`            | `#FF1329`                                         |
-| `destructive-foreground` | `#F8F8F8`                                         |
-| `border`                 | `#F1EEFF` (encre, dosée à l'opacité)              |
-| `input`                  | `#F1EEFF`                                         |
-| `ring`                   | `#A3FF1F` (primary)                               |
-| `chart-1…5`              | `#C72CFF · #A3FF1F · #FF8700 · #752F8F · #FF2835` |
-| `sidebar`                | `#11082B`                                         |
-| `sidebar-foreground`     | `#F1F0F9`                                         |
-| `sidebar-primary`        | `#A3FF1F`                                         |
-| `sidebar-border`         | `#1C122E`                                         |
+Tous les couples texte/fond passent 4,5:1, et les bordures de contrôle et le focus
+passent 3:1, dans les deux faces.
 
 ### Ombres
 
-- **Light** — offset dur, _élévation = décalage_, zéro flou, couleur = encre `#240033` :
-  - `2xs: 1px 1px 0` · `xs: 2px 2px 0` · `sm: 3px 3px 0` · `md: 4px 4px 0` ·
-    `lg: 6px 6px 0` · `xl: 8px 8px 0` · `2xl: 12px 12px 0`.
-- **Dark** — glow lime, _élévation = étendue_, réservé aux éléments **élevés**
-  (cartes, modales, popovers, boutons), opacité ≤ 1, couleur = primary `#A3FF1F` :
-  - `2xs/xs: aucun` · `sm: 0 0 12px -3px` · `md: 0 0 16px -4px` ·
-    `lg: 0 0 24px -4px` · `xl: 0 0 32px -6px` · `2xl: 0 0 48px -8px`.
+Aplats : `shadow-2xs` à `shadow-md` valent `none`, donc cartes et alertes sont à plat.
+Seules les **couches flottantes** (menus, popovers, dialogues : `shadow-lg` et plus)
+gardent une ombre douce pour se détacher du contenu recouvert.
 
 ---
 
 ## 5. Géométrie
 
-- **Radius** : `0` structurel (cartes, boutons, inputs, champs) · `9999px` organique
-  (avatars, badges-compteurs, toggles, chips/pills). Règle : _un composant est soit
-  structurel, soit organique._
-- **Bordures** : `--border` = encre, **2px**, nette, pour la structure. `--ring` =
-  primary, réservé à l'interaction (survol / focus / sélection). Règle : _structure =
-  encre, interaction = primary._
+- **Rayons par rôle**, jamais par valeur : `surface` 18px (cartes, alertes, menus,
+  dialogues), `field` 12px (champs), `item` 8px (option de menu, jour, case à cocher),
+  `control` pilule (boutons), `pill` pilule (badges, avatars, interrupteurs, curseurs).
+- **Bordures** : `--border-width` (1,5px). `border-subtle` sépare les surfaces,
+  `border`/`input` délimitent les contrôles (≥ 3:1), `ring` signale le focus.
 
 ---
 
@@ -160,8 +131,8 @@ Règles :
 
 | Slot      | Police            | Rôle                                                |
 | --------- | ----------------- | --------------------------------------------------- |
-| `display` | **Chakra Petch**  | titres, héros, gros chiffres, logo                  |
-| `body`    | **IBM Plex Mono** | corps de texte, labels, boutons, valeurs            |
+| `display` | **Archivo** large | titres, héros, gros chiffres, logo                  |
+| `body`    | **Archivo**       | corps de texte, labels, boutons, valeurs            |
 | `mono`    | **IBM Plex Mono** | code, données, timestamps, tags                     |
 | `serif`   | **Georgia**       | accent éditorial (légendes, citations, états vides) |
 
@@ -174,8 +145,7 @@ Règles :
 | body         | `16px` (sm `14px`)         | `1.5`   |
 | label        | `12px`                     | `1.3`   |
 
-**Motif signature — `Label`** : `font-mono · text-xs · uppercase · tracking-[0.08em]`.
-Pas de tracking global sur le corps (le mono a déjà son rythme).
+**Motif `Label`** : `font-body text-sm font-semibold`, en casse normale.
 
 ---
 
@@ -191,14 +161,15 @@ Pas de tracking global sur le corps (le mono a déjà son rythme).
 
 ---
 
-## 7 bis. États interactifs (ajout)
+## 7 bis. États interactifs
 
-- **Survol / focus d'un item** (menu, select, combobox, command) : inversion
-  `bg-primary` + `text-primary-foreground` — comme une sélection de terminal.
+- **Survol / focus d'un item** (menu, select, combobox, command) : `bg-primary` +
+  `text-primary-foreground` sur un `rounded-item`.
 - **État sélectionné** : jamais une couleur de fond seule ; toujours un indicateur
-  (coche, point, remplissage plein vs contour pour le `RatingGroup`).
-- **Bouton plein** : survol = décalage de −2px et ombre `lg` ; pression = décalage de
-  +4px et ombre supprimée (le bouton « tombe » sur son ombre).
+  (coche, point, remplissage plein vs contour pour le `RatingGroup`). Un remplissage
+  lime porte aussi `border-primary-border`.
+- **Boutons pleins** : survol = `*-hover` (dérivé par `color-mix()` dans
+  `tokens/states.css`) ; pression = `scale(0.98)`. Identique dans les deux faces.
 - **Thème imbriquable** : `.light` et `.dark` peuvent être posés sur n'importe quel
   conteneur pour forcer une face dans une page de l'autre thème.
 
@@ -210,17 +181,17 @@ Pas de tracking global sur le corps (le mono a déjà son rythme).
 2. **Sémantique stable** : on ne renomme jamais un token sémantique ; on change sa valeur.
 3. **Aucun hex en dur** dans un composant (garde-fou testable : un test Vitest qui
    échoue si un composant contient un littéral de couleur).
-4. **Un composant = structurel ou organique** (radius), et sa bordure = encre sauf
-   interaction = primary.
+4. **Un rôle de rayon par composant** (`surface`, `field`, `item`, `control`, `pill`),
+   jamais une valeur. Une bordure de contrôle passe 3:1 ; une bordure de surface est
+   `border-subtle`.
 
 ---
 
-## 9. À faire à l'atterrissage dans le nouveau repo
+## 9. Distribution
 
-1. Installer Tailwind v4 (`@tailwindcss/vite`) + `app.css` portant les tokens
-   (thème `acid` en `:root` / `.dark`, structure prête pour `[data-theme="…"]`).
-2. Fonts : `@fontsource/chakra-petch` + `@fontsource/ibm-plex-mono` (Georgia = système).
-3. Helper `cn()` + `class-variance-authority`.
-4. Composants `Label`, `Button`, `Card`, `Badge`, `Input` + stories Storybook.
-5. Test garde-fou « aucun hex en dur ».
-6. (Plus tard) `ThemeToggle` + thèmes supplémentaires via `[data-theme="…"]`.
+1. `mokorp-ui/theme.css` embarque Tailwind, les polices et les tokens.
+2. `@source '../components'` dans `theme/index.css` : sans lui, l'app cliente ne
+   génère pas les classes des composants (Tailwind ignore `node_modules`).
+3. Fonts : `@fontsource-variable/archivo` (axes graisse et largeur) +
+   `@fontsource/ibm-plex-mono` (slot `mono`). Georgia = système.
+4. Storybook : la barre d'outils « Face » bascule clair/sombre sur chaque story.

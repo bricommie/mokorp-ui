@@ -41,9 +41,9 @@
 			Une pièce,<br />deux faces.
 		</h1>
 		<p class="max-w-[34rem] text-base leading-relaxed">
-			mokorp-ui, c’est une bibliothèque de composants Svelte 5 construite sur bits-ui. Une paire
-			vert acide et violet : imprimée le jour, néon la nuit. Tout ce qui est à droite est un vrai
-			composant, déplacez le volet pour passer d’une face à l’autre.
+			mokorp-ui, c’est une bibliothèque de composants Svelte 5 construite sur bits-ui. Un style brut
+			et minimaliste : des neutres, de l’encre, et un lime réservé à l’action. Tout ce qui est à
+			droite est un vrai composant, déplacez le volet pour passer d’une face à l’autre.
 		</p>
 		<div class="flex flex-wrap gap-3">
 			<Button size="lg" href="#composants">Explorer les composants<Icons.ArrowRight /></Button>
@@ -56,7 +56,9 @@
 
 	<div class="flex flex-col gap-4">
 		<!-- La pièce : face claire dessous, face sombre dessus, découpée par le volet -->
-		<div class="relative h-[34rem] overflow-hidden border-2 border-border shadow-xl sm:h-[32rem]">
+		<div
+			class="relative h-[34rem] overflow-hidden border-(length:--border-width) border-border shadow-xl sm:h-[32rem]"
+		>
 			<DeployFace face="light" bind:shared />
 			<div class="absolute inset-0" style:clip-path={`inset(0 0 0 ${split}%)`}>
 				<DeployFace face="dark" bind:shared decorative={split >= 99} />
@@ -82,8 +84,8 @@
 				<Slider.Thumb index={0} aria-label="Position du volet entre les deux faces" />
 			</Slider.Root>
 			<div class="flex justify-between font-serif text-sm italic text-muted-foreground">
-				<span>Imprimé : offset dur, coins nets</span>
-				<span>Néon : glow lime, fond profond</span>
+				<span>Clair : encre et lime bordé</span>
+				<span>Sombre : lime seul, fond profond</span>
 			</div>
 		</div>
 	</div>

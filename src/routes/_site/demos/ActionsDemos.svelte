@@ -53,7 +53,7 @@
 		</div>
 		<Toolbar.Root
 			aria-label="Mise en forme"
-			class="flex-wrap border-2 border-border bg-background p-1"
+			class="flex-wrap border-(length:--border-width) border-border bg-background p-1"
 		>
 			<Toolbar.Group type="multiple" bind:value={marks} aria-label="Style du texte">
 				<Toolbar.GroupItem value="bold" class="font-bold" aria-label="Gras">G</Toolbar.GroupItem>
