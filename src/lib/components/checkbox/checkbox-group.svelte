@@ -4,8 +4,12 @@
 
 	type Props = CheckboxPrimitive.GroupProps;
 
-	let { class: className, ...rest }: Props = $props();
+	let { class: className, value = $bindable([]), ...rest }: Props = $props();
 </script>
 
 <!-- Groupe : empilement vertical léger — §7 -->
-<CheckboxPrimitive.Group {...rest} class={cn('flex flex-col gap-2', className)} />
+<CheckboxPrimitive.Group
+	bind:value={value as never}
+	{...rest}
+	class={cn('flex flex-col gap-2', className)}
+/>

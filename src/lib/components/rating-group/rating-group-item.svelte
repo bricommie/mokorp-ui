@@ -1,33 +1,31 @@
 <script lang="ts">
 	import { RatingGroup as RatingGroupPrimitive } from 'bits-ui';
-	import type { Snippet } from 'svelte';
 	import { cn } from '../../cn.js';
 
-	type Props = Omit<RatingGroupPrimitive.ItemProps, 'children'> & {
-		children?: Snippet;
-	};
+	type Props = RatingGroupPrimitive.ItemProps;
 
-	let { class: className, children, ...rest }: Props = $props();
+	let { class: className, children: childrenProp, ...rest }: Props = $props();
 </script>
 
-<!-- Structurel (coins nets) — étoile pleine, état via data-state — §4 -->
+<!-- Étoile : contour encre (inactive) → remplie primary (active) — lisible sans la couleur seule — §4 -->
 <RatingGroupPrimitive.Item
 	{...rest}
 	class={cn(
-		'cursor-pointer text-muted-foreground transition-colors data-[state=active]:text-primary data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+		'group cursor-pointer text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
 		className
 	)}
 >
-	<svg
-		class="size-5"
-		xmlns="http://www.w3.org/2000/svg"
-		viewBox="0 0 24 24"
-		fill="currentColor"
-		aria-hidden="true"
-	>
-		<path
-			d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"
-		/>
-	</svg>
-	{@render children?.()}
+	{#snippet children({ state })}
+		<svg
+			class="size-6 fill-transparent stroke-current transition-colors group-data-[state=active]:fill-primary group-data-[state=active]:stroke-foreground group-data-[state=partial]:fill-muted"
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 24 24"
+			stroke-width="2"
+			stroke-linejoin="miter"
+			aria-hidden="true"
+		>
+			<path d="M12 2.5l2.9 6.2 6.6.8-4.9 4.6 1.3 6.6L12 17.4l-5.9 3.3 1.3-6.6L2.5 9.5l6.6-.8z" />
+		</svg>
+		{@render childrenProp?.({ state })}
+	{/snippet}
 </RatingGroupPrimitive.Item>

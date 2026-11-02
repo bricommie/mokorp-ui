@@ -3,8 +3,12 @@
 
 	type Props = DateRangeFieldPrimitive.RootProps;
 
-	let { ...rest }: Props = $props();
+	let { value = $bindable(), placeholder = $bindable(), ...rest }: Props = $props();
 </script>
 
-<!-- Racine sémantique : pas de style (passthrough) — structurel -->
-<DateRangeFieldPrimitive.Root {...rest} />
+<!-- Passthrough + props bindables (bind:value fonctionne) — §7 -->
+<DateRangeFieldPrimitive.Root
+	bind:value={value as never}
+	bind:placeholder={placeholder as never}
+	{...rest}
+/>

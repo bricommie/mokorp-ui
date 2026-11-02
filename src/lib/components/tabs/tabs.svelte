@@ -3,8 +3,8 @@
 
 	type Props = TabsPrimitive.RootProps;
 
-	let { ...rest }: Props = $props();
+	let { value = $bindable(''), ...rest }: Props = $props();
 </script>
 
 <!-- Racine sémantique : pas de style (passthrough) — §7 -->
-<TabsPrimitive.Root {...rest} />
+<TabsPrimitive.Root bind:value={value as never} {...rest} />

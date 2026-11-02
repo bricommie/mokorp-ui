@@ -7,11 +7,13 @@
 	let { class: className, ...rest }: Props = $props();
 </script>
 
-<!-- Viewport : surface flottante (coins nets) — §3 -->
-<NavigationMenuPrimitive.Viewport
-	{...rest}
-	class={cn(
-		'relative mt-1.5 h-[var(--bits-navigation-menu-viewport-height)] w-full overflow-hidden border-2 border-border bg-popover text-popover-foreground shadow-lg',
-		className
-	)}
-/>
+<!-- Calque absolu sous la liste : le panneau flotte au lieu de pousser le contenu — §3 -->
+<div class="absolute left-0 top-full z-50 flex w-full justify-center">
+	<NavigationMenuPrimitive.Viewport
+		{...rest}
+		class={cn(
+			'relative mt-2 shrink-0 h-(--bits-navigation-menu-viewport-height) w-full overflow-hidden border-2 border-border bg-popover text-popover-foreground shadow-lg data-[state=closed]:hidden md:w-(--bits-navigation-menu-viewport-width)',
+			className
+		)}
+	/>
+</div>

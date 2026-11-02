@@ -3,8 +3,8 @@
 
 	type Props = DialogPrimitive.RootProps;
 
-	let { ...rest }: Props = $props();
+	let { open = $bindable(false), ...rest }: Props = $props();
 </script>
 
-<!-- Racine sémantique : pas de style (passthrough) — §7 -->
-<DialogPrimitive.Root {...rest} />
+<!-- Passthrough + props bindables (bind:open fonctionne) — §7 -->
+<DialogPrimitive.Root bind:open {...rest} />

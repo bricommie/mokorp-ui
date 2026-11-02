@@ -12,7 +12,5 @@
 
 <Story name="Default">
 	<LinkPreview.Trigger>Survole ce lien</LinkPreview.Trigger>
-	<LinkPreview.Content>
-		Un aperçu flottant du lien, structurel à coins nets.
-	</LinkPreview.Content>
+	<LinkPreview.Content>Un aperçu flottant du lien, structurel à coins nets.</LinkPreview.Content>
 </Story>

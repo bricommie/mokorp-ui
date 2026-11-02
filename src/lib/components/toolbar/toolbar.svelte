@@ -8,7 +8,4 @@
 </script>
 
 <!-- Conteneur structurel (coins nets) — §5 -->
-<ToolbarPrimitive.Root
-	{...rest}
-	class={cn('inline-flex items-center gap-1', className)}
-/>
+<ToolbarPrimitive.Root {...rest} class={cn('inline-flex items-center gap-1', className)} />

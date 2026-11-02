@@ -3,8 +3,8 @@
 
 	type Props = AlertDialogPrimitive.RootProps;
 
-	let { ...rest }: Props = $props();
+	let { open = $bindable(false), ...rest }: Props = $props();
 </script>
 
-<!-- Racine sémantique : pas de style (passthrough) — §7 -->
-<AlertDialogPrimitive.Root {...rest} />
+<!-- Passthrough + props bindables (bind:open fonctionne) — §7 -->
+<AlertDialogPrimitive.Root bind:open {...rest} />

@@ -3,8 +3,8 @@
 
 	type Props = ContextMenuPrimitive.RadioGroupProps;
 
-	let { ...rest }: Props = $props();
+	let { value = $bindable(''), ...rest }: Props = $props();
 </script>
 
-<!-- Groupe radio : pas de style (passthrough) — §7 -->
-<ContextMenuPrimitive.RadioGroup {...rest} />
+<!-- Passthrough + props bindables (bind:value fonctionne) — §7 -->
+<ContextMenuPrimitive.RadioGroup bind:value={value as never} {...rest} />

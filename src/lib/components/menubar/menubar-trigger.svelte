@@ -11,7 +11,7 @@
 <MenubarPrimitive.Trigger
 	{...rest}
 	class={cn(
-		'flex cursor-default select-none items-center px-3 py-1.5 font-body text-sm font-medium text-foreground outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background data-[state=open]:bg-muted data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+		'flex cursor-default select-none items-center px-3 py-1.5 font-body text-sm font-medium text-foreground outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background data-[state=open]:bg-primary data-[state=open]:text-primary-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
 		className
 	)}
 />

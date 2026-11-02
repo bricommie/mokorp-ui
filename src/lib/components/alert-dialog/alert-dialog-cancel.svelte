@@ -1,10 +1,12 @@
 <script lang="ts">
 	import { AlertDialog as AlertDialogPrimitive } from 'bits-ui';
+	import { cn } from '../../cn.js';
+	import { buttonVariants, type ButtonVariant } from '../button.js';
 
-	type Props = AlertDialogPrimitive.CancelProps;
+	type Props = AlertDialogPrimitive.CancelProps & { variant?: ButtonVariant };
 
-	let { ...rest }: Props = $props();
+	let { class: className, variant = 'outline', ...rest }: Props = $props();
 </script>
 
-<!-- Annulation : pas de style (passthrough) — §7 -->
-<AlertDialogPrimitive.Cancel {...rest} />
+<!-- Annulation : rendue comme un Button outline — §7 -->
+<AlertDialogPrimitive.Cancel {...rest} class={cn(buttonVariants({ variant }), className)} />

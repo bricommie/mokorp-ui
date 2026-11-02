@@ -10,5 +10,5 @@
 <!-- Liste des commandes — §4 -->
 <CommandPrimitive.List
 	{...rest}
-	class={cn('max-h-full overflow-y-auto overflow-x-hidden', className)}
+	class={cn('max-h-72 overflow-y-auto overflow-x-hidden', className)}
 />

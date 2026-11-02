@@ -7,7 +7,4 @@
 	let { class: className, ...rest }: Props = $props();
 </script>
 
-<TabsPrimitive.Content
-	{...rest}
-	class={cn('py-2 font-body text-sm text-foreground', className)}
-/>
+<TabsPrimitive.Content {...rest} class={cn('py-2 font-body text-sm text-foreground', className)} />

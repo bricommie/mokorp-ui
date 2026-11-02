@@ -4,8 +4,12 @@
 
 	type Props = RadioGroupPrimitive.RootProps;
 
-	let { class: className, ...rest }: Props = $props();
+	let { class: className, value = $bindable(''), ...rest }: Props = $props();
 </script>
 
 <!-- Groupe : disposition grille — §7 -->
-<RadioGroupPrimitive.Root {...rest} class={cn('grid gap-2', className)} />
+<RadioGroupPrimitive.Root
+	bind:value={value as never}
+	{...rest}
+	class={cn('grid gap-2', className)}
+/>

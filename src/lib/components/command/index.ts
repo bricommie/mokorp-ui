@@ -11,4 +11,17 @@ import Viewport from './command-viewport.svelte';
 import Loading from './command-loading.svelte';
 import Separator from './command-separator.svelte';
 
-export { Root, Empty, Group, GroupHeading, GroupItems, Input, Item, LinkItem, List, Viewport, Loading, Separator };
+export {
+	Root,
+	Empty,
+	Group,
+	GroupHeading,
+	GroupItems,
+	Input,
+	Item,
+	LinkItem,
+	List,
+	Viewport,
+	Loading,
+	Separator
+};

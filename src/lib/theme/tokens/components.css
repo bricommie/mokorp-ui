@@ -3,6 +3,9 @@
  * Référence uniquement le sémantique (jamais de valeur brute).
  */
 
+/* `dark:` suit la classe `.dark` (et non `prefers-color-scheme`) — cohérent avec les thèmes. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @layer base {
 	*,
 	::before,
@@ -14,5 +17,66 @@
 		background-color: var(--background);
 		color: var(--foreground);
 		font-family: var(--font-body);
+		-webkit-font-smoothing: antialiased;
+	}
+
+	/* Titres : slot `display` (§6). */
+	h1,
+	h2,
+	h3,
+	h4 {
+		font-family: var(--font-display);
+		line-height: 0.95;
+	}
+
+	/* Sélection de texte : inversion primary, comme une sélection de terminal. */
+	::selection {
+		background-color: var(--primary);
+		color: var(--primary-foreground);
+	}
+}
+
+/*
+ * Animations de réponse à une action (ouverture / fermeture / chargement).
+ * Neutralisées par `motion-reduce:animate-none` côté composants.
+ */
+@keyframes mk-collapse-down {
+	from {
+		height: 0;
+	}
+	to {
+		height: var(--bits-accordion-content-height);
+	}
+}
+@keyframes mk-collapse-up {
+	from {
+		height: var(--bits-accordion-content-height);
+	}
+	to {
+		height: 0;
+	}
+}
+@keyframes mk-collapsible-down {
+	from {
+		height: 0;
+	}
+	to {
+		height: var(--bits-collapsible-content-height);
+	}
+}
+@keyframes mk-collapsible-up {
+	from {
+		height: var(--bits-collapsible-content-height);
+	}
+	to {
+		height: 0;
+	}
+}
+@keyframes mk-indeterminate {
+	0% {
+		transform: translateX(-100%);
+	}
+	100% {
+		transform: translateX(300%);
 	}
 }

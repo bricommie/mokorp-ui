@@ -1,3 +1,4 @@
+import Shortcut from './dropdown-menu-shortcut.svelte';
 import Root from './dropdown-menu.svelte';
 import Sub from './dropdown-menu-sub.svelte';
 import Item from './dropdown-menu-item.svelte';
@@ -33,6 +34,7 @@ export {
 	SubContentStatic,
 	SubTrigger,
 	CheckboxItem,
-	CheckboxGroup
+	CheckboxGroup,
+	Shortcut
 };
 export { Portal } from 'bits-ui';

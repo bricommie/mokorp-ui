@@ -4,14 +4,15 @@
 
 	type Props = LinkPreviewPrimitive.ContentProps;
 
-	let { class: className, ...rest }: Props = $props();
+	let { class: className, sideOffset = 8, ...rest }: Props = $props();
 </script>
 
 <!-- Surface flottante (structurel, coins nets) — §3 -->
 <LinkPreviewPrimitive.Content
 	{...rest}
+	{sideOffset}
 	class={cn(
-		'border-2 border-border bg-popover p-4 font-body text-sm text-popover-foreground shadow-lg',
+		'z-50 border-2 border-border bg-popover p-4 font-body text-sm text-popover-foreground shadow-lg',
 		className
 	)}
 />

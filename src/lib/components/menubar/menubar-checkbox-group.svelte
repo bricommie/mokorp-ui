@@ -3,8 +3,8 @@
 
 	type Props = MenubarPrimitive.CheckboxGroupProps;
 
-	let { ...rest }: Props = $props();
+	let { value = $bindable([]), ...rest }: Props = $props();
 </script>
 
-<!-- Groupe de cases à cocher : pas de style (passthrough) — §7 -->
-<MenubarPrimitive.CheckboxGroup {...rest} />
+<!-- Passthrough + props bindables (bind:value fonctionne) — §7 -->
+<MenubarPrimitive.CheckboxGroup bind:value={value as never} {...rest} />

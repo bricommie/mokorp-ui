@@ -10,5 +10,17 @@ import Viewport from './select-viewport.svelte';
 import ScrollUpButton from './select-scroll-up-button.svelte';
 import ScrollDownButton from './select-scroll-down-button.svelte';
 
-export { Root, Value, Content, ContentStatic, Item, Group, GroupHeading, Trigger, Viewport, ScrollUpButton, ScrollDownButton };
+export {
+	Root,
+	Value,
+	Content,
+	ContentStatic,
+	Item,
+	Group,
+	GroupHeading,
+	Trigger,
+	Viewport,
+	ScrollUpButton,
+	ScrollDownButton
+};
 export { Portal } from 'bits-ui';

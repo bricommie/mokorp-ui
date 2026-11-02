@@ -10,5 +10,5 @@
 <!-- Panneau de contenu (positionné dans le viewport) — §3 -->
 <NavigationMenuPrimitive.Content
 	{...rest}
-	class={cn('w-full p-4 font-body text-sm md:absolute md:w-auto', className)}
+	class={cn('w-full font-body text-sm md:absolute md:w-max', className)}
 />

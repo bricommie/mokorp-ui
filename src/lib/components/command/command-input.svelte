@@ -11,7 +11,7 @@
 <CommandPrimitive.Input
 	{...rest}
 	class={cn(
-		'flex h-10 w-full bg-transparent px-3 py-2 font-body text-sm text-foreground outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50',
+		'flex h-11 w-full border-b-2 border-border bg-transparent px-3 py-2 font-body text-sm text-foreground outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50',
 		className
 	)}
 />

@@ -8,4 +8,7 @@
 </script>
 
 <!-- Overlay de l'alert-dialog : fond translucide — §3 -->
-<AlertDialogPrimitive.Overlay {...rest} class={cn('fixed inset-0 z-50 bg-background/80', className)} />
+<AlertDialogPrimitive.Overlay
+	{...rest}
+	class={cn('fixed inset-0 z-50 bg-background/80', className)}
+/>

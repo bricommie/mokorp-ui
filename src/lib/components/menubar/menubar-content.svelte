@@ -4,12 +4,13 @@
 
 	type Props = MenubarPrimitive.ContentProps;
 
-	let { class: className, ...rest }: Props = $props();
+	let { class: className, sideOffset = 8, ...rest }: Props = $props();
 </script>
 
 <!-- Surface flottante (coins nets) — §3 -->
 <MenubarPrimitive.Content
 	{...rest}
+	{sideOffset}
 	class={cn(
 		'z-50 min-w-32 overflow-hidden border-2 border-border bg-popover p-1 text-popover-foreground shadow-lg',
 		className

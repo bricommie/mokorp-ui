@@ -10,5 +10,8 @@
 <!-- Fallback centré, police display — §6 -->
 <AvatarPrimitive.Fallback
 	{...rest}
-	class={cn('flex h-full w-full items-center justify-center rounded-full bg-muted font-display', className)}
+	class={cn(
+		'flex h-full w-full items-center justify-center rounded-full bg-muted font-display',
+		className
+	)}
 />

@@ -4,8 +4,12 @@
 
 	type Props = RatingGroupPrimitive.RootProps;
 
-	let { class: className, ...rest }: Props = $props();
+	let { class: className, value = $bindable(0), ...rest }: Props = $props();
 </script>
 
 <!-- Structurel (coins nets) — rangée d'étoiles — §4 -->
-<RatingGroupPrimitive.Root {...rest} class={cn('inline-flex items-center gap-1', className)} />
+<RatingGroupPrimitive.Root
+	bind:value={value as never}
+	{...rest}
+	class={cn('inline-flex items-center gap-1', className)}
+/>

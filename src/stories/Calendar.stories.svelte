@@ -20,9 +20,9 @@
 	<Calendar.Root type="single" {value}>
 		{#snippet children({ months, weekdays }: { months: Month<DateValue>[]; weekdays: string[] })}
 			<Calendar.Header>
-				<Calendar.PrevButton>←</Calendar.PrevButton>
+				<Calendar.PrevButton />
 				<Calendar.Heading />
-				<Calendar.NextButton>→</Calendar.NextButton>
+				<Calendar.NextButton />
 			</Calendar.Header>
 			{#each months as month}
 				<Calendar.Grid>
@@ -37,7 +37,7 @@
 						{#each month.weeks as weekDates}
 							<Calendar.GridRow>
 								{#each weekDates as date}
-									<Calendar.Cell date={date} month={month.value}>
+									<Calendar.Cell {date} month={month.value}>
 										<Calendar.Day />
 									</Calendar.Cell>
 								{/each}

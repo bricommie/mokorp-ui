@@ -43,24 +43,30 @@ import 'mokorp-ui/theme.css';
 </Accordion.Root>
 ```
 
-- **Composants mono-partie** : `Button`, `Card`, `Badge`, `Input`, `Label`,
-  `AspectRatio`, `Meter`, `Progress`, `Separator`, `Toggle`.
+- **Composants mono-partie** : `Button`, `Card` (+ `CardHeader`, `CardTitle`,
+  `CardDescription`, `CardContent`, `CardFooter`), `Badge`, `Input`, `Textarea`, `Label`,
+  `Alert`, `Kbd`, `Skeleton`, `ThemeToggle`, `AspectRatio`, `Meter`, `Progress`,
+  `Separator`, `Toggle`.
+- **Composants prêts à l'emploi** (compositions complètes, pour éviter ~40 lignes de
+  boilerplate) : `DateCalendar`, `DateRangeCalendar`, `DatePickerField`,
+  `DateRangePickerField`.
 - **Composants multi-parties** (namespaces `X.Root`, `X.Item`, `X.Trigger`…) :
   `Accordion`, `AlertDialog`, `Avatar`, `Calendar`, `Checkbox`, `Collapsible`,
   `Combobox`, `Command`, `ContextMenu`, `DateField`, `DatePicker`, `DateRangeField`,
   `DateRangePicker`, `Dialog`, `DropdownMenu`, `LinkPreview`, `Menubar`,
   `NavigationMenu`, `Pagination`, `PinInput`, `Popover`, `RadioGroup`,
   `RangeCalendar`, `RatingGroup`, `ScrollArea`, `Select`, `Slider`, `Switch`,
-  `Tabs`, `TimeField`, `TimeRangeField`, `ToggleGroup`, `Toolbar`, `Tooltip`.
+  `Table`, `Tabs`, `TimeField`, `TimeRangeField`, `ToggleGroup`, `Toolbar`, `Tooltip`.
 
-Variants CVA exportés : `buttonVariants`, `badgeVariants`, `toggleVariants`
-(+ leurs types).
+Variants CVA exportés : `buttonVariants`, `badgeVariants`, `toggleVariants`,
+`alertVariants` (+ leurs types). État du thème : `theme` (`current`, `set`, `toggle`) et
+le composant `ThemeToggle`. Icônes internes : `Icons`.
 
 ## Développement
 
 ```sh
 npm install          # installe les dépendances
-npm run dev          # showcase (src/routes)
+npm run dev          # landing + démonstration vivante des composants (src/routes)
 npm run storybook    # Storybook (port 6006)
 npm run check        # svelte-check
 npm run test:unit    # Vitest (dont le garde-fou « aucune couleur brute »)

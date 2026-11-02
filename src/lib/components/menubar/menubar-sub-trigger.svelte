@@ -1,17 +1,21 @@
 <script lang="ts">
 	import { Menubar as MenubarPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';
+	import ChevronRight from '../icons/chevron-right.svelte';
 
 	type Props = MenubarPrimitive.SubTriggerProps;
 
-	let { class: className, ...rest }: Props = $props();
+	let { class: className, children, ...rest }: Props = $props();
 </script>
 
-<!-- Déclencheur de sous-menu (coins nets) — §3 -->
+<!-- Déclencheur de sous-menu : chevron à droite — §3 -->
 <MenubarPrimitive.SubTrigger
 	{...rest}
 	class={cn(
-		'relative flex cursor-pointer select-none items-center gap-2 px-2 py-1.5 font-body text-sm text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background data-[highlighted]:bg-muted data-[state=open]:bg-muted data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&[data-state=open]>svg]:rotate-180',
+		'relative flex cursor-pointer select-none items-center gap-2 px-2 py-1.5 font-body text-sm text-foreground outline-none data-[highlighted]:bg-primary data-[highlighted]:text-primary-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[state=open]:bg-primary data-[state=open]:text-primary-foreground',
 		className
 	)}
-/>
+>
+	{@render children?.()}
+	<ChevronRight class="ml-auto size-4" />
+</MenubarPrimitive.SubTrigger>

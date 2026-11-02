@@ -3,8 +3,8 @@
 
 	type Props = ComboboxPrimitive.RootProps;
 
-	let { ...rest }: Props = $props();
+	let { value = $bindable(), open = $bindable(false), ...rest }: Props = $props();
 </script>
 
-<!-- Racine sémantique : pas de style (passthrough) — §7 -->
-<ComboboxPrimitive.Root {...rest} />
+<!-- Passthrough + props bindables (bind:value / bind:open fonctionnent) — §7 -->
+<ComboboxPrimitive.Root bind:value={value as never} bind:open {...rest} />

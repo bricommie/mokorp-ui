@@ -7,14 +7,22 @@
 		children?: Snippet;
 	};
 
-	let { class: className, children, ...rest }: Props = $props();
+	let {
+		class: className,
+		children,
+		checked = $bindable(false),
+		indeterminate = $bindable(false),
+		...rest
+	}: Props = $props();
 </script>
 
 <!-- Structurel (coins nets) + indicateur (coche/tiret) piloté par data-state — §3 / §4 -->
 <CheckboxPrimitive.Root
+	bind:checked
+	bind:indeterminate
 	{...rest}
 	class={cn(
-		'group flex size-4 shrink-0 items-center justify-center border-2 border-border bg-background text-primary-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 data-[state=checked]:bg-primary data-[state=indeterminate]:bg-primary',
+		'group flex size-5 shrink-0 items-center justify-center border-2 border-border bg-background text-primary-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 data-[state=checked]:bg-primary data-[state=indeterminate]:bg-primary',
 		className
 	)}
 >

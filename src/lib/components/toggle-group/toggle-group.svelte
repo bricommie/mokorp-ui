@@ -4,11 +4,12 @@
 
 	type Props = ToggleGroupPrimitive.RootProps;
 
-	let { class: className, ...rest }: Props = $props();
+	let { class: className, value = $bindable(), ...rest }: Props = $props();
 </script>
 
 <!-- Conteneur structurel (coins nets) — §5 -->
 <ToggleGroupPrimitive.Root
+	bind:value={value as never}
 	{...rest}
-	class={cn('inline-flex items-center gap-1', className)}
+	class={cn('inline-flex items-center', className)}
 />

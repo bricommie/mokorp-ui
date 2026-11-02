@@ -3,8 +3,12 @@
 
 	type Props = TimeFieldPrimitive.RootProps;
 
-	let { ...rest }: Props = $props();
+	let { value = $bindable(), placeholder = $bindable(), ...rest }: Props = $props();
 </script>
 
-<!-- Racine sémantique : pas de style (passthrough) — structurel -->
-<TimeFieldPrimitive.Root {...rest} />
+<!-- Passthrough + props bindables (bind:value fonctionne) — §7 -->
+<TimeFieldPrimitive.Root
+	bind:value={value as never}
+	bind:placeholder={placeholder as never}
+	{...rest}
+/>

@@ -1,3 +1,4 @@
+import Shortcut from './menubar-shortcut.svelte';
 import Root from './menubar.svelte';
 import Menu from './menubar-menu.svelte';
 import Content from './menubar-content.svelte';
@@ -35,6 +36,7 @@ export {
 	SubTrigger,
 	RadioGroup,
 	CheckboxItem,
-	CheckboxGroup
+	CheckboxGroup,
+	Shortcut
 };
 export { Portal } from 'bits-ui';
