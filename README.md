@@ -1,79 +1,76 @@
-# Svelte library
+# mokorp-ui
 
-Everything you need to build a Svelte library, powered by [`sv`](https://npmjs.com/package/sv).
+Bibliothèque de composants Svelte 5 pour le design system **« Acid Terminal »**
+(néo-brutalisme acide). Chaque composant est un wrapper stylé autour des primitives
+headless [`bits-ui`](https://www.bits-ui.com), selon la spec figée dans
+[`docs/design-system.md`](docs/design-system.md).
 
-Read more about creating a library [in the docs](https://svelte.dev/docs/kit/packaging).
+- **Stack** : SvelteKit 5 (runes) + Tailwind CSS v4 + Storybook.
+- **Thème** : tokens sémantiques (jamais de valeur brute), thème `acid` en
+  `:root` / `.dark`, structure prête pour `[data-theme="…"]`.
 
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```sh
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
-```
-
-To recreate this project with the same configuration:
+## Installation
 
 ```sh
-# recreate this project
-npx sv@1.1.1 create --template library --types ts --add storybook vitest="usages:component,unit" playwright="demo:no" prettier eslint --install npm mokorp-ui
+npm install mokorp-ui bits-ui @internationalized/date
 ```
 
-## Adding features
+> `bits-ui` et `@internationalized/date` sont des **peerDependencies** : à installer
+> par le consommateur.
 
-Add features to your project with `sv add`:
+Importez le thème une seule fois :
+
+```js
+import 'mokorp-ui/theme.css';
+```
+
+## Usage
+
+```svelte
+<script lang="ts">
+	import { Button, Accordion, Select } from 'mokorp-ui';
+</script>
+
+<Button variant="primary">Acid</Button>
+
+<Accordion.Root type="single">
+	<Accordion.Item value="a">
+		<Accordion.Header>
+			<Accordion.Trigger>Ouvrir</Accordion.Trigger>
+		</Accordion.Header>
+		<Accordion.Content>Contenu…</Accordion.Content>
+	</Accordion.Item>
+</Accordion.Root>
+```
+
+- **Composants mono-partie** : `Button`, `Card`, `Badge`, `Input`, `Label`,
+  `AspectRatio`, `Meter`, `Progress`, `Separator`, `Toggle`.
+- **Composants multi-parties** (namespaces `X.Root`, `X.Item`, `X.Trigger`…) :
+  `Accordion`, `AlertDialog`, `Avatar`, `Calendar`, `Checkbox`, `Collapsible`,
+  `Combobox`, `Command`, `ContextMenu`, `DateField`, `DatePicker`, `DateRangeField`,
+  `DateRangePicker`, `Dialog`, `DropdownMenu`, `LinkPreview`, `Menubar`,
+  `NavigationMenu`, `Pagination`, `PinInput`, `Popover`, `RadioGroup`,
+  `RangeCalendar`, `RatingGroup`, `ScrollArea`, `Select`, `Slider`, `Switch`,
+  `Tabs`, `TimeField`, `TimeRangeField`, `ToggleGroup`, `Toolbar`, `Tooltip`.
+
+Variants CVA exportés : `buttonVariants`, `badgeVariants`, `toggleVariants`
+(+ leurs types).
+
+## Développement
 
 ```sh
-npx sv add
+npm install          # installe les dépendances
+npm run dev          # showcase (src/routes)
+npm run storybook    # Storybook (port 6006)
+npm run check        # svelte-check
+npm run test:unit    # Vitest (dont le garde-fou « aucune couleur brute »)
+npm run build        # build + package (svelte-package) + publint
 ```
 
-For example, to add Tailwind CSS:
+## Conventions
 
-```sh
-npx sv add tailwindcss
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-Everything inside `src/lib` is part of your library, everything inside `src/routes` can be used as a showcase or preview app.
-
-## Building
-
-To build your library:
-
-```sh
-npm pack
-```
-
-To create a production version of your showcase app:
-
-```sh
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
-
-## Publishing
-
-Go into the `package.json` and give your package the desired name through the `"name"` option. Also consider adding a `"license"` field and point it to a `LICENSE` file which you can create from a template (one popular option is the [MIT license](https://opensource.org/license/mit/)).
-
-To publish your library to [npm](https://www.npmjs.com):
-
-```sh
-npm publish
-```
+Voir [`docs/component-guide.md`](docs/component-guide.md) (implémentation des
+wrappers) et [`docs/design-system.md`](docs/design-system.md) (tokens et règles
+d'or). Règles non négociables : jamais de couleur brute dans un composant
+(utiliser uniquement les tokens sémantiques), et un composant est soit structurel
+(coins nets) soit organique (`rounded-full`).
