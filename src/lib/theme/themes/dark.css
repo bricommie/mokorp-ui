@@ -1,0 +1,75 @@
+/*
+ * Thème « Acid Dark » — §4.
+ * Sélecteur `.dark`. Électrique, néon : glow lime `#a3ff1f`, fond violet
+ * profond `#300041`.
+ */
+
+.dark {
+	color-scheme: dark;
+
+	/* Surfaces */
+	--background: #300041;
+	--foreground: #adff42;
+
+	/* Cartes */
+	--card: #230033;
+	--card-foreground: #f1eeff;
+
+	/* Popover */
+	--popover: #230033;
+	--popover-foreground: #f1eeff;
+
+	/* Actions */
+	--primary: #a3ff1f;
+	--primary-foreground: #210033;
+
+	/* Secondaire */
+	--secondary: #fb7e00;
+	--secondary-foreground: #330f00;
+
+	/* Atténué */
+	--muted: #430458;
+	--muted-foreground: #91d347;
+
+	/* Accent */
+	--accent: #a3ff1f; /* = primary */
+	--accent-foreground: #210033;
+
+	/* Erreur */
+	--destructive: #ff1329;
+	--destructive-foreground: #f8f8f8;
+
+	/* Lignes — encre dosée à l'opacité (voir composants). */
+	--border: #f1eeff;
+	--input: #f1eeff;
+	--ring: #a3ff1f; /* primary */
+
+	/* Graphiques */
+	--chart-1: #c72cff;
+	--chart-2: #a3ff1f;
+	--chart-3: #ff8700;
+	--chart-4: #752f8f;
+	--chart-5: #ff2835;
+
+	/* Sidebar */
+	--sidebar: #11082b;
+	--sidebar-foreground: #f1f0f9;
+	--sidebar-primary: #a3ff1f;
+	--sidebar-border: #1c122e;
+	/*
+	 * `--sidebar-accent` / `--sidebar-ring` ne sont pas renseignés en §4 : valeurs
+	 * dérivées du thème (élévation légère / = sidebar-primary).
+	 */
+	--sidebar-accent: #1c122e;
+	--sidebar-ring: #a3ff1f;
+
+	/* Ombres — glow lime, réservé aux éléments élevés, couleur = primary. */
+	--shadow-color: #a3ff1f;
+	--shadow-2xs: 0 0 #0000; /* aucun */
+	--shadow-xs: 0 0 #0000; /* aucun */
+	--shadow-sm: 0 0 12px -3px #a3ff1f;
+	--shadow-md: 0 0 16px -4px #a3ff1f;
+	--shadow-lg: 0 0 24px -4px #a3ff1f;
+	--shadow-xl: 0 0 32px -6px #a3ff1f;
+	--shadow-2xl: 0 0 48px -8px #a3ff1f;
+}

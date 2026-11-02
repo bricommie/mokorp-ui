@@ -1,0 +1,75 @@
+/*
+ * Thème « Acid Light » — §4.
+ * Sélecteur par défaut `:root`. Sec, imprimé : offset dur, coins nets, encre
+ * violet-noir `#240033`.
+ */
+
+:root {
+	color-scheme: light;
+
+	/* Surfaces */
+	--background: #aeff4f;
+	--foreground: #240033;
+
+	/* Cartes */
+	--card: #ccff9a;
+	--card-foreground: #240033;
+
+	/* Popover */
+	--popover: #ccff9a;
+	--popover-foreground: #240033;
+
+	/* Actions */
+	--primary: #690087;
+	--primary-foreground: #f8f8f8;
+
+	/* Secondaire */
+	--secondary: #f07a00;
+	--secondary-foreground: #330f00;
+
+	/* Atténué */
+	--muted: #a2d372;
+	--muted-foreground: #4f0b68;
+
+	/* Accent */
+	--accent: #690087; /* = primary */
+	--accent-foreground: #f8f8f8;
+
+	/* Erreur */
+	--destructive: #dd001d;
+	--destructive-foreground: #f8f8f8;
+
+	/* Lignes */
+	--border: #240033; /* encre */
+	--input: #240033; /* encre */
+	--ring: #690087; /* primary */
+
+	/* Graphiques */
+	--chart-1: #7e00a7;
+	--chart-2: #9ef927;
+	--chart-3: #f38300;
+	--chart-4: #38004c;
+	--chart-5: #ff0013;
+
+	/* Sidebar (toujours sombre) */
+	--sidebar: #150a29;
+	--sidebar-foreground: #eeebf7;
+	--sidebar-primary: #9ef927;
+	--sidebar-border: #2c1e43;
+	/*
+	 * `--sidebar-accent` / `--sidebar-ring` ne sont pas renseignés en §4 : valeurs
+	 * dérivées du thème (élévation légère / = sidebar-primary).
+	 */
+	--sidebar-accent: #2c1e43;
+	--sidebar-ring: #9ef927;
+
+	/* Ombres — offset dur, élévation = décalage, zéro flou, couleur = encre. */
+	--shadow-color: #240033;
+	--shadow-2xs: 1px 1px 0 #240033;
+	--shadow-xs: 2px 2px 0 #240033;
+	--shadow-sm: 3px 3px 0 #240033;
+	--shadow-md: 4px 4px 0 #240033;
+	--shadow-lg: 6px 6px 0 #240033;
+	--shadow-xl: 8px 8px 0 #240033;
+	--shadow-2xl: 12px 12px 0 #240033;
+}

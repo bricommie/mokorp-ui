@@ -1,0 +1,18 @@
+/*
+ * Base des composants — §7.
+ * Référence uniquement le sémantique (jamais de valeur brute).
+ */
+
+@layer base {
+	*,
+	::before,
+	::after {
+		border-color: var(--border);
+	}
+
+	body {
+		background-color: var(--background);
+		color: var(--foreground);
+		font-family: var(--font-body);
+	}
+}

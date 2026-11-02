@@ -1,3 +1,25 @@
+/*
+ * Entrée du thème — « Acid Terminal ».
+ *
+ * À importer une seule fois (Showcase via `app.css`, Storybook via `preview.ts`,
+ * ou par un consommateur via `@import 'mokorp-ui/theme.css'`).
+ *
+ * Ordre important : `tailwindcss` d'abord, puis les fonts, puis les tokens
+ * (sémantique + base), puis les thèmes (valeurs concrètes).
+ */
+
+@import 'tailwindcss';
+
+/* Fonts — §6 (Georgia = système, non embarquée). */
+@import '@fontsource/chakra-petch/400.css';
+@import '@fontsource/chakra-petch/600.css';
+@import '@fontsource/chakra-petch/700.css';
+@import '@fontsource/ibm-plex-mono/400.css';
+@import '@fontsource/ibm-plex-mono/500.css';
+@import '@fontsource/ibm-plex-mono/600.css';
+@import '@fontsource/ibm-plex-mono/700.css';
+
+/* Tokens (transverses, sémantique, base) puis thèmes. */
 @import './tokens/global.css';
 @import './tokens/semantic.css';
 @import './tokens/components.css';
