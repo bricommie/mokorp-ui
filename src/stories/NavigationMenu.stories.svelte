@@ -4,8 +4,46 @@
 	import { Root } from '#lib/components/navigation-menu/index.js';
 
 	const { Story } = defineMeta({
-		title: 'Components/NavigationMenu',
-		component: Root
+		title: 'Composants/Navigation/NavigationMenu',
+		component: Root,
+		parameters: {
+			docs: {
+				description: {
+					component:
+						'Menu de navigation de site avec **panneaux déroulants** (méga-menu). Pour une simple liste de liens, préférez `Navbar`.\n\n**Anatomie** : `NavigationMenu.Root` › `List` › `Item` › `Trigger` + `Content` (ou `Link`) ; `Indicator` · `Viewport`.\n\n**Accessibilité** : landmark `<nav>`, flèches entre les entrées, Échap ferme le panneau.'
+				}
+			}
+		},
+		argTypes: {
+			value: {
+				control: 'text',
+				description: 'Entrée ouverte. Utilisable avec `bind:value`.',
+				table: {
+					category: 'Props'
+				}
+			},
+			orientation: {
+				control: 'inline-radio',
+				options: ['horizontal', 'vertical'],
+				description: 'Orientation : détermine aussi les flèches du clavier (←/→ ou ↑/↓).',
+				table: {
+					defaultValue: {
+						summary: 'horizontal'
+					},
+					category: 'Props'
+				}
+			},
+			delayDuration: {
+				control: 'number',
+				description: "Délai d'ouverture au survol, en ms.",
+				table: {
+					defaultValue: {
+						summary: '200'
+					},
+					category: 'Props'
+				}
+			}
+		}
 	});
 </script>
 

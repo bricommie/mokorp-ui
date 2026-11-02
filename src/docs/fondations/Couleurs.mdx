@@ -1,0 +1,171 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { ColorTokens } from '../../../.storybook/blocks';
+
+<Meta title="Fondations/Couleurs" />
+
+# Couleurs
+
+Les composants consomment **uniquement** ces tokens sémantiques, via les utilitaires
+Tailwind (`bg-primary`, `text-muted-foreground`, `border-input`, `ring-ring`…).
+Les nuanciers et les contrastes ci-dessous sont **lus en direct** dans le thème : si
+une valeur change dans `src/lib/theme/themes/*.css`, cette page suit.
+
+Les ratios sont calculés selon WCAG 2.x. Seuils : **4,5:1** pour du texte, **3:1**
+pour une bordure de contrôle, un indicateur ou un anneau de focus (WCAG 1.4.11).
+
+> **Couples** : chaque fond a son texte associé, suffixé `-foreground`. On utilise
+> toujours le couple ensemble : `bg-secondary text-secondary-foreground`, jamais
+> `bg-secondary text-foreground`.
+
+## Surfaces
+
+<ColorTokens
+	tokens={[
+		{ name: 'background', usage: 'Fond de la page', against: 'foreground' },
+		{ name: 'foreground', usage: 'Texte principal', against: 'background' },
+		{ name: 'card', usage: 'Fond des cartes posées', against: 'card-foreground' },
+		{
+			name: 'popover',
+			usage: 'Fond des surfaces flottantes (menus, popovers, dialogues)',
+			against: 'popover-foreground'
+		},
+		{
+			name: 'muted',
+			usage: 'Fond atténué : pistes, survol discret, zones secondaires',
+			against: 'muted-foreground'
+		},
+		{
+			name: 'muted-foreground',
+			usage: 'Texte secondaire : descriptions, placeholders, aides',
+			against: 'background'
+		}
+	]}
+/>
+
+## Actions
+
+<ColorTokens
+	tokens={[
+		{
+			name: 'primary',
+			usage: (
+				<>
+					L'action principale, l'élément survolé d'un menu. <strong>Réservé à ce qui agit.</strong>
+				</>
+			),
+			against: 'primary-foreground'
+		},
+		{
+			name: 'primary-border',
+			usage:
+				'Bordure du lime : encre en clair (le lime fait 1,07:1 sur le fond), transparente en sombre',
+			against: 'background',
+			min: 3
+		},
+		{
+			name: 'primary-hover',
+			usage: (
+				<>
+					Survol de <code>primary</code>, dérivé par <code>color-mix()</code>
+				</>
+			),
+			against: 'primary-foreground'
+		},
+		{ name: 'secondary', usage: 'Action secondaire pleine', against: 'secondary-foreground' },
+		{
+			name: 'secondary-hover',
+			usage: 'Survol de secondary (dérivé)',
+			against: 'secondary-foreground'
+		},
+		{
+			name: 'accent',
+			usage: (
+				<>
+					Élément actif d'une liste (= <code>primary</code> dans Signal)
+				</>
+			),
+			against: 'accent-foreground'
+		},
+		{ name: 'link', usage: 'Liens dans le texte', against: 'background' }
+	]}
+/>
+
+## États
+
+<ColorTokens
+	tokens={[
+		{
+			name: 'destructive',
+			usage: 'Action irréversible, erreur de saisie',
+			against: 'destructive-foreground'
+		},
+		{ name: 'success', usage: 'Réussite, statut positif', against: 'success-foreground' },
+		{ name: 'warning', usage: 'Avertissement, statut à surveiller', against: 'warning-foreground' }
+	]}
+/>
+
+Un état ne repose jamais sur la couleur seule : une `Alert` destructive a une icône
+et un titre, un `Input` en erreur porte `aria-invalid` et un message.
+
+## Lignes et indicateurs
+
+<ColorTokens
+	tokens={[
+		{
+			name: 'border',
+			usage: 'Bordure des contrôles (≥ 3:1 obligatoire)',
+			against: 'background',
+			min: 3
+		},
+		{ name: 'input', usage: 'Bordure des champs de saisie', against: 'background', min: 3 },
+		{
+			name: 'border-subtle',
+			usage: 'Séparation de surfaces : décorative, pas d’exigence de contraste'
+		},
+		{ name: 'ring', usage: 'Anneau de focus clavier', against: 'background', min: 3 },
+		{
+			name: 'indicator',
+			usage: 'Remplissage des jauges, barres de progression, curseurs',
+			against: 'muted',
+			min: 3
+		}
+	]}
+/>
+
+## Graphiques
+
+<ColorTokens
+	tokens={[
+		{ name: 'chart-1', usage: 'Série 1', against: 'card', min: 3 },
+		{ name: 'chart-2', usage: 'Série 2', against: 'card', min: 3 },
+		{ name: 'chart-3', usage: 'Série 3', against: 'card', min: 3 },
+		{ name: 'chart-4', usage: 'Série 4', against: 'card', min: 3 },
+		{ name: 'chart-5', usage: 'Série 5', against: 'card', min: 3 }
+	]}
+/>
+
+## Barre latérale
+
+La sidebar reste sombre dans les deux faces.
+
+<ColorTokens
+	tokens={[
+		{ name: 'sidebar', usage: 'Fond de la barre latérale', against: 'sidebar-foreground' },
+		{ name: 'sidebar-primary', usage: 'Élément actif', against: 'sidebar' },
+		{ name: 'sidebar-accent', usage: 'Survol d’un élément', against: 'sidebar-foreground' },
+		{ name: 'sidebar-border', usage: 'Séparateurs' },
+		{ name: 'sidebar-ring', usage: 'Focus clavier', against: 'sidebar', min: 3 }
+	]}
+/>
+
+## Où vivent les valeurs
+
+| Fichier                     | Contenu                                                                     |
+| --------------------------- | --------------------------------------------------------------------------- |
+| `theme/themes/light.css`    | Valeurs de la face claire (`:root`, `.light`)                               |
+| `theme/themes/dark.css`     | Valeurs de la face sombre (`.dark`)                                         |
+| `theme/tokens/states.css`   | États dérivés (`*-hover`) par `color-mix()`                                 |
+| `theme/tokens/semantic.css` | Exposition à Tailwind (`@theme inline`) : `--color-primary: var(--primary)` |
+
+Pour ajouter un token : le déclarer dans **les deux** faces, l'exposer dans
+`semantic.css`, le documenter ici. Un token qui n'existe que dans une face est un bug.

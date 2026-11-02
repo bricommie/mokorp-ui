@@ -4,8 +4,16 @@
 	import { Root } from '#lib/components/table/index.js';
 
 	const { Story } = defineMeta({
-		title: 'Components/Table',
-		component: Root
+		title: 'Composants/Données et retours/Table',
+		component: Root,
+		parameters: {
+			docs: {
+				description: {
+					component:
+						'Tableau de **données** (pas de mise en page). Parties stylées, structure HTML native.\n\n**Anatomie** : `Table.Root` › `Table.Caption` · `Table.Header` › `Table.Row` › `Table.Head` ; `Table.Body` › `Table.Row` › `Table.Cell` ; `Table.Footer`.\n\n**Accessibilité** : un `Caption` décrit le tableau ; les nombres s\'alignent à droite (`class="text-right"`).'
+				}
+			}
+		}
 	});
 </script>
 

@@ -4,8 +4,29 @@
 	import { Root } from '#lib/components/toolbar/index.js';
 
 	const { Story } = defineMeta({
-		title: 'Components/Toolbar',
+		title: 'Composants/Actions/Toolbar',
 		component: Root,
+		parameters: {
+			docs: {
+				description: {
+					component:
+						"Barre d'outils regroupant des boutons, liens et groupes de bascules liés à un même contenu (éditeur, tableau).\n\n**Anatomie** : `Toolbar.Root` › `Toolbar.Button` · `Toolbar.Link` · `Toolbar.Group` › `Toolbar.GroupItem`.\n\n**Accessibilité** : un seul arrêt de tabulation pour toute la barre, flèches pour se déplacer. Donnez un `aria-label` au Root (« Mise en forme »)."
+				}
+			}
+		},
+		argTypes: {
+			orientation: {
+				control: 'inline-radio',
+				options: ['horizontal', 'vertical'],
+				description: 'Orientation : détermine aussi les flèches du clavier (←/→ ou ↑/↓).',
+				table: {
+					defaultValue: {
+						summary: 'horizontal'
+					},
+					category: 'Props'
+				}
+			}
+		},
 		args: {}
 	});
 </script>

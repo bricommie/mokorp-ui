@@ -2,7 +2,9 @@
 	import { defineMeta } from '@storybook/addon-svelte-csf';
 
 	const { Story } = defineMeta({
-		title: 'Foundations/Motion',
+		title: 'Fondations/Mouvement',
+		// La page Docs est écrite à la main (`src/docs/fondations/Mouvement.mdx`).
+		tags: ['!autodocs'],
 		parameters: { layout: 'padded' }
 	});
 

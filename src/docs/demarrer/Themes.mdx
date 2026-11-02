@@ -1,0 +1,112 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { FacePair } from '../../../.storybook/blocks';
+
+<Meta title="Démarrer/Thèmes et faces" />
+
+# Thèmes et faces
+
+Le vocabulaire d'abord, parce qu'il évite les malentendus :
+
+- un **thème** est un ensemble nommé de valeurs (aujourd'hui : **Signal**) ;
+- une **face** est la variante claire ou sombre d'un thème.
+
+Les deux faces de Signal partagent **les mêmes rôles et le même comportement** :
+seules les valeurs changent. Un bouton se comporte pareil en clair et en sombre.
+
+<FacePair
+	render={(face) => (
+		<div style={{ display: 'grid', gap: 10, fontSize: 14 }}>
+			<div
+				style={{
+					background: 'var(--card)',
+					color: 'var(--card-foreground)',
+					border: 'var(--border-width) solid var(--border-subtle)',
+					borderRadius: 'var(--radius-surface)',
+					padding: 16
+				}}
+			>
+				<strong>Carte</strong>
+				<div style={{ color: 'var(--muted-foreground)' }}>
+					{face === 'light'
+						? 'Lime bordé d’encre : il se fondrait dans le fond clair.'
+						: 'Lime seul : il ressort sur le fond profond.'}
+				</div>
+				<div style={{ marginTop: 12 }}>
+					<span
+						style={{
+							display: 'inline-block',
+							background: 'var(--primary)',
+							color: 'var(--primary-foreground)',
+							border: 'var(--border-width) solid var(--primary-border)',
+							borderRadius: 'var(--radius-control)',
+							padding: '8px 16px',
+							fontWeight: 600
+						}}
+					>
+						Continuer
+					</span>
+				</div>
+			</div>
+		</div>
+	)}
+/>
+
+## Basculer de face
+
+La source de vérité est la classe `.dark` sur `<html>`.
+
+```svelte
+<script lang="ts">
+	import { ThemeToggle, theme } from 'mokorp-ui';
+</script>
+
+<!-- Bouton prêt à l'emploi : icône, nom accessible, persistance -->
+<ThemeToggle />
+
+<!-- Ou piloter soi-même -->
+<button onclick={() => theme.toggle()}>Face : {theme.current}</button>
+```
+
+`theme.current` est réactif (rune `$state`) : utilisable dans un template ou un `$derived`.
+
+## Forcer une face dans une zone
+
+`.light` et `.dark` sont **imbriquables** : posez-les sur n'importe quel conteneur.
+Les tokens y sont recalculés, y compris les états dérivés (`--primary-hover`).
+
+```svelte
+<!-- Un encart sombre dans une page claire -->
+<section class="dark rounded-surface bg-background p-6 text-foreground">
+	<Button>Toujours lisible</Button>
+</section>
+```
+
+## Dans Storybook
+
+Le bouton **Face** de la barre d'outils pose ou retire `.dark` sur `<html>` de la
+story, exactement comme l'app. Vérifiez **chaque** composant dans les deux faces :
+c'est en sombre qu'on découvre une bordure qui disparaît ou un texte à 2:1.
+
+## Ajouter un thème
+
+Un nouveau thème = un sélecteur qui redéfinit **les mêmes noms** :
+
+```css
+[data-theme='ocean'] {
+	--primary: #1f6feb;
+	--primary-foreground: #ffffff;
+	--primary-border: transparent;
+	/* … tous les tokens de couleur du contrat sémantique */
+}
+[data-theme='ocean'].dark,
+[data-theme='ocean'] .dark {
+	/* face sombre */
+}
+```
+
+Les tokens non-couleur (rayons, durées, typographie) peuvent aussi être redéfinis
+par thème : `[data-theme='brut'] { --radius-surface: 0; }`.
+
+Checklist avant de livrer un thème : tous les couples texte/fond à 4,5:1, toutes
+les bordures de contrôle et le focus à 3:1, **dans les deux faces**. La page
+[Couleurs](?path=/docs/fondations-couleurs--docs) calcule ces ratios en direct.

@@ -4,8 +4,65 @@
 	import { Root } from '#lib/components/time-range-field/index.js';
 
 	const { Story } = defineMeta({
-		title: 'Components/TimeRangeField',
-		component: Root
+		title: 'Composants/Dates et heures/TimeRangeField',
+		component: Root,
+		parameters: {
+			docs: {
+				description: {
+					component:
+						'Saisie d\'une **plage horaire** (début / fin) au clavier : horaires d\'ouverture, créneaux.\n\n**Anatomie** : `TimeRangeField.Root` › `Label` · `Input type="start"` / `Input type="end"` › `Segment`.'
+				}
+			}
+		},
+		argTypes: {
+			value: {
+				description: 'Plage saisie `{ start, end }`. Utilisable avec `bind:value`.',
+				table: {
+					type: {
+						summary: '{ start: TimeValue; end: TimeValue }'
+					},
+					category: 'Props'
+				}
+			},
+			locale: {
+				control: 'text',
+				description: 'Locale BCP 47 utilisée pour les libellés et le format des dates.',
+				table: {
+					defaultValue: {
+						summary: "'fr-FR'"
+					},
+					category: 'Props'
+				}
+			},
+			hourCycle: {
+				control: 'inline-radio',
+				options: [12, 24],
+				description: 'Format horaire : 12 h (AM/PM) ou 24 h. Par défaut, celui de la locale.',
+				table: {
+					category: 'Props'
+				}
+			},
+			readonly: {
+				control: 'boolean',
+				description: 'Lecture seule : la valeur est visible et focusable mais ne peut pas changer.',
+				table: {
+					defaultValue: {
+						summary: 'false'
+					},
+					category: 'Props'
+				}
+			},
+			disabled: {
+				control: 'boolean',
+				description: 'Désactive le composant : ni focus, ni interaction.',
+				table: {
+					defaultValue: {
+						summary: 'false'
+					},
+					category: 'Props'
+				}
+			}
+		}
 	});
 </script>
 

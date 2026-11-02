@@ -1,0 +1,27 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { ShadowScale } from '../../../.storybook/blocks';
+
+<Meta title="Fondations/Élévation" />
+
+# Élévation
+
+Signal est un thème **à plat**. Les surfaces posées (cartes, alertes) n'ont pas
+d'ombre : elles se distinguent par leur fond (`card` sur `background`) et une bordure
+`border-subtle`. Seules les **couches flottantes** gardent une ombre douce, pour se
+détacher du contenu qu'elles recouvrent.
+
+<ShadowScale />
+
+| Niveau                     | Valeur           | Utilisé par                                 |
+| -------------------------- | ---------------- | ------------------------------------------- |
+| `shadow-2xs` … `shadow-md` | `none`           | Cartes, alertes, champs : à plat            |
+| `shadow-lg`                | Ombre douce      | Menus, popovers, select, combobox, tooltips |
+| `shadow-xl`, `shadow-2xl`  | Ombre plus large | Dialogues, AlertDialog                      |
+
+En face sombre, l'ombre est renforcée (une ombre noire se voit peu sur un fond profond).
+
+## Superposition (`z-index`)
+
+Les surfaces flottantes sont rendues dans un **`Portal`** (à la fin du `<body>`) avec
+`z-50`. Elles ne sont donc jamais coupées par un `overflow: hidden` parent. Si vous
+voyez un menu coupé, vérifiez que la partie `Portal` est bien présente.

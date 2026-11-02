@@ -1,0 +1,110 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { CardGrid, LinkCard, FacePair } from '../../.storybook/blocks';
+
+<Meta title="Introduction" />
+
+# mokorp-ui · design system « Signal »
+
+**mokorp-ui** est la bibliothèque de composants Svelte 5 du design system **Signal** :
+un minimalisme brut, des neutres teintés de violet, une encre presque noire et
+**une seule couleur d'action, le lime**. La couleur se mérite : elle signale ce qui
+est cliquable ou ce qui demande l'attention.
+
+<FacePair
+	render={() => (
+		<div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
+			<span
+				style={{
+					background: 'var(--primary)',
+					color: 'var(--primary-foreground)',
+					border: 'var(--border-width) solid var(--primary-border)',
+					borderRadius: 'var(--radius-control)',
+					padding: '10px 20px',
+					fontWeight: 600,
+					fontSize: 14
+				}}
+			>
+				Action principale
+			</span>
+			<span style={{ color: 'var(--muted-foreground)', fontSize: 14 }}>Texte atténué</span>
+			<span style={{ color: 'var(--link)', textDecoration: 'underline', fontSize: 14 }}>Lien</span>
+		</div>
+	)}
+/>
+
+Chaque composant est un **wrapper stylé** autour d'une primitive headless de
+[Bits UI](https://www.bits-ui.com) : Bits UI apporte le comportement et
+l'accessibilité (clavier, focus, rôles ARIA), mokorp-ui apporte l'apparence, via
+des **design tokens** uniquement.
+
+## Ce que vous trouverez ici
+
+<CardGrid>
+	<LinkCard path="/docs/démarrer-installation--docs" title="Installation">
+		Ajouter la bibliothèque et le thème à une app SvelteKit + Tailwind v4.
+	</LinkCard>
+	<LinkCard path="/docs/démarrer-utilisation--docs" title="Utilisation">
+		Composants simples, composants multi-parties, snippets, `bind:`.
+	</LinkCard>
+	<LinkCard path="/docs/fondations-principes--docs" title="Principes">
+		Les règles d'or : tokens d'abord, sémantique stable, un rôle de rayon.
+	</LinkCard>
+	<LinkCard path="/docs/fondations-couleurs--docs" title="Couleurs">
+		Le contrat sémantique, avec les contrastes mesurés en direct.
+	</LinkCard>
+	<LinkCard path="/docs/guides-accessibilité--docs" title="Accessibilité">
+		Ce que garantit la bibliothèque, et ce qui reste à votre charge.
+	</LinkCard>
+	<LinkCard path="/docs/guides-écrire-une-story--docs" title="Écrire une story">
+		Conventions Storybook : args, argTypes, descriptions, play functions.
+	</LinkCard>
+</CardGrid>
+
+## Comment lire ce Storybook
+
+La barre latérale suit l'ordre dans lequel on apprend un design system :
+
+1. **Démarrer** : installer, utiliser, comprendre les deux faces du thème.
+2. **Fondations** : les tokens (couleurs, typographie, espacements, rayons,
+   élévation, mouvement). Ce sont les briques que les composants consomment.
+3. **Guides** : accessibilité, écrire une story, créer un nouveau composant.
+4. **Composants** : rangés par famille (Actions, Formulaires, Dates et heures,
+   Superpositions, Navigation, Données et retours, Mise en page). Chaque composant
+   a une page **Docs** générée : description, table des props, toutes ses stories
+   avec leur code.
+
+### Les outils de la barre du haut
+
+| Outil                              | À quoi il sert                                                                                                                                    |
+| ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Face** (soleil / lune)           | Bascule la story entre la face claire et la face sombre. Tout composant doit être vérifié dans les deux.                                          |
+| **Mouvement** (Complet / Réduit)   | Simule `prefers-reduced-motion: reduce` sans toucher au réglage de votre système. Les animations doivent disparaître, pas les changements d'état. |
+| **Controls** (panneau du bas)      | Modifie les `args` d'une story en direct : variantes, tailles, états.                                                                             |
+| **Accessibility** (panneau du bas) | Résultats axe-core pour la story affichée : contrastes, rôles, noms accessibles.                                                                  |
+
+> **Astuce** : les pages Docs (comme celle-ci) ne suivent pas le sélecteur de face,
+> seules les stories le font. C'est pourquoi les pages Fondations affichent toujours
+> les deux faces côte à côte.
+
+## Architecture en une image
+
+```
+[THÈME]        valeurs concrètes         themes/light.css (:root, .light), themes/dark.css (.dark)
+    │
+    ▼
+[SÉMANTIQUE]   le contrat stable         --primary, --border, --radius-field, --duration-fast…
+    │
+    ▼
+[COMPOSANT]    utilitaires Tailwind      bg-primary, border-input, rounded-field, duration-fast
+```
+
+Ajouter un thème, c'est écrire **un bloc CSS** qui redéfinit les tokens sémantiques.
+Aucun composant ne change.
+
+## Stack
+
+- **Svelte 5** (runes `$props`, `$state`, `$bindable`, snippets) et SvelteKit
+- **Bits UI 2** pour les primitives headless
+- **Tailwind CSS v4** (configuration en CSS, `@theme inline`)
+- **class-variance-authority** + `tailwind-merge` pour les variantes (`cn()`)
+- **Storybook 10** + `@storybook/addon-svelte-csf` pour les stories

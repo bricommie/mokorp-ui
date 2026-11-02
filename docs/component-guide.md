@@ -201,6 +201,8 @@ Bordure : toujours `border-(length:--border-width)`, jamais `border-2`.
 
 ## 6. Stories (obligatoire, au moins une « Default »)
 
+Guide complet dans Storybook : **Guides › Écrire une story**. L'essentiel :
+
 ```svelte
 <script module lang="ts">
 	import { defineMeta } from '@storybook/addon-svelte-csf';
@@ -208,30 +210,37 @@ Bordure : toujours `border-(length:--border-width)`, jamais `border-2`.
 	// ou import Comp from '#lib/components/<PascalCase>.svelte'; // mono-partie
 
 	const { Story } = defineMeta({
-		title: 'Components/<PascalCase>',
-		component: Comp.Root // multi-parties (la partie Root)
-		// component: Comp      // mono-partie
+		// Famille : Actions, Formulaires, Dates et heures, Superpositions,
+		// Navigation, Données et retours, Mise en page.
+		title: 'Composants/<Famille>/<PascalCase>',
+		component: Comp.Root, // multi-parties (la partie Root) ; mono-partie : Comp
+		parameters: {
+			docs: {
+				description: {
+					// 1. quand l'utiliser, 2. anatomie, 3. accessibilité
+					component: '…'
+				}
+			}
+		},
+		argTypes: {
+			variant: {
+				control: 'select',
+				options: ['…'],
+				description: 'En français : ce que change la prop.',
+				// La catégorie est OBLIGATOIRE : sans elle, un attribut natif
+				// (disabled, type, aria-*…) est masqué de la table (voir preview.ts).
+				table: { category: 'Props', defaultValue: { summary: "'…'" } }
+			}
+		}
 	});
 </script>
 ```
 
-- Mono-partie : `<Story name="Default" args={...}>Contenu</Story>` (comme les
-  stories existantes Button/Input).
-- Multi-parties : `component: Comp.Root`, puis le contenu (les `<Comp.Item>`…) est
-  passé en enfants du `<Story>` :
-
-```svelte
-<Story name="Default" args={ type: 'single' }>
-	<Comp.Item value="a">
-		<Comp.Trigger>…</Comp.Trigger>
-		<Comp.Content>…</Comp.Content>
-	</Comp.Item>
-</Story>
-```
-
-Pour les composants à état externe (Dialog, Popover, Select, Combobox, Dates…), la
-story peut fournir un `open`/`value` par défaut, mais doit rester **minimale** et
-correcte TypeScript. Ne pas inventer de props inexistantes : vérifier `exports.d.ts`.
+- La page Docs est générée pour toutes les stories (`tags: ['autodocs']` global).
+- Mono-partie : `<Story name="Default" args={...}>Contenu</Story>`.
+- Multi-parties : le contenu (`<Comp.Item>`…) est passé en enfants du `<Story>`.
+- Composants à état : une story `asChild` avec un `$state` local pour la démo
+  interactive, en plus d'une story pilotée par les args.
 
 ## 7. Vérification locale (après avoir écrit tes fichiers)
 

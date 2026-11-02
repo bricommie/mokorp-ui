@@ -4,8 +4,30 @@
 	import { Root } from '#lib/components/scroll-area/index.js';
 
 	const { Story } = defineMeta({
-		title: 'Components/ScrollArea',
+		title: 'Composants/Mise en page/ScrollArea',
 		component: Root,
+		parameters: {
+			docs: {
+				description: {
+					component:
+						'Zone défilante avec des barres de défilement **stylées** et cohérentes entre navigateurs.\n\n**Anatomie** : `ScrollArea.Root` › `ScrollArea.Viewport` (le contenu) · `ScrollArea.Scrollbar` › `ScrollArea.Thumb` · `ScrollArea.Corner`.\n\n**Accessibilité** : la zone doit être focusable au clavier si elle contient du texte (`tabindex="0"` sur le viewport).'
+				}
+			}
+		},
+		argTypes: {
+			type: {
+				control: 'select',
+				options: ['hover', 'scroll', 'auto', 'always'],
+				description:
+					'Visibilité des barres : `hover` (au survol), `scroll` (pendant le défilement), `auto`, `always`.',
+				table: {
+					defaultValue: {
+						summary: "'hover'"
+					},
+					category: 'Props'
+				}
+			}
+		},
 		args: {
 			type: 'scroll'
 		}

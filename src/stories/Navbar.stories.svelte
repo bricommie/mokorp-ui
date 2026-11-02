@@ -12,12 +12,84 @@
 	];
 
 	const { Story } = defineMeta({
-		title: 'Components/Navbar',
+		title: 'Composants/Navigation/Navbar',
 		component: Navbar,
-		args: { items, current: '#composants', label: 'Navigation principale' },
+		parameters: {
+			docs: {
+				description: {
+					component:
+						'Barre de navigation principale du site : liens, zone de marque, actions. Le lien actif et le survol sont suivis par deux « pilules » animées par ressort ; en mobile, un bouton ouvre un panneau.\n\n**Accessibilité** : landmark `<nav>` nommé par `label`, `aria-current="page"` sur le lien actif, bouton menu avec `aria-expanded`. Toutes les animations s\'éteignent en mouvement réduit.'
+				}
+			}
+		},
 		argTypes: {
-			current: { control: 'select', options: items.map((i) => i.href) }
-		}
+			items: {
+				control: 'object',
+				description: 'Liens de navigation `{ label, href }`.',
+				table: {
+					type: {
+						summary: 'NavbarItem[]'
+					},
+					category: 'Props'
+				}
+			},
+			current: {
+				control: 'select',
+				options: items.map((i) => i.href),
+				description: '`href` de la page courante. Dans SvelteKit : `current={page.url.pathname}`.',
+				table: {
+					category: 'Props'
+				}
+			},
+			label: {
+				control: 'text',
+				description: "Nom accessible du landmark `<nav>` (indispensable s'il y a plusieurs nav).",
+				table: {
+					defaultValue: {
+						summary: "'Navigation principale'"
+					},
+					category: 'Props'
+				}
+			},
+			menuLabel: {
+				control: 'text',
+				description: 'Libellé du bouton menu en mobile.',
+				table: {
+					defaultValue: {
+						summary: "'Menu'"
+					},
+					category: 'Props'
+				}
+			},
+			brand: {
+				description: 'Snippet : logo / nom du produit, à gauche.',
+				table: {
+					type: {
+						summary: 'Snippet'
+					},
+					category: 'Snippets'
+				}
+			},
+			actions: {
+				description: 'Snippet : actions à droite (bouton, ThemeToggle).',
+				table: {
+					type: {
+						summary: 'Snippet'
+					},
+					category: 'Snippets'
+				}
+			},
+			onNavigate: {
+				description: 'Appelé au clic sur un lien (fermer un panneau, analytics).',
+				table: {
+					type: {
+						summary: '(item: NavbarItem) => void'
+					},
+					category: 'Événements'
+				}
+			}
+		},
+		args: { items, current: '#composants', label: 'Navigation principale' }
 	});
 </script>
 

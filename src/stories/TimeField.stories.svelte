@@ -4,8 +4,73 @@
 	import { Root } from '#lib/components/time-field/index.js';
 
 	const { Story } = defineMeta({
-		title: 'Components/TimeField',
-		component: Root
+		title: 'Composants/Dates et heures/TimeField',
+		component: Root,
+		parameters: {
+			docs: {
+				description: {
+					component:
+						"Saisie d'une **heure** au clavier, segment par segment.\n\n**Anatomie** : `TimeField.Root` › `TimeField.Label` · `TimeField.Input` › `TimeField.Segment`.\n\nLes valeurs sont des `Time` de `@internationalized/date`."
+				}
+			}
+		},
+		argTypes: {
+			value: {
+				description: 'Heure saisie. Utilisable avec `bind:value`.',
+				table: {
+					type: {
+						summary: 'TimeValue | undefined'
+					},
+					category: 'Props'
+				}
+			},
+			locale: {
+				control: 'text',
+				description: 'Locale BCP 47 utilisée pour les libellés et le format des dates.',
+				table: {
+					defaultValue: {
+						summary: "'fr-FR'"
+					},
+					category: 'Props'
+				}
+			},
+			hourCycle: {
+				control: 'inline-radio',
+				options: [12, 24],
+				description: 'Format horaire : 12 h (AM/PM) ou 24 h. Par défaut, celui de la locale.',
+				table: {
+					category: 'Props'
+				}
+			},
+			granularity: {
+				control: 'inline-radio',
+				options: ['hour', 'minute', 'second'],
+				description: 'Précision : heure, minute ou seconde.',
+				table: {
+					category: 'Props'
+				}
+			},
+			readonly: {
+				control: 'boolean',
+				description: 'Lecture seule : la valeur est visible et focusable mais ne peut pas changer.',
+				table: {
+					defaultValue: {
+						summary: 'false'
+					},
+					category: 'Props'
+				}
+			},
+			disabled: {
+				control: 'boolean',
+				description: 'Désactive le composant : ni focus, ni interaction.',
+				table: {
+					defaultValue: {
+						summary: 'false'
+					},
+					category: 'Props'
+				}
+			}
+		}
 	});
 </script>
 

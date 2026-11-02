@@ -3,8 +3,28 @@
 	import AspectRatio from '#lib/components/AspectRatio.svelte';
 
 	const { Story } = defineMeta({
-		title: 'Components/AspectRatio',
+		title: 'Composants/Mise en page/AspectRatio',
 		component: AspectRatio,
+		parameters: {
+			docs: {
+				description: {
+					component:
+						'Conteneur qui conserve un **ratio** (16/9, 1/1) quelle que soit la largeur : images, vidéos, cartes.'
+				}
+			}
+		},
+		argTypes: {
+			ratio: {
+				control: 'number',
+				description: 'Rapport largeur / hauteur, ex. `16 / 9`.',
+				table: {
+					defaultValue: {
+						summary: '1'
+					},
+					category: 'Props'
+				}
+			}
+		},
 		args: { ratio: 16 / 9 }
 	});
 </script>

@@ -1,0 +1,60 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { RadiusScale, DoDont } from '../../../.storybook/blocks';
+
+<Meta title="Fondations/Rayons et bordures" />
+
+# Rayons et bordures
+
+## Rayons par rôle
+
+Un composant choisit un **rôle** de rayon, jamais une valeur. Le rôle dit **ce
+qu'est** l'élément ; la valeur est une décision du thème.
+
+<RadiusScale />
+
+<DoDont
+	doThis={
+		<>
+			Un nouveau champ de recherche → <code>rounded-field</code>, comme <code>Input</code>.
+		</>
+	}
+	dontThis={
+		<>
+			<code>rounded-xl</code> ou <code>rounded-[12px]</code> « parce que ça ressemble ».
+		</>
+	}
+/>
+
+**Rayons imbriqués** : un élément posé dans une surface doit avoir un rayon plus petit
+que son parent (`item` dans `surface`), sinon les coins semblent « décollés ».
+
+## Bordures
+
+| Token                    | Utilitaire                       | Rôle                                                    |
+| ------------------------ | -------------------------------- | ------------------------------------------------------- |
+| `--border-width` (1,5px) | `border-(length:--border-width)` | Épaisseur unique de toutes les bordures de structure    |
+| `--border`               | `border-border`                  | Bordure d'un **contrôle** : doit passer 3:1             |
+| `--input`                | `border-input`                   | Bordure d'un **champ de saisie** : 3:1                  |
+| `--border-subtle`        | `border-border-subtle`           | Séparation entre **surfaces** : décorative              |
+| `--primary-border`       | `border-primary-border`          | Contour du lime (encre en clair, transparent en sombre) |
+
+Règle : on n'écrit jamais `border-2` ou `border` seul, toujours
+`border-(length:--border-width)`. L'épaisseur fait partie de l'identité du thème.
+
+### Pourquoi deux bordures ?
+
+WCAG 1.4.11 exige 3:1 pour ce qui permet d'**identifier un contrôle**. Une carte n'est
+pas un contrôle : sa bordure peut être discrète (`border-subtle`). Un champ de saisie
+l'est : sans bordure à 3:1, un utilisateur malvoyant ne le trouve pas.
+
+## Anneau de focus
+
+Toute partie focusable utilise la même recette :
+
+```
+focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring
+focus-visible:ring-offset-2 focus-visible:ring-offset-background
+```
+
+`ring-offset-background` crée un liseré de la couleur du fond entre l'élément et
+l'anneau : le focus reste visible même sur un bouton lime.
