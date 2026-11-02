@@ -7,7 +7,7 @@
 	let { class: className, value = $bindable(), ...rest }: Props = $props();
 </script>
 
-<!-- Groupe structurel (coins nets) — §5 -->
+<!-- Groupe structurel — §5 -->
 <ToolbarPrimitive.Group
 	bind:value={value as never}
 	{...rest}

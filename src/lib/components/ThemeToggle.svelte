@@ -24,7 +24,7 @@
 		rest.onclick?.(e);
 	}}
 	class={cn(
-		'inline-flex size-10 items-center justify-center rounded-full border-2 border-foreground bg-background text-foreground transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
+		'inline-flex size-10 items-center justify-center rounded-pill border-(length:--border-width) border-input bg-background text-foreground transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
 		className
 	)}
 >

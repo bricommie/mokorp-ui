@@ -8,7 +8,4 @@
 </script>
 
 <!-- Motif signature « Label » — §6 -->
-<TimeFieldPrimitive.Label
-	{...rest}
-	class={cn('font-mono text-xs uppercase tracking-[0.08em]', className)}
-/>
+<TimeFieldPrimitive.Label {...rest} class={cn('font-body text-sm font-semibold', className)} />

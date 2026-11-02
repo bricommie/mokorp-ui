@@ -12,7 +12,7 @@
 	{...rest}
 	{sideOffset}
 	class={cn(
-		'z-50 border-2 border-border bg-popover p-2 text-popover-foreground shadow-lg',
+		'rounded-surface z-50 border-(length:--border-width) border-border-subtle bg-popover p-2 text-popover-foreground shadow-lg',
 		className
 	)}
 />

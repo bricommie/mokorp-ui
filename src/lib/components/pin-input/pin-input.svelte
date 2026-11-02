@@ -7,7 +7,7 @@
 	let { class: className, value = $bindable(''), ...rest }: Props = $props();
 </script>
 
-<!-- Conteneur structurel (coins nets) — §5 -->
+<!-- Conteneur structurel — §5 -->
 <PinInputPrimitive.Root
 	bind:value={value as never}
 	{...rest}

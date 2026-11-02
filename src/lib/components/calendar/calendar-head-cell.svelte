@@ -10,8 +10,5 @@
 <!-- Étiquette de jour de semaine — structurel -->
 <CalendarPrimitive.HeadCell
 	{...rest}
-	class={cn(
-		'p-0 text-center font-body text-xs font-medium uppercase text-muted-foreground',
-		className
-	)}
+	class={cn('p-0 text-center font-body text-xs font-semibold text-muted-foreground', className)}
 />

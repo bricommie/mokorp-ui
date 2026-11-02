@@ -14,7 +14,7 @@
 <caption
 	{...rest}
 	class={cn(
-		'border-t-2 border-border px-3 py-2.5 text-left font-serif text-sm italic text-muted-foreground',
+		'border-t-(length:--border-width) border-border-subtle px-3 py-2.5 text-left font-serif text-sm italic text-muted-foreground',
 		className
 	)}
 >

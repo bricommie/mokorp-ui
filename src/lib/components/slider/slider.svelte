@@ -12,7 +12,7 @@
 	bind:value={value as never}
 	{...rest}
 	class={cn(
-		'relative flex h-3 w-full touch-none select-none items-center border-2 border-border bg-muted data-[orientation=vertical]:h-full data-[orientation=vertical]:w-3 data-[orientation=vertical]:flex-col',
+		'relative flex h-3 w-full touch-none rounded-pill select-none items-center border-(length:--border-width) border-border bg-muted data-[orientation=vertical]:h-full data-[orientation=vertical]:w-3 data-[orientation=vertical]:flex-col',
 		className
 	)}
 />

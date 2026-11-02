@@ -11,10 +11,7 @@
 	let { class: className, children, ...rest }: Props = $props();
 </script>
 
-<!-- Motif signature — §6 : font-mono · text-xs · uppercase · tracking-[0.08em] -->
-<LabelPrimitive.Root
-	{...rest}
-	class={cn('font-mono text-xs uppercase tracking-[0.08em]', className)}
->
+<!-- Motif Label — §6 : Archivo semi-gras, casse normale -->
+<LabelPrimitive.Root {...rest} class={cn('font-body text-sm font-semibold', className)}>
 	{@render children?.()}
 </LabelPrimitive.Root>

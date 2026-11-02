@@ -7,7 +7,7 @@
 	let { class: className, value = $bindable(0), ...rest }: Props = $props();
 </script>
 
-<!-- Structurel (coins nets) — rangée d'étoiles — §4 -->
+<!-- Structurel — rangée d'étoiles — §4 -->
 <RatingGroupPrimitive.Root
 	bind:value={value as never}
 	{...rest}

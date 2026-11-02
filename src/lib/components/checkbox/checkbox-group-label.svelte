@@ -8,7 +8,4 @@
 </script>
 
 <!-- Motif Label — §6 -->
-<CheckboxPrimitive.GroupLabel
-	{...rest}
-	class={cn('font-mono text-xs uppercase tracking-[0.08em]', className)}
-/>
+<CheckboxPrimitive.GroupLabel {...rest} class={cn('font-body text-sm font-semibold', className)} />

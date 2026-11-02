@@ -11,7 +11,7 @@
 <PaginationPrimitive.Page
 	{...rest}
 	class={cn(
-		'inline-flex size-9 items-center justify-center rounded-full border-2 border-border font-body text-sm text-foreground transition-colors not-data-[selected]:hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background data-[selected]:bg-primary data-[selected]:text-primary-foreground disabled:pointer-events-none disabled:opacity-50',
+		'inline-flex size-9 items-center justify-center rounded-pill border-(length:--border-width) border-border font-body text-sm text-foreground transition-colors not-data-[selected]:hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background data-[selected]:border-primary-border data-[selected]:bg-primary data-[selected]:text-primary-foreground disabled:pointer-events-none disabled:opacity-50',
 		className
 	)}
 />

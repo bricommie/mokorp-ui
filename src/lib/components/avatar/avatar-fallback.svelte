@@ -11,7 +11,7 @@
 <AvatarPrimitive.Fallback
 	{...rest}
 	class={cn(
-		'flex h-full w-full items-center justify-center rounded-full bg-muted font-display',
+		'flex h-full w-full items-center justify-center rounded-pill bg-muted font-display',
 		className
 	)}
 />

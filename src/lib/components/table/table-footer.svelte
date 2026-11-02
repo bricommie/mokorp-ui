@@ -11,6 +11,12 @@
 	let { class: className, children, ...rest }: Props = $props();
 </script>
 
-<tfoot {...rest} class={cn('border-t-2 border-border bg-muted font-semibold', className)}>
+<tfoot
+	{...rest}
+	class={cn(
+		'border-t-(length:--border-width) border-border-subtle bg-muted font-semibold',
+		className
+	)}
+>
 	{@render children?.()}
 </tfoot>

@@ -8,7 +8,7 @@
 	let { class: className, children, ...rest }: Props = $props();
 </script>
 
-<!-- Déclencheur (coins nets) : même gabarit que `Link`, chevron intégré — §3 -->
+<!-- Déclencheur : même gabarit que `Link`, chevron intégré — §3 -->
 <NavigationMenuPrimitive.Trigger
 	{...rest}
 	class={cn(

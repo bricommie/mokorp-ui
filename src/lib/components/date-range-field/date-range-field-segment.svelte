@@ -7,8 +7,8 @@
 	let { class: className, ...rest }: Props = $props();
 </script>
 
-<!-- Segment éditable : mise en avant au focus — structurel (coins nets) -->
+<!-- Segment éditable : mise en avant au focus — structurel -->
 <DateRangeFieldPrimitive.Segment
 	{...rest}
-	class={cn('rounded-none focus:bg-muted focus:text-foreground', className)}
+	class={cn('rounded-item focus:bg-muted focus:text-foreground', className)}
 />

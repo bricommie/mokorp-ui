@@ -16,13 +16,13 @@
 	}: Props = $props();
 </script>
 
-<!-- Structurel (coins nets) + indicateur (coche/tiret) piloté par data-state — §3 / §4 -->
+<!-- Structurel + indicateur (coche/tiret) piloté par data-state — §3 / §4 -->
 <CheckboxPrimitive.Root
 	bind:checked
 	bind:indeterminate
 	{...rest}
 	class={cn(
-		'group flex size-5 shrink-0 items-center justify-center border-2 border-border bg-background text-primary-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 data-[state=checked]:bg-primary data-[state=indeterminate]:bg-primary',
+		'rounded-item group flex size-5 shrink-0 items-center justify-center border-(length:--border-width) border-border bg-background text-primary-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 data-[state=checked]:border-primary-border data-[state=checked]:bg-primary data-[state=indeterminate]:border-primary-border data-[state=indeterminate]:bg-primary',
 		className
 	)}
 >

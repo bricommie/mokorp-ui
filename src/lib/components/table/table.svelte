@@ -12,7 +12,9 @@
 </script>
 
 <!-- Conteneur défilant (structurel) : bordure encre autour, table pleine largeur — §5 -->
-<div class="relative w-full overflow-x-auto border-2 border-border bg-card text-card-foreground">
+<div
+	class="rounded-surface relative w-full overflow-x-auto border-(length:--border-width) border-border-subtle bg-card text-card-foreground"
+>
 	<table {...rest} class={cn('w-full caption-bottom border-collapse font-body text-sm', className)}>
 		{@render children?.()}
 	</table>

@@ -11,5 +11,8 @@
 <div
 	aria-hidden="true"
 	{...rest}
-	class={cn('animate-pulse border-2 border-border bg-muted motion-reduce:animate-none', className)}
+	class={cn(
+		'rounded-item animate-pulse border-(length:--border-width) border-border bg-muted motion-reduce:animate-none',
+		className
+	)}
 ></div>

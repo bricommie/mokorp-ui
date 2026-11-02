@@ -7,5 +7,5 @@
 	let { class: className, ...rest }: Props = $props();
 </script>
 
-<!-- Racine structurelle (coins nets) — §5 -->
+<!-- Racine structurelle — §5 -->
 <ScrollAreaPrimitive.Root {...rest} class={cn('relative overflow-hidden', className)} />

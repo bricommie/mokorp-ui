@@ -7,5 +7,8 @@
 	let { class: className, ...rest }: Props = $props();
 </script>
 
-<!-- Structurel (coins nets) + séparateur encre 2px — §5 -->
-<AccordionPrimitive.Item {...rest} class={cn('border-b-2 border-border', className)} />
+<!-- Structurel + séparateur bordure `--border-width` — §5 -->
+<AccordionPrimitive.Item
+	{...rest}
+	class={cn('border-b-(length:--border-width) border-border-subtle', className)}
+/>
