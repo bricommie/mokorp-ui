@@ -23,9 +23,16 @@ mokorp-ui apporte l'apparence, uniquement via des **design tokens**.
 npm install mokorp-ui bits-ui @internationalized/date
 ```
 
-`bits-ui` et `@internationalized/date` sont des **peerDependencies**. L'app doit utiliser
-**Tailwind CSS v4** : le thème est une source Tailwind, c'est votre build qui génère les
-classes des composants.
+`bits-ui`, `@internationalized/date`, `svelte` (≥ 5.20) et `tailwindcss` (v4) sont des
+**peerDependencies** : l'app doit utiliser **Tailwind CSS v4**, car le thème est une source
+Tailwind et c'est votre build qui génère les classes des composants.
+
+Tant que le paquet n'est pas publié sur npm, installez-le depuis GitHub (npm construit
+`dist` via le script `prepare`) ; ajoutez `#v0.1.0` ou `#<commit>` pour figer une version :
+
+```sh
+npm install github:bricommie/mokorp-ui bits-ui @internationalized/date
+```
 
 ```css
 /* src/app.css : remplace votre `@import 'tailwindcss'` */

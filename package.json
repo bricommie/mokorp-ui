@@ -1,11 +1,15 @@
 {
 	"name": "mokorp-ui",
 	"version": "0.0.1",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/bricommie/mokorp-ui.git"
+	},
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && npm run prepack",
 		"preview": "vite preview",
-		"prepare": "svelte-kit sync || echo ''",
+		"prepare": "svelte-kit sync && svelte-package",
 		"prepack": "svelte-kit sync && svelte-package && publint",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
@@ -38,7 +42,8 @@
 	"peerDependencies": {
 		"@internationalized/date": "^3.12.4",
 		"bits-ui": "^2.20.2",
-		"svelte": "^5.0.0"
+		"svelte": "^5.20.0",
+		"tailwindcss": "^4.0.0"
 	},
 	"devDependencies": {
 		"@chromatic-com/storybook": "latest",

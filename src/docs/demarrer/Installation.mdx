@@ -20,6 +20,12 @@ npm install mokorp-ui bits-ui @internationalized/date
 | `mokorp-ui`               | Composants, thème, tokens                                        | —                                                                                          |
 | `bits-ui`                 | Primitives headless (comportement + ARIA)                        | `peerDependency` : une seule copie dans l'app, partagée avec vos propres usages de Bits UI |
 | `@internationalized/date` | Objets date (`CalendarDate`, `today()`…) des composants de dates | `peerDependency` : vous créez ces valeurs dans votre code                                  |
+| `tailwindcss` (v4)        | Génère les classes des composants à partir du thème              | `peerDependency` : `theme.css` fait `@import 'tailwindcss'` (voir étape 2)                 |
+| `svelte` (≥ 5.20)         | Runtime des composants                                           | `peerDependency` : celui de votre app                                                      |
+
+> **Pas encore sur npm ?** Installez depuis GitHub : `npm install github:bricommie/mokorp-ui`.
+> npm installe les devDependencies du repo et lance `prepare`, qui construit `dist`.
+> Ajoutez `#<tag>` ou `#<commit>` à l'URL pour figer la version.
 
 Les polices (Archivo, IBM Plex Mono) sont des dépendances directes de mokorp-ui :
 rien à installer de plus.
