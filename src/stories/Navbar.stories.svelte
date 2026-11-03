@@ -18,7 +18,7 @@
 			docs: {
 				description: {
 					component:
-						'Barre de navigation principale du site : liens, zone de marque, actions. Le lien actif et le survol sont suivis par deux « pilules » animées par ressort ; en mobile, un bouton ouvre un panneau.\n\n**Accessibilité** : landmark `<nav>` nommé par `label`, `aria-current="page"` sur le lien actif, bouton menu avec `aria-expanded`. Toutes les animations s\'éteignent en mouvement réduit.'
+						'Barre de navigation principale du site : liens, zone de marque, actions. Le lien actif et le survol sont suivis par deux « pilules » animées par ressort ; en mobile, un bouton ouvre un panneau.\n\n**Accessibilité** : landmark `<nav>` nommé par `label`, `aria-current="page"` sur le lien actif, bouton menu avec `aria-expanded`. Toutes les animations s\'éteignent en mouvement réduit.\n\n**Variante `glass`** : surface translucide floutée (`backdrop-blur`) et halo `primary` qui suit la souris avec un ressort mou. Le halo ne réagit qu\'à la souris et au stylet (pas au doigt) et suit le pointeur sans inertie en mouvement réduit.'
 				}
 			}
 		},
@@ -47,6 +47,21 @@
 				table: {
 					defaultValue: {
 						summary: "'Navigation principale'"
+					},
+					category: 'Props'
+				}
+			},
+			variant: {
+				control: 'inline-radio',
+				options: ['solid', 'glass'],
+				description:
+					'`solid` : surface carte opaque. `glass` : verre dépoli translucide et halo lumineux qui suit la souris (à poser sur un fond riche : image, dégradé).',
+				table: {
+					type: {
+						summary: "'solid' | 'glass'"
+					},
+					defaultValue: {
+						summary: "'solid'"
 					},
 					category: 'Props'
 				}
@@ -119,3 +134,31 @@
 		);
 	}}
 />
+
+<!--
+	Survoler la barre : le halo lime suit la souris avec un temps de retard, se resserre au clic
+	et s'éteint en sortant. Le fond coloré montre le flou du verre.
+-->
+<Story
+	name="Glass"
+	args={{ brand, actions, variant: 'glass' }}
+	parameters={{ layout: 'fullscreen' }}
+>
+	{#snippet template(args)}
+		<div class="relative min-h-96 overflow-hidden bg-background p-6">
+			<div aria-hidden="true" class="pointer-events-none absolute inset-0">
+				<div
+					class="absolute -top-10 left-[10%] size-64 rounded-pill bg-secondary/70 blur-3xl"
+				></div>
+				<div class="absolute top-6 right-[15%] size-56 rounded-pill bg-primary/60 blur-3xl"></div>
+				<div class="absolute top-40 left-[40%] size-72 rounded-pill bg-chart-4/50 blur-3xl"></div>
+			</div>
+			<Navbar {...args} items={args.items ?? items} />
+			<p
+				class="relative mx-auto mt-24 max-w-md text-center font-display text-4xl font-black text-foreground"
+			>
+				Le verre laisse passer la couleur.
+			</p>
+		</div>
+	{/snippet}
+</Story>
