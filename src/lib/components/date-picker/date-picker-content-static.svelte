@@ -1,3 +1,9 @@
+<!--
+@component
+**DatePicker.ContentStatic** — Variante de `DatePicker.Content` sans positionnement flottant.
+
+[API Bits UI](https://bits-ui.com/docs/components/date-picker)
+-->
 <script lang="ts">
 	import { DatePicker as DatePickerPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

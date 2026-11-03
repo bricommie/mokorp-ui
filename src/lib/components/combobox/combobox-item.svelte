@@ -1,3 +1,9 @@
+<!--
+@component
+**Combobox.Item** — Option de la liste. `value` (**obligatoire**) et `label` : le libellé est affiché par défaut, avec la coche si l'option est sélectionnée.
+
+[API Bits UI](https://bits-ui.com/docs/components/combobox)
+-->
 <script lang="ts">
 	import { Combobox as ComboboxPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

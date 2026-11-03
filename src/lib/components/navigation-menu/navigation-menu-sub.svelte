@@ -1,3 +1,9 @@
+<!--
+@component
+**NavigationMenu.Sub** — Sous-menu de navigation imbriqué dans un `Content` (sans style).
+
+[API Bits UI](https://bits-ui.com/docs/components/navigation-menu)
+-->
 <script lang="ts">
 	import { NavigationMenu as NavigationMenuPrimitive } from 'bits-ui';
 

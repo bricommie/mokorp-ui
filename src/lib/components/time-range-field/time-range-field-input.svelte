@@ -1,3 +1,9 @@
+<!--
+@component
+**TimeRangeField.Input** — Conteneur des segments d'**une** borne : `type="start"` ou `type="end"`. Snippet `children` avec `segments`. Ring `primary` au focus.
+
+[API Bits UI](https://bits-ui.com/docs/components/time-range-field)
+-->
 <script lang="ts">
 	import { TimeRangeField as TimeRangeFieldPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

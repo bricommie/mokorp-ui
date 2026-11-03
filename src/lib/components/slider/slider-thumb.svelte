@@ -1,3 +1,9 @@
+<!--
+@component
+**Slider.Thumb** — Poignée déplaçable. `index` (**obligatoire**) : position dans `value`. Donnez-lui un `aria-label`.
+
+[API Bits UI](https://bits-ui.com/docs/components/slider)
+-->
 <script lang="ts">
 	import { Slider as SliderPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

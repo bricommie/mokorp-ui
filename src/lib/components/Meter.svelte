@@ -1,3 +1,17 @@
+<!--
+@component
+**Meter** — **Mesure** d'une grandeur dans un intervalle connu (quota, batterie, score). Pour l'avancement d'une tâche, utilisez `Progress`.
+
+- `value`, `min`, `max` (défaut 0–100).
+
+**Accessibilité** : rôle `meter` ; donnez un `aria-label` et, si utile, `aria-valuetext` (« 6 Go sur 10 »).
+
+```svelte
+<Meter value={6} max={10} aria-label="Stockage" aria-valuetext="6 Go sur 10" />
+```
+
+[API Bits UI](https://bits-ui.com/docs/components/meter)
+-->
 <script lang="ts">
 	import { Meter as MeterPrimitive } from 'bits-ui';
 	import { cn } from '../cn.js';

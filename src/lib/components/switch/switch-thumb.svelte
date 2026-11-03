@@ -1,3 +1,9 @@
+<!--
+@component
+**Switch.Thumb** — Pastille de l'interrupteur, qui glisse à droite quand il est activé.
+
+[API Bits UI](https://bits-ui.com/docs/components/switch)
+-->
 <script lang="ts">
 	import { Switch as SwitchPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

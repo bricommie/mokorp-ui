@@ -1,3 +1,9 @@
+<!--
+@component
+**NavigationMenu.List** — Liste horizontale des entrées du menu (`<ul>`).
+
+[API Bits UI](https://bits-ui.com/docs/components/navigation-menu)
+-->
 <script lang="ts">
 	import { NavigationMenu as NavigationMenuPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

@@ -1,3 +1,9 @@
+<!--
+@component
+**AlertDialog.Title** — Titre du dialogue (**obligatoire**) : c'est son nom accessible. Formulez une question (« Supprimer le projet ? »).
+
+[API Bits UI](https://bits-ui.com/docs/components/alert-dialog)
+-->
 <script lang="ts">
 	import { AlertDialog as AlertDialogPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

@@ -1,3 +1,9 @@
+<!--
+@component
+**Command.Input** — Champ de recherche de la palette : filtre les items en direct.
+
+[API Bits UI](https://bits-ui.com/docs/components/command)
+-->
 <script lang="ts">
 	import { Command as CommandPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

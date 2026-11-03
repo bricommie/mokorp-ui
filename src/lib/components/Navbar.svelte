@@ -1,6 +1,27 @@
+<!--
+@component
+**Navbar** — Barre de navigation principale du site : liens, zone de marque, actions. Le lien actif et le survol sont suivis par deux « pilules » animées par ressort ; en mobile, un bouton ouvre un panneau.
+
+- `items` (**obligatoire**) : liste `{ label, href }`.
+- `bind:current` : `href` de la page courante.
+- `variant` : `solid` (défaut, surface opaque) ou `glass` (translucide floutée, halo qui suit la souris).
+- Snippets `brand` (logo, à gauche) et `actions` (à droite).
+
+**Accessibilité** : landmark `<nav>` nommé par `label`, `aria-current="page"` sur le lien actif, bouton menu avec `aria-expanded`. Animations coupées en mouvement réduit.
+
+```svelte
+<Navbar items={[{ label: 'Accueil', href: '/' }, { label: 'Tarifs', href: '/tarifs' }]} current={page.url.pathname}>
+	{#snippet brand()}<a href="/">Mokorp</a>{/snippet}
+	{#snippet actions()}<ThemeToggle />{/snippet}
+</Navbar>
+```
+-->
 <script lang="ts" module>
+	/** Un lien de la `Navbar`. */
 	export type NavbarItem = {
+		/** Texte du lien. */
 		label: string;
+		/** Destination (déjà résolue par l'app, ex. via `resolve()` dans SvelteKit). */
 		href: string;
 	};
 
@@ -15,21 +36,36 @@
 	import { duration, easings, isReducedMotion } from '../motion/index.js';
 
 	type Props = {
+		/** Liens de navigation, dans l'ordre d'affichage. */
 		items: NavbarItem[];
-		/** `href` de la page courante. Dans SvelteKit : `current={page.url.pathname}`. */
+		/**
+		 * `href` de la page courante (`aria-current="page"`). Bindable.
+		 * Dans SvelteKit : `current={page.url.pathname}`.
+		 */
 		current?: string;
-		/** Nom accessible du landmark `<nav>` (obligatoire dès qu'il y a plusieurs nav). */
+		/**
+		 * Nom accessible du landmark `<nav>` (obligatoire dès qu'il y a plusieurs nav).
+		 * @default 'Navigation principale'
+		 */
 		label?: string;
-		/** Libellé du bouton menu (mobile). */
+		/**
+		 * Libellé du bouton menu (mobile).
+		 * @default 'Menu'
+		 */
 		menuLabel?: string;
 		/**
-		 * `solid` : surface carte opaque (défaut).
+		 * `solid` : surface carte opaque.
 		 * `glass` : surface translucide floutée + halo lumineux qui suit la souris.
+		 * @default 'solid'
 		 */
 		variant?: NavbarVariant;
+		/** Zone de marque, à gauche (logo, nom du site). */
 		brand?: Snippet;
+		/** Zone d'actions, à droite (ThemeToggle, compte). */
 		actions?: Snippet;
+		/** Classes Tailwind ajoutées sur la `<nav>` (fusionnées avec `cn`). */
 		class?: string;
+		/** Appelé au clic sur un lien, après la mise à jour de `current`. */
 		onNavigate?: (item: NavbarItem) => void;
 	};
 

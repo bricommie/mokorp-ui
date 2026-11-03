@@ -1,3 +1,9 @@
+<!--
+@component
+**Menubar.SubTrigger** — Élément qui ouvre un sous-menu (chevron intégré à droite, → au clavier).
+
+[API Bits UI](https://bits-ui.com/docs/components/menubar)
+-->
 <script lang="ts">
 	import { Menubar as MenubarPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

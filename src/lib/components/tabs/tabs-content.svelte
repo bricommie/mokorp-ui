@@ -1,3 +1,9 @@
+<!--
+@component
+**Tabs.Content** — Panneau d'un onglet, affiché quand sa `value` est active.
+
+[API Bits UI](https://bits-ui.com/docs/components/tabs)
+-->
 <script lang="ts">
 	import { Tabs as TabsPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

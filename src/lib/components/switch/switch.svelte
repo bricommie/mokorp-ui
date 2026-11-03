@@ -1,3 +1,20 @@
+<!--
+@component
+**Switch.Root** — Interrupteur **à effet immédiat** (activer les notifications). Si le choix ne s'applique qu'à la soumission d'un formulaire, utilisez `Checkbox`.
+
+**Anatomie** : `Switch.Root` › `Switch.Thumb`. Utilisable avec `bind:checked`.
+
+**Accessibilité** : rôle `switch`, Espace pour basculer. Associez un `Label`.
+
+```svelte
+<div class="flex items-center gap-2">
+	<Switch.Root id="notif" bind:checked><Switch.Thumb /></Switch.Root>
+	<Label for="notif">Notifications</Label>
+</div>
+```
+
+[API Bits UI](https://bits-ui.com/docs/components/switch)
+-->
 <script lang="ts">
 	import { Switch as SwitchPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

@@ -1,3 +1,9 @@
+<!--
+@component
+**DropdownMenu.CheckboxGroup** — Groupe d'éléments à cocher partageant une valeur `string[]`. Utilisable avec `bind:value`.
+
+[API Bits UI](https://bits-ui.com/docs/components/dropdown-menu)
+-->
 <script lang="ts">
 	import { DropdownMenu as DropdownMenuPrimitive } from 'bits-ui';
 

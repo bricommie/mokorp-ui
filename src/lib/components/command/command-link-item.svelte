@@ -1,3 +1,9 @@
+<!--
+@component
+**Command.LinkItem** — Commande qui est un **lien** (`href`) : navigation native, ouverture dans un nouvel onglet possible.
+
+[API Bits UI](https://bits-ui.com/docs/components/command)
+-->
 <script lang="ts">
 	import { Command as CommandPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

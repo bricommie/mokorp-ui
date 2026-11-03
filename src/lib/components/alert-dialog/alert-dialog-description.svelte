@@ -1,3 +1,9 @@
+<!--
+@component
+**AlertDialog.Description** — Explication des conséquences, reliée au dialogue par `aria-describedby`.
+
+[API Bits UI](https://bits-ui.com/docs/components/alert-dialog)
+-->
 <script lang="ts">
 	import { AlertDialog as AlertDialogPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

@@ -1,3 +1,9 @@
+<!--
+@component
+**DateField.Input** — Conteneur des segments (aspect d'un `Input`, ring `primary` au focus). Son snippet `children` reçoit `segments` à itérer.
+
+[API Bits UI](https://bits-ui.com/docs/components/date-field)
+-->
 <script lang="ts">
 	import { DateField as DateFieldPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

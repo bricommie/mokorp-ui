@@ -1,3 +1,9 @@
+<!--
+@component
+**Accordion.Content** — Contenu de la section. Hauteur animée à l'ouverture (neutralisée en mouvement réduit).
+
+[API Bits UI](https://bits-ui.com/docs/components/accordion)
+-->
 <script lang="ts">
 	import { Accordion as AccordionPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

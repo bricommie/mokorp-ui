@@ -1,3 +1,9 @@
+<!--
+@component
+**RangeCalendar.Header** — En-tête du calendrier : contient `PrevButton`, `Heading` et `NextButton`.
+
+[API Bits UI](https://bits-ui.com/docs/components/range-calendar)
+-->
 <script lang="ts">
 	import { RangeCalendar as RangeCalendarPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

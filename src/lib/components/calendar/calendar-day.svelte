@@ -1,3 +1,9 @@
+<!--
+@component
+**Calendar.Day** — Jour cliquable. Sélection en `primary` avec un léger « pop » (coupé en mouvement réduit), jours hors mois atténués, aujourd'hui souligné.
+
+[API Bits UI](https://bits-ui.com/docs/components/calendar)
+-->
 <script lang="ts">
 	import { Calendar as CalendarPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

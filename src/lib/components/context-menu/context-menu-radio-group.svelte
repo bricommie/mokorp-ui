@@ -1,3 +1,9 @@
+<!--
+@component
+**ContextMenu.RadioGroup** — Groupe d'éléments radio (choix exclusif). Utilisable avec `bind:value`.
+
+[API Bits UI](https://bits-ui.com/docs/components/context-menu)
+-->
 <script lang="ts">
 	import { ContextMenu as ContextMenuPrimitive } from 'bits-ui';
 

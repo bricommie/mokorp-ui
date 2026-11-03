@@ -1,9 +1,29 @@
+<!--
+@component
+**Dialog.Content** — Surface centrée du dialogue, bornée à la fenêtre (défile si besoin). Bouton de fermeture (×) intégré en haut à droite.
+
+- `showClose` : affiche le bouton × (défaut `true`).
+- `closeLabel` : nom accessible du bouton × (défaut « Fermer »).
+
+[API Bits UI](https://bits-ui.com/docs/components/dialog)
+-->
 <script lang="ts">
 	import { Dialog as DialogPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';
 	import X from '../icons/x.svelte';
 
-	type Props = DialogPrimitive.ContentProps & { showClose?: boolean; closeLabel?: string };
+	type Props = DialogPrimitive.ContentProps & {
+		/**
+		 * Affiche le bouton de fermeture (×) en haut à droite.
+		 * @default true
+		 */
+		showClose?: boolean;
+		/**
+		 * Nom accessible du bouton ×, lu par les lecteurs d'écran.
+		 * @default 'Fermer'
+		 */
+		closeLabel?: string;
+	};
 
 	let {
 		class: className,

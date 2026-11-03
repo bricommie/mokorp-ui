@@ -1,9 +1,32 @@
+<!--
+@component
+**Checkbox.Root** — Case à cocher : choix **indépendants** (j'accepte, recevoir les e-mails). Pour un choix exclusif, utilisez `RadioGroup` ; pour un réglage à effet immédiat, `Switch`.
+
+- `bind:checked` : état coché.
+- `bind:indeterminate` : état partiel (« tout sélectionner »), affiché par un tiret.
+- `name` / `value` : soumission dans un `<form>` natif.
+
+**Accessibilité** : associez un `Label` (`for` = `id` de la case).
+
+```svelte
+<div class="flex items-center gap-2">
+	<Checkbox.Root id="cgu" bind:checked={accepted} />
+	<Label for="cgu">J'accepte les conditions</Label>
+</div>
+```
+
+[API Bits UI](https://bits-ui.com/docs/components/checkbox)
+-->
 <script lang="ts">
 	import { Checkbox as CheckboxPrimitive } from 'bits-ui';
 	import type { Snippet } from 'svelte';
 	import { cn } from '../../cn.js';
 
 	type Props = Omit<CheckboxPrimitive.RootProps, 'children'> & {
+		/**
+		 * Contenu ajouté dans le contrôle, après l'indicateur intégré (la coche / le tiret).
+		 * Rarement utile : le libellé se place dans un `Label` à côté.
+		 */
 		children?: Snippet;
 	};
 

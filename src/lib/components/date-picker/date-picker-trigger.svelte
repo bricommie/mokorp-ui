@@ -1,3 +1,9 @@
+<!--
+@component
+**DatePicker.Trigger** — Bouton compact d'ouverture du calendrier (icône intégrée), à poser dans `DatePicker.Input`.
+
+[API Bits UI](https://bits-ui.com/docs/components/date-picker)
+-->
 <script lang="ts">
 	import { DatePicker as DatePickerPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

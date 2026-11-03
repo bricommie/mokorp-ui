@@ -1,3 +1,9 @@
+<!--
+@component
+**DateField.Label** — Libellé du champ (motif `Label`). Nomme le groupe de segments pour les lecteurs d'écran : ne l'omettez pas.
+
+[API Bits UI](https://bits-ui.com/docs/components/date-field)
+-->
 <script lang="ts">
 	import { DateField as DateFieldPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

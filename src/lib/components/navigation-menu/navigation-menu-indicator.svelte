@@ -1,3 +1,9 @@
+<!--
+@component
+**NavigationMenu.Indicator** — Soulignement `primary` qui suit l'entrée ouverte.
+
+[API Bits UI](https://bits-ui.com/docs/components/navigation-menu)
+-->
 <script lang="ts">
 	import { NavigationMenu as NavigationMenuPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

@@ -1,3 +1,9 @@
+<!--
+@component
+**ContextMenu.RadioItem** — Élément radio (point intégré à gauche), à placer dans `ContextMenu.RadioGroup`. `value` obligatoire.
+
+[API Bits UI](https://bits-ui.com/docs/components/context-menu)
+-->
 <script lang="ts">
 	import { ContextMenu as ContextMenuPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

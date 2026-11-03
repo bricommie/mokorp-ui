@@ -1,3 +1,9 @@
+<!--
+@component
+**Combobox.Separator** — Filet de séparation entre groupes d'options.
+
+[API Bits UI](https://bits-ui.com/docs/components/combobox)
+-->
 <script lang="ts">
 	import { Combobox as ComboboxPrimitive, Separator } from 'bits-ui';
 	import { cn } from '../../cn.js';

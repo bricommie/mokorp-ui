@@ -1,8 +1,23 @@
+<!--
+@component
+**Menubar.Item** — Élément d'action du menu. Survol / focus clavier = inversion `primary`.
+
+- `inset` : décale le libellé pour l'aligner avec les items à coche / point.
+- `onSelect` : appelé à l'activation (clic, Entrée).
+
+[API Bits UI](https://bits-ui.com/docs/components/menubar)
+-->
 <script lang="ts">
 	import { Menubar as MenubarPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';
 
-	type Props = MenubarPrimitive.ItemProps & { inset?: boolean };
+	type Props = MenubarPrimitive.ItemProps & {
+		/**
+		 * Décale le libellé vers la droite pour l'aligner avec les items à coche ou à point.
+		 * @default false
+		 */
+		inset?: boolean;
+	};
 
 	let { class: className, inset = false, ...rest }: Props = $props();
 </script>

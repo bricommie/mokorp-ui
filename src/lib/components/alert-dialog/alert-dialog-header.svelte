@@ -1,10 +1,18 @@
+<!--
+@component
+**AlertDialog.Header** — En-tête : empile `AlertDialog.Title` et `AlertDialog.Description`.
+
+[API Bits UI](https://bits-ui.com/docs/components/alert-dialog)
+-->
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 	import type { HTMLAttributes } from 'svelte/elements';
 	import { cn } from '../../cn.js';
 
 	type Props = Omit<HTMLAttributes<HTMLDivElement>, 'class'> & {
+		/** Classes Tailwind ajoutées (fusionnées avec `cn`). */
 		class?: string;
+		/** Contenu. */
 		children?: Snippet;
 	};
 

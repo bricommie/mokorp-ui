@@ -1,3 +1,9 @@
+<!--
+@component
+**RangeCalendar.Cell** — Cellule d'un jour. Reçoit `date` et `month` (obligatoires) et contient un `Day`.
+
+[API Bits UI](https://bits-ui.com/docs/components/range-calendar)
+-->
 <script lang="ts">
 	import { RangeCalendar as RangeCalendarPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

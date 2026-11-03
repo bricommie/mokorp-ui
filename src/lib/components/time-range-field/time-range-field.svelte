@@ -1,3 +1,11 @@
+<!--
+@component
+**TimeRangeField.Root** — Saisie d'une **plage horaire** (début / fin) au clavier : horaires d'ouverture, créneaux.
+
+**Anatomie** : `TimeRangeField.Root` › `Label` · `Input type="start"` / `Input type="end"` › `Segment`. Utilisable avec `bind:value` (`{ start, end }`).
+
+[API Bits UI](https://bits-ui.com/docs/components/time-range-field)
+-->
 <script lang="ts">
 	import { TimeRangeField as TimeRangeFieldPrimitive } from 'bits-ui';
 

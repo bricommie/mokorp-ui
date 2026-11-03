@@ -1,3 +1,9 @@
+<!--
+@component
+**Select.Group** — Regroupe des options (sans style). Associez-lui un `Select.GroupHeading`.
+
+[API Bits UI](https://bits-ui.com/docs/components/select)
+-->
 <script lang="ts">
 	import { Select as SelectPrimitive } from 'bits-ui';
 

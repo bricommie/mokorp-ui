@@ -1,3 +1,9 @@
+<!--
+@component
+**Toolbar.Group** — Groupe de bascules (`type="single"` ou `"multiple"`), utilisable avec `bind:value`.
+
+[API Bits UI](https://bits-ui.com/docs/components/toolbar)
+-->
 <script lang="ts">
 	import { Toolbar as ToolbarPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

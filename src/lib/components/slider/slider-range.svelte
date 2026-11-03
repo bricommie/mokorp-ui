@@ -1,3 +1,9 @@
+<!--
+@component
+**Slider.Range** — Portion remplie (`primary`) de la piste.
+
+[API Bits UI](https://bits-ui.com/docs/components/slider)
+-->
 <script lang="ts">
 	import { Slider as SliderPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

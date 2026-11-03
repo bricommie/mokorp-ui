@@ -1,3 +1,9 @@
+<!--
+@component
+**RangeCalendar.Day** — Jour cliquable d'une plage : début / fin en `primary` plein, jours intermédiaires en `muted`. Jours hors mois atténués.
+
+[API Bits UI](https://bits-ui.com/docs/components/range-calendar)
+-->
 <script lang="ts">
 	import { RangeCalendar as RangeCalendarPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

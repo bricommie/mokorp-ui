@@ -1,3 +1,9 @@
+<!--
+@component
+**DropdownMenu.SubTrigger** — Élément qui ouvre un sous-menu (chevron intégré à droite, → au clavier).
+
+[API Bits UI](https://bits-ui.com/docs/components/dropdown-menu)
+-->
 <script lang="ts">
 	import { DropdownMenu as DropdownMenuPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

@@ -1,3 +1,9 @@
+<!--
+@component
+**PinInput.Cell** — Une case du code. Reçoit `cell` depuis le snippet `children` du Root ; ring `primary` sur la case active.
+
+[API Bits UI](https://bits-ui.com/docs/components/pin-input)
+-->
 <script lang="ts">
 	import { PinInput as PinInputPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

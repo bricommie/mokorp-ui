@@ -1,3 +1,9 @@
+<!--
+@component
+**LinkPreview.Content** — Surface flottante de l'aperçu. `sideOffset` = 8 par défaut.
+
+[API Bits UI](https://bits-ui.com/docs/components/link-preview)
+-->
 <script lang="ts">
 	import { LinkPreview as LinkPreviewPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

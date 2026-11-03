@@ -1,3 +1,9 @@
+<!--
+@component
+**DateRangePicker.Content** — Surface flottante du calendrier de plage. `sideOffset` = 8 par défaut.
+
+[API Bits UI](https://bits-ui.com/docs/components/date-range-picker)
+-->
 <script lang="ts">
 	import { DateRangePicker as DateRangePickerPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

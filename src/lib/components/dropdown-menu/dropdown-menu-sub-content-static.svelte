@@ -1,3 +1,9 @@
+<!--
+@component
+**DropdownMenu.SubContentStatic** — Variante de `DropdownMenu.SubContent` sans positionnement flottant.
+
+[API Bits UI](https://bits-ui.com/docs/components/dropdown-menu)
+-->
 <script lang="ts">
 	import { DropdownMenu as DropdownMenuPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

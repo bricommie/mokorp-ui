@@ -1,3 +1,17 @@
+<!--
+@component
+**Progress** — Avancement d'une **tâche** (téléversement, build). Avec `value={null}`, la barre devient indéterminée (animation coupée en mouvement réduit). Pour une **mesure** (espace disque), utilisez `Meter`.
+
+- `value` (défaut 0, `null` = indéterminé), `max` (défaut 100).
+
+**Accessibilité** : rôle `progressbar` ; donnez un `aria-label`.
+
+```svelte
+<Progress value={uploaded} max={100} aria-label="Téléversement" />
+```
+
+[API Bits UI](https://bits-ui.com/docs/components/progress)
+-->
 <script lang="ts">
 	import { Progress as ProgressPrimitive } from 'bits-ui';
 	import { cn } from '../cn.js';

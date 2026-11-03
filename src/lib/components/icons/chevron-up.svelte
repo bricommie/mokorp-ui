@@ -1,3 +1,11 @@
+<!--
+@component
+**Icons.ChevronUp** — Icône chevron haut (traits carrés, `currentColor`, `size-4` par défaut). Décorative : `aria-hidden` est posé ; donnez un `aria-label` au bouton qui la contient.
+
+```svelte
+<Icons.ChevronUp class="size-5" />
+```
+-->
 <script lang="ts">
 	import type { SVGAttributes } from 'svelte/elements';
 	import { cn } from '../../cn.js';

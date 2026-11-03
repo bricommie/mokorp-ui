@@ -1,17 +1,48 @@
+<!--
+@component
+**Button** — Déclenche une **action** (envoyer, enregistrer, ouvrir). Pour **naviguer**, passez `href` : le bouton devient un lien `<a>` avec la même apparence.
+
+- `variant` : `primary` (défaut) · `secondary` · `outline` · `ghost` · `link` · `destructive`. **Une seule action `primary` par vue.**
+- `size` : `default` · `sm` · `lg` · `icon`.
+- `loading` : indicateur à la place du libellé, **sans changer la largeur** ; les clics sont ignorés mais le focus reste.
+
+**Accessibilité** : un bouton `size="icon"` n'a pas de texte, il exige un `aria-label`.
+
+```svelte
+<Button onclick={save} loading={saving}>Enregistrer</Button>
+<Button variant="outline" href="/aide">Aide</Button>
+<Button size="icon" variant="ghost" aria-label="Fermer"><Icons.X /></Button>
+```
+
+[API Bits UI](https://bits-ui.com/docs/components/button)
+-->
 <script lang="ts">
 	import { Button as ButtonPrimitive, type WithoutChild } from 'bits-ui';
 	import { cn } from '../cn.js';
 	import { buttonVariants, type ButtonSize, type ButtonVariant } from './button.js';
 
 	type Props = WithoutChild<ButtonPrimitive.RootProps> & {
+		/**
+		 * Rôle visuel : `primary` (une seule action principale par vue), `secondary`,
+		 * `outline`, `ghost`, `link`, `destructive`.
+		 * @default 'primary'
+		 */
 		variant?: ButtonVariant;
+		/**
+		 * Gabarit : `default` (44 px), `sm`, `lg`, `icon` (carré, exige un `aria-label`).
+		 * @default 'default'
+		 */
 		size?: ButtonSize;
 		/**
 		 * Action en cours : le libellé s'efface au profit d'un indicateur, la
 		 * largeur ne bouge pas et le bouton ignore les clics (sans perdre le focus).
+		 * @default false
 		 */
 		loading?: boolean;
-		/** Annoncé aux lecteurs d'écran pendant `loading`. */
+		/**
+		 * Annoncé aux lecteurs d'écran pendant `loading`.
+		 * @default 'Chargement…'
+		 */
 		loadingLabel?: string;
 	};
 

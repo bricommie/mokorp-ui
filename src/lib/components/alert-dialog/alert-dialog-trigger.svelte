@@ -1,3 +1,9 @@
+<!--
+@component
+**AlertDialog.Trigger** — Déclencheur, **sans style**. Pour un bouton, utilisez le snippet `child` avec `Button`.
+
+[API Bits UI](https://bits-ui.com/docs/components/alert-dialog)
+-->
 <script lang="ts">
 	import { AlertDialog as AlertDialogPrimitive } from 'bits-ui';
 

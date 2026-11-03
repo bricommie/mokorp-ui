@@ -1,3 +1,9 @@
+<!--
+@component
+**RatingGroup.Item** — Une étoile : contour encre quand inactive, remplie `primary` quand active. Reçoit `index` depuis `items`.
+
+[API Bits UI](https://bits-ui.com/docs/components/rating-group)
+-->
 <script lang="ts">
 	import { RatingGroup as RatingGroupPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

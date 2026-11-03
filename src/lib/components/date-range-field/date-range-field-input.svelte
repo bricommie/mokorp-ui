@@ -1,3 +1,9 @@
+<!--
+@component
+**DateRangeField.Input** — Conteneur des segments d'**une** borne : `type="start"` ou `type="end"`. Snippet `children` avec `segments`. Ring `primary` au focus.
+
+[API Bits UI](https://bits-ui.com/docs/components/date-range-field)
+-->
 <script lang="ts">
 	import { DateRangeField as DateRangeFieldPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

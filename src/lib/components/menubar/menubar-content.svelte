@@ -1,3 +1,9 @@
+<!--
+@component
+**Menubar.Content** — Surface flottante du menu (à placer dans `Menubar.Portal`). `sideOffset` vaut 8 par défaut, `z-50`.
+
+[API Bits UI](https://bits-ui.com/docs/components/menubar)
+-->
 <script lang="ts">
 	import { Menubar as MenubarPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

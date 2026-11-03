@@ -1,3 +1,15 @@
+<!--
+@component
+**Badge** — Étiquette courte de **statut** ou de catégorie (« Publié », « Bêta »). Non interactif : pour une action, utilisez `Button`.
+
+- `variant` : `primary` (défaut) · `secondary` · `outline` · `success` · `warning` · `destructive`.
+
+**Accessibilité** : le texte porte le sens, pas la couleur seule (« Échec », pas un badge rouge vide).
+
+```svelte
+<Badge variant="success">Publié</Badge>
+```
+-->
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 	import type { HTMLAttributes } from 'svelte/elements';
@@ -5,8 +17,15 @@
 	import { badgeVariants, type BadgeVariant } from './badge.js';
 
 	type Props = Omit<HTMLAttributes<HTMLSpanElement>, 'class'> & {
+		/**
+		 * Ton du badge : `primary`, `secondary`, `outline`, `success`, `warning`,
+		 * `destructive`. Le texte doit porter le sens, pas la couleur seule.
+		 * @default 'primary'
+		 */
 		variant?: BadgeVariant;
+		/** Classes Tailwind ajoutées (fusionnées avec `cn`). */
 		class?: string;
+		/** Texte du badge. */
 		children?: Snippet;
 	};
 

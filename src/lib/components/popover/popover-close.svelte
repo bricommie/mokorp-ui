@@ -1,3 +1,9 @@
+<!--
+@component
+**Popover.Close** — Bouton qui ferme le popover (sans style).
+
+[API Bits UI](https://bits-ui.com/docs/components/popover)
+-->
 <script lang="ts">
 	import { Popover as PopoverPrimitive } from 'bits-ui';
 

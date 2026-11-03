@@ -1,3 +1,9 @@
+<!--
+@component
+**Select.ScrollUpButton** — Bouton de défilement vers le haut (chevron intégré), visible quand la liste déborde.
+
+[API Bits UI](https://bits-ui.com/docs/components/select)
+-->
 <script lang="ts">
 	import { Select as SelectPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

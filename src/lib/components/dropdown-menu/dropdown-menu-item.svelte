@@ -1,8 +1,23 @@
+<!--
+@component
+**DropdownMenu.Item** — Élément d'action du menu. Survol / focus clavier = inversion `primary`.
+
+- `inset` : décale le libellé pour l'aligner avec les items à coche / point.
+- `onSelect` : appelé à l'activation (clic, Entrée).
+
+[API Bits UI](https://bits-ui.com/docs/components/dropdown-menu)
+-->
 <script lang="ts">
 	import { DropdownMenu as DropdownMenuPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';
 
-	type Props = DropdownMenuPrimitive.ItemProps & { inset?: boolean };
+	type Props = DropdownMenuPrimitive.ItemProps & {
+		/**
+		 * Décale le libellé vers la droite pour l'aligner avec les items à coche ou à point.
+		 * @default false
+		 */
+		inset?: boolean;
+	};
 
 	let { class: className, inset = false, ...rest }: Props = $props();
 </script>

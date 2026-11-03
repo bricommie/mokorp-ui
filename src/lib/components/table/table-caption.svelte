@@ -1,10 +1,16 @@
+<!--
+@component
+**Table.Caption** — Légende du tableau (`<caption>`) : son titre accessible.
+-->
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 	import type { HTMLAttributes } from 'svelte/elements';
 	import { cn } from '../../cn.js';
 
 	type Props = Omit<HTMLAttributes<HTMLElement>, 'class'> & {
+		/** Classes Tailwind ajoutées (fusionnées avec `cn`). */
 		class?: string;
+		/** Contenu. */
 		children?: Snippet;
 	};
 

@@ -1,3 +1,9 @@
+<!--
+@component
+**Popover.Trigger** — Bouton qui ouvre le popover (style de bouton structurel). Pour un `Button`, utilisez le snippet `child`.
+
+[API Bits UI](https://bits-ui.com/docs/components/popover)
+-->
 <script lang="ts">
 	import { Popover as PopoverPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

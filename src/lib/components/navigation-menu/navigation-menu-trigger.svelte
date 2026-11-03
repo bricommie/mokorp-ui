@@ -1,3 +1,9 @@
+<!--
+@component
+**NavigationMenu.Trigger** — Bouton qui ouvre le panneau de l'entrée (chevron intégré). Même gabarit que `Link`.
+
+[API Bits UI](https://bits-ui.com/docs/components/navigation-menu)
+-->
 <script lang="ts">
 	import { NavigationMenu as NavigationMenuPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

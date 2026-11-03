@@ -1,3 +1,9 @@
+<!--
+@component
+**Select.Trigger** — Champ cliquable qui ouvre la liste (aspect d'un `Input`, chevron intégré).
+
+[API Bits UI](https://bits-ui.com/docs/components/select)
+-->
 <script lang="ts">
 	import { Select as SelectPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

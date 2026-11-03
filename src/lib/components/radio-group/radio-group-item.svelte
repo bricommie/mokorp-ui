@@ -1,9 +1,19 @@
+<!--
+@component
+**RadioGroup.Item** — Une option du groupe (rond avec point intégré). `value` **obligatoire** ; associez un `Label` via `id`.
+
+[API Bits UI](https://bits-ui.com/docs/components/radio-group)
+-->
 <script lang="ts">
 	import { RadioGroup as RadioGroupPrimitive } from 'bits-ui';
 	import type { Snippet } from 'svelte';
 	import { cn } from '../../cn.js';
 
 	type Props = Omit<RadioGroupPrimitive.ItemProps, 'children'> & {
+		/**
+		 * Contenu ajouté dans le contrôle, après l'indicateur intégré (le point).
+		 * Rarement utile : le libellé se place dans un `Label` à côté.
+		 */
 		children?: Snippet;
 	};
 

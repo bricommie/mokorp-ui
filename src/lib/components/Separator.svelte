@@ -1,3 +1,16 @@
+<!--
+@component
+**Separator** — Ligne de séparation entre deux groupes de contenu.
+
+- `orientation` : `"horizontal"` (défaut) ou `"vertical"`.
+- `decorative` : masque le séparateur aux lecteurs d'écran (conseillé quand il est purement visuel) ; sinon il est annoncé comme `separator`.
+
+```svelte
+<Separator decorative />
+```
+
+[API Bits UI](https://bits-ui.com/docs/components/separator)
+-->
 <script lang="ts">
 	import { Separator as SeparatorPrimitive } from 'bits-ui';
 	import { cn } from '../cn.js';

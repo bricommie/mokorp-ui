@@ -1,3 +1,9 @@
+<!--
+@component
+**Pagination.Page** — Bouton d'une page. Reçoit `page` (un élément de `pages`) ; la page courante est en `primary`.
+
+[API Bits UI](https://bits-ui.com/docs/components/pagination)
+-->
 <script lang="ts">
 	import { Pagination as PaginationPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

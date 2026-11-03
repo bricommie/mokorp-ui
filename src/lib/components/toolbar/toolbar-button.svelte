@@ -1,3 +1,9 @@
+<!--
+@component
+**Toolbar.Button** — Bouton d'action de la barre.
+
+[API Bits UI](https://bits-ui.com/docs/components/toolbar)
+-->
 <script lang="ts">
 	import { Toolbar as ToolbarPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';
