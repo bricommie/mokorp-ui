@@ -98,7 +98,7 @@ ring-offset-background`, jamais `outline-none` seul.
 
 ### 5. Documentation IDE (JSDoc)
 
-Convention : `docs/component-guide.md` (section JSDoc) ; garde-fou :
+Convention : `docs/component-guide.md` (§ 5 bis « Documentation IDE ») ; garde-fou :
 `src/lib/components/docs.test.ts`. svelte-package recopie le bloc `@component` en
 JSDoc dans `dist/*.svelte.d.ts` : c'est ce que l'IDE du consommateur affiche au survol.
 

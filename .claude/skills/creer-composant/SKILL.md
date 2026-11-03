@@ -73,7 +73,7 @@ Règles à tenir pendant l'écriture (détail dans `docs/component-guide.md`) :
 ## Étape 2 : la documentation IDE
 
 Chaque `.svelte` créé (y compris chaque partie) commence par un bloc `@component`
-conforme à la convention (`docs/component-guide.md`, vérifiée par
+conforme à la convention (`docs/component-guide.md`, § 5 bis « Documentation IDE », vérifiée par
 `src/lib/components/docs.test.ts`) :
 
 - racine ou mono-partie : `**Nom** — description`, quand l'utiliser, **Anatomie**
