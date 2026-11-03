@@ -87,4 +87,4 @@ export {
 	type DurationToken,
 	type EasingToken
 } from './motion/index.js';
-export { default as Navbar, type NavbarItem } from './components/Navbar.svelte';
+export { default as Navbar, type NavbarItem, type NavbarVariant } from './components/Navbar.svelte';
