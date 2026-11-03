@@ -107,6 +107,14 @@ npm run test:unit    # Vitest, dont le garde-fou « aucune couleur brute »
 npm run build        # build + package (svelte-package) + publint
 ```
 
+### Skills Claude Code
+
+`.claude/skills/` contient les workflows à suivre (par Claude comme par un humain) :
+
+- `creer-composant` : cadrage, wrapper Bits UI, JSDoc `@component`, story, tests, export, vitrine (+ templates) ;
+- `modifier-composant` : inventaire d'impact, qualification semver, synchronisation doc/story/tests ;
+- `verifier-composant` : la Definition of Done d'un composant (checklist et commandes).
+
 ### Où est quoi
 
 ```
@@ -116,6 +124,7 @@ src/lib/motion/         miroir JS des tokens de mouvement
 src/stories/            une story Svelte CSF par composant (autodocs)
 src/docs/               pages MDX de Storybook (démarrer, fondations, guides)
 .storybook/             config, filtrage des props, blocs de doc React, habillage
+.claude/skills/         workflows créer / modifier / vérifier un composant
 docs/                   spec figée du design system et guide d'implémentation
 ```
 

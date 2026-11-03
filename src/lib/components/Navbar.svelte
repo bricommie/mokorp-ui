@@ -4,6 +4,7 @@
 
 - `items` (**obligatoire**) : liste `{ label, href }`.
 - `bind:current` : `href` de la page courante.
+- `variant` : `solid` (défaut, surface opaque) ou `glass` (translucide floutée, halo qui suit la souris).
 - Snippets `brand` (logo, à gauche) et `actions` (à droite).
 
 **Accessibilité** : landmark `<nav>` nommé par `label`, `aria-current="page"` sur le lien actif, bouton menu avec `aria-expanded`. Animations coupées en mouvement réduit.
@@ -23,6 +24,8 @@
 		/** Destination (déjà résolue par l'app, ex. via `resolve()` dans SvelteKit). */
 		href: string;
 	};
+
+	export type NavbarVariant = 'solid' | 'glass';
 </script>
 
 <script lang="ts">
@@ -50,6 +53,12 @@
 		 * @default 'Menu'
 		 */
 		menuLabel?: string;
+		/**
+		 * `solid` : surface carte opaque.
+		 * `glass` : surface translucide floutée + halo lumineux qui suit la souris.
+		 * @default 'solid'
+		 */
+		variant?: NavbarVariant;
 		/** Zone de marque, à gauche (logo, nom du site). */
 		brand?: Snippet;
 		/** Zone d'actions, à droite (ThemeToggle, compte). */
@@ -65,6 +74,7 @@
 		current = $bindable(),
 		label = 'Navigation principale',
 		menuLabel = 'Menu',
+		variant = 'solid',
 		brand,
 		actions,
 		class: className,
@@ -120,6 +130,28 @@
 		return () => ro.disconnect();
 	});
 
+	/*
+	 * Halo « glass » : un disque primary flouté qui suit le pointeur avec un ressort
+	 * mou (il traîne derrière la souris, puis la rattrape). La surface floutée
+	 * (`backdrop-blur`) et `overflow-hidden` en font une lueur sous le verre.
+	 * Souris / stylet uniquement : au doigt, le halo resterait figé au dernier tap.
+	 */
+	const glass = $derived(variant === 'glass');
+	const glowOpts = { stiffness: 0.07, damping: 0.55 };
+	const glow = { x: new Spring(0, glowOpts), y: new Spring(0, glowOpts) };
+	let glowVisible = $state(false);
+	let glowPressed = $state(false);
+
+	function trackGlow(e: PointerEvent, entering = false) {
+		if (!glass || e.pointerType === 'touch') return;
+		const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+		// À l'entrée, le halo part de sous le pointeur au lieu de traverser la barre.
+		const opts = { instant: entering || isReducedMotion() };
+		glow.x.set(e.clientX - rect.left, opts);
+		glow.y.set(e.clientY - rect.top, opts);
+		glowVisible = true;
+	}
+
 	function enter(i: number) {
 		if (hovered === null) moveTo(hover, links[i], true);
 		hovered = i;
@@ -141,11 +173,41 @@
 
 <nav
 	aria-label={label}
+	data-variant={variant}
+	onpointerenter={(e) => trackGlow(e, true)}
+	onpointermove={(e) => trackGlow(e)}
+	onpointerleave={() => {
+		glowVisible = false;
+		glowPressed = false;
+	}}
+	onpointerdown={(e) => e.pointerType !== 'touch' && (glowPressed = true)}
+	onpointerup={() => (glowPressed = false)}
 	class={cn(
-		'relative flex flex-wrap items-center gap-4 rounded-surface border-(length:--border-width) border-border-subtle bg-card px-3 py-2 font-body text-card-foreground',
+		'relative flex flex-wrap items-center gap-4 rounded-surface border-(length:--border-width) px-3 py-2 font-body',
+		glass
+			? 'isolate overflow-hidden border-foreground/10 bg-linear-to-br from-card/70 to-card/30 text-foreground shadow-lg backdrop-blur-xl backdrop-saturate-150'
+			: 'border-border-subtle bg-card text-card-foreground',
 		className
 	)}
 >
+	{#if glass}
+		<!-- Reflet du verre : liseré clair en haut, sous le contenu. -->
+		<span
+			aria-hidden="true"
+			class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-px bg-linear-to-r from-transparent via-foreground/30 to-transparent"
+		></span>
+		<!-- Halo qui suit la souris. -->
+		<span
+			aria-hidden="true"
+			class={cn(
+				'pointer-events-none absolute top-0 left-0 -z-10 size-56 rounded-pill bg-radial from-primary/70 from-5% via-primary/25 via-40% to-transparent to-70% blur-md transition-[opacity,scale] duration-base ease-standard motion-reduce:transition-none',
+				glowVisible ? 'opacity-100' : 'opacity-0',
+				glowPressed ? 'scale-75' : 'scale-100'
+			)}
+			style:translate="calc({glow.x.current}px - 50%) calc({glow.y.current}px - 50%)"
+		></span>
+	{/if}
+
 	{#if brand}<div class="flex shrink-0 items-center pl-2">{@render brand()}</div>{/if}
 
 	<!-- Liste desktop -->
@@ -159,7 +221,10 @@
 	>
 		<span
 			aria-hidden="true"
-			class="pointer-events-none absolute inset-y-0 left-0 rounded-control bg-muted transition-opacity duration-fast"
+			class={cn(
+				'pointer-events-none absolute inset-y-0 left-0 rounded-control transition-opacity duration-fast',
+				glass ? 'bg-foreground/10 ring-1 ring-foreground/10 ring-inset' : 'bg-muted'
+			)}
 			class:opacity-0={hovered === null || hovered === activeIndex}
 			style:transform="translateX({hover.x.current}px)"
 			style:width="{hover.w.current}px"
