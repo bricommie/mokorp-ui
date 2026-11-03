@@ -13,6 +13,8 @@ const gitignorePath = path.resolve(import.meta.dirname, '.gitignore');
 
 export default defineConfig(
 	includeIgnoreFile(gitignorePath),
+	// Squelettes à copier (placeholders `Xxx`, `Composant`) : hors du projet TypeScript.
+	{ ignores: ['.claude/skills/**/templates/**'] },
 	js.configs.recommended,
 	ts.configs.recommended,
 	svelte.configs.recommended,
