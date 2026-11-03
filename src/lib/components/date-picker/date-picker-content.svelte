@@ -1,3 +1,9 @@
+<!--
+@component
+**DatePicker.Content** — Surface flottante du calendrier (entrée / sortie animées par la transition `pop`). `sideOffset` = 8 par défaut.
+
+[API Bits UI](https://bits-ui.com/docs/components/date-picker)
+-->
 <script lang="ts">
 	import { DatePicker as DatePickerPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

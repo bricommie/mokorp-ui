@@ -1,3 +1,9 @@
+<!--
+@component
+**AlertDialog.Content** — Surface centrée du dialogue, bornée à la fenêtre (défile si le contenu dépasse). Focus piégé à l'intérieur.
+
+[API Bits UI](https://bits-ui.com/docs/components/alert-dialog)
+-->
 <script lang="ts">
 	import { AlertDialog as AlertDialogPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

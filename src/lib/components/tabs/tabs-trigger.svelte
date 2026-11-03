@@ -1,3 +1,9 @@
+<!--
+@component
+**Tabs.Trigger** — Un onglet. `value` (**obligatoire**) le relie à son `Tabs.Content`. Onglet actif souligné en `primary`.
+
+[API Bits UI](https://bits-ui.com/docs/components/tabs)
+-->
 <script lang="ts">
 	import { Tabs as TabsPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

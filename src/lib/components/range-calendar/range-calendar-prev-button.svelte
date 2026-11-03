@@ -1,3 +1,9 @@
+<!--
+@component
+**RangeCalendar.PrevButton** — Bouton « mois précédent » (chevron intégré). Pensez au `aria-label` si vous remplacez le contenu.
+
+[API Bits UI](https://bits-ui.com/docs/components/range-calendar)
+-->
 <script lang="ts">
 	import { RangeCalendar as RangeCalendarPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

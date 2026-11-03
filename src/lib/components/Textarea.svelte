@@ -1,9 +1,25 @@
+<!--
+@component
+**Textarea** — Champ de saisie multiligne (commentaire, description). Accepte tous les attributs d'un `<textarea>` natif ; utilisable avec `bind:value`.
+
+Mêmes règles que `Input` : un `Label`, un message d'erreur relié, jamais de placeholder comme libellé.
+
+```svelte
+<Label for="msg">Message</Label>
+<Textarea id="msg" rows={4} bind:value={message} />
+```
+-->
 <script lang="ts">
 	import type { HTMLTextareaAttributes } from 'svelte/elements';
 	import { cn } from '../cn.js';
 
 	type Props = Omit<HTMLTextareaAttributes, 'class' | 'value'> & {
+		/** Classes Tailwind ajoutées (fusionnées avec `cn`). */
 		class?: string;
+		/**
+		 * Valeur saisie. Bindable (`bind:value`).
+		 * @default ''
+		 */
 		value?: HTMLTextareaAttributes['value'];
 	};
 

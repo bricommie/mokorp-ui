@@ -1,3 +1,9 @@
+<!--
+@component
+**Pagination.NextButton** — Bouton « page suivante » (chevron intégré), désactivé sur la dernière page.
+
+[API Bits UI](https://bits-ui.com/docs/components/pagination)
+-->
 <script lang="ts">
 	import { Pagination as PaginationPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

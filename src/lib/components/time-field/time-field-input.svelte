@@ -1,3 +1,9 @@
+<!--
+@component
+**TimeField.Input** — Conteneur des segments (aspect d'un `Input`, ring `primary` au focus). Son snippet `children` reçoit `segments` à itérer.
+
+[API Bits UI](https://bits-ui.com/docs/components/time-field)
+-->
 <script lang="ts">
 	import { TimeField as TimeFieldPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

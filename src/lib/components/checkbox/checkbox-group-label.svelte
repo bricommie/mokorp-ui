@@ -1,3 +1,9 @@
+<!--
+@component
+**Checkbox.GroupLabel** — Nom du `Checkbox.Group` (motif `Label`), annoncé aux lecteurs d'écran.
+
+[API Bits UI](https://bits-ui.com/docs/components/checkbox)
+-->
 <script lang="ts">
 	import { Checkbox as CheckboxPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

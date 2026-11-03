@@ -1,3 +1,9 @@
+<!--
+@component
+**Collapsible.Trigger** — Bouton qui ouvre / ferme le contenu (`aria-expanded` géré).
+
+[API Bits UI](https://bits-ui.com/docs/components/collapsible)
+-->
 <script lang="ts">
 	import { Collapsible as CollapsiblePrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

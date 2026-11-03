@@ -1,3 +1,9 @@
+<!--
+@component
+**Select.Item** — Option de la liste. `value` (**obligatoire**) et `label` : le libellé est affiché par défaut, avec la coche si l'option est sélectionnée.
+
+[API Bits UI](https://bits-ui.com/docs/components/select)
+-->
 <script lang="ts">
 	import { Select as SelectPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

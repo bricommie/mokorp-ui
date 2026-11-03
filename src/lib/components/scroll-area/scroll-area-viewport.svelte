@@ -1,3 +1,9 @@
+<!--
+@component
+**ScrollArea.Viewport** — Contenu défilant : remplit la racine.
+
+[API Bits UI](https://bits-ui.com/docs/components/scroll-area)
+-->
 <script lang="ts">
 	import { ScrollArea as ScrollAreaPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

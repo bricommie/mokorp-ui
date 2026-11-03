@@ -1,3 +1,13 @@
+<!--
+@component
+**ThemeToggle** — Bouton qui bascule entre la face **claire** et la face **sombre** du thème. Il pose la classe `.dark` sur `<html>` et mémorise le choix dans `localStorage` (clé `mokorp-theme`). L'icône affichée est celle de la face **vers laquelle** on bascule.
+
+Pour piloter le thème sans ce bouton : `import { theme } from 'mokorp-ui'` puis `theme.toggle()` / `theme.set('dark')`.
+
+```svelte
+<ThemeToggle />
+```
+-->
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import type { HTMLButtonAttributes } from 'svelte/elements';
@@ -6,7 +16,15 @@
 	import Sun from './icons/sun.svelte';
 	import Moon from './icons/moon.svelte';
 
-	type Props = Omit<HTMLButtonAttributes, 'class'> & { class?: string; label?: string };
+	type Props = Omit<HTMLButtonAttributes, 'class'> & {
+		/** Classes Tailwind ajoutées (fusionnées avec `cn`). */
+		class?: string;
+		/**
+		 * Nom accessible du bouton (il n'affiche qu'une icône).
+		 * @default 'Basculer le thème'
+		 */
+		label?: string;
+	};
 
 	let { class: className, label = 'Basculer le thème', ...rest }: Props = $props();
 

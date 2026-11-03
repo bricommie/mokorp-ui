@@ -1,3 +1,9 @@
+<!--
+@component
+**Accordion.Item** — Une section de l'accordéon. `value` l'identifie (sinon générée) ; `disabled` la verrouille.
+
+[API Bits UI](https://bits-ui.com/docs/components/accordion)
+-->
 <script lang="ts">
 	import { Accordion as AccordionPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

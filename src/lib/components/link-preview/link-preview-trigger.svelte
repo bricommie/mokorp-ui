@@ -1,3 +1,9 @@
+<!--
+@component
+**LinkPreview.Trigger** — Le lien qui déclenche l'aperçu (rendu en `<a>`, sans style).
+
+[API Bits UI](https://bits-ui.com/docs/components/link-preview)
+-->
 <script lang="ts">
 	import { LinkPreview as LinkPreviewPrimitive } from 'bits-ui';
 

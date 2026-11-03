@@ -1,3 +1,9 @@
+<!--
+@component
+**Calendar.Grid** — Grille d'un mois (`<table>`, rôle `grid`). Une par élément de `months`.
+
+[API Bits UI](https://bits-ui.com/docs/components/calendar)
+-->
 <script lang="ts">
 	import { Calendar as CalendarPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

@@ -1,3 +1,9 @@
+<!--
+@component
+**Calendar.Cell** — Cellule d'un jour. Reçoit `date` et `month` (obligatoires) et contient un `Day`.
+
+[API Bits UI](https://bits-ui.com/docs/components/calendar)
+-->
 <script lang="ts">
 	import { Calendar as CalendarPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

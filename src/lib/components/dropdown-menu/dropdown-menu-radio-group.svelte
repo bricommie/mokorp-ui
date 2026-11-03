@@ -1,3 +1,9 @@
+<!--
+@component
+**DropdownMenu.RadioGroup** — Groupe d'éléments radio (choix exclusif). Utilisable avec `bind:value`.
+
+[API Bits UI](https://bits-ui.com/docs/components/dropdown-menu)
+-->
 <script lang="ts">
 	import { DropdownMenu as DropdownMenuPrimitive } from 'bits-ui';
 

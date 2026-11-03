@@ -1,3 +1,9 @@
+<!--
+@component
+**Select.Content** — Surface flottante de la liste, calée sur la largeur du déclencheur. `sideOffset` = 8 par défaut.
+
+[API Bits UI](https://bits-ui.com/docs/components/select)
+-->
 <script lang="ts">
 	import { Select as SelectPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

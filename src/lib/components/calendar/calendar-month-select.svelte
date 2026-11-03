@@ -1,3 +1,9 @@
+<!--
+@component
+**Calendar.MonthSelect** — Sélecteur natif du mois affiché : navigation rapide sur un calendrier lointain.
+
+[API Bits UI](https://bits-ui.com/docs/components/calendar)
+-->
 <script lang="ts">
 	import { Calendar as CalendarPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

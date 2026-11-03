@@ -1,9 +1,25 @@
+<!--
+@component
+**Input** — Champ de saisie sur une ligne. Accepte tous les attributs d'un `<input>` natif (`type`, `name`, `autocomplete`, `required`…). Utilisable avec `bind:value` (sauf `type="file"`).
+
+**Accessibilité** : toujours associé à un `Label` (`for` = `id`). Le `placeholder` n'est **pas** un libellé. En erreur : `aria-invalid` + un message relié par `aria-describedby`.
+
+```svelte
+<Label for="email">E-mail</Label>
+<Input id="email" type="email" autocomplete="email" bind:value={email} />
+```
+-->
 <script lang="ts">
 	import type { HTMLInputAttributes } from 'svelte/elements';
 	import { cn } from '../cn.js';
 
 	type Props = Omit<HTMLInputAttributes, 'class' | 'value'> & {
+		/** Classes Tailwind ajoutées (fusionnées avec `cn`). */
 		class?: string;
+		/**
+		 * Valeur saisie. Bindable (`bind:value`), sauf avec `type="file"`.
+		 * @default ''
+		 */
 		value?: HTMLInputAttributes['value'];
 	};
 

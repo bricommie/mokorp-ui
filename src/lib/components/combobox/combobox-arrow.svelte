@@ -1,3 +1,9 @@
+<!--
+@component
+**Combobox.Arrow** — Flèche optionnelle pointant vers le champ.
+
+[API Bits UI](https://bits-ui.com/docs/components/combobox)
+-->
 <script lang="ts">
 	import { Combobox as ComboboxPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

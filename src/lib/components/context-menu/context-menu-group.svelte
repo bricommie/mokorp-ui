@@ -1,3 +1,9 @@
+<!--
+@component
+**ContextMenu.Group** — Regroupe des éléments liés (sans style). Associez-lui un `ContextMenu.GroupHeading`.
+
+[API Bits UI](https://bits-ui.com/docs/components/context-menu)
+-->
 <script lang="ts">
 	import { ContextMenu as ContextMenuPrimitive } from 'bits-ui';
 

@@ -1,3 +1,9 @@
+<!--
+@component
+**Checkbox.Group** — Groupe de cases liées partageant une valeur `string[]` (`bind:value`). Chaque `Checkbox.Root` y porte un `value`.
+
+[API Bits UI](https://bits-ui.com/docs/components/checkbox)
+-->
 <script lang="ts">
 	import { Checkbox as CheckboxPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

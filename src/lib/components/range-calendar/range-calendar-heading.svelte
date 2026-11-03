@@ -1,3 +1,9 @@
+<!--
+@component
+**RangeCalendar.Heading** — Titre mois / année du calendrier (typographie display), mis à jour à la navigation.
+
+[API Bits UI](https://bits-ui.com/docs/components/range-calendar)
+-->
 <script lang="ts">
 	import { RangeCalendar as RangeCalendarPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

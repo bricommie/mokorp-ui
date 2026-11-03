@@ -1,3 +1,9 @@
+<!--
+@component
+**Popover.Content** — Surface flottante du popover. `sideOffset` = 8 par défaut, `side` / `align` pour le placement.
+
+[API Bits UI](https://bits-ui.com/docs/components/popover)
+-->
 <script lang="ts">
 	import { Popover as PopoverPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

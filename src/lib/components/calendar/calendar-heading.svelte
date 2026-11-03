@@ -1,3 +1,9 @@
+<!--
+@component
+**Calendar.Heading** — Titre mois / année du calendrier (typographie display), mis à jour à la navigation.
+
+[API Bits UI](https://bits-ui.com/docs/components/calendar)
+-->
 <script lang="ts">
 	import { Calendar as CalendarPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

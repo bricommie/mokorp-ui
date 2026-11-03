@@ -1,3 +1,9 @@
+<!--
+@component
+**Calendar.GridBody** — `<tbody>` de la grille : contient les semaines.
+
+[API Bits UI](https://bits-ui.com/docs/components/calendar)
+-->
 <script lang="ts">
 	import { Calendar as CalendarPrimitive } from 'bits-ui';
 

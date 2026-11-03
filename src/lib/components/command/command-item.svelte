@@ -1,3 +1,9 @@
+<!--
+@component
+**Command.Item** — Commande sélectionnable (clic, Entrée). `onSelect` déclenche l'action ; `keywords` élargit la recherche.
+
+[API Bits UI](https://bits-ui.com/docs/components/command)
+-->
 <script lang="ts">
 	import { Command as CommandPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

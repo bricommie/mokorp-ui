@@ -1,3 +1,23 @@
+<!--
+@component
+**Slider.Root** — Choix d'une valeur (ou d'une plage) dans un intervalle continu : volume, prix maximum. Si la valeur exacte compte, ajoutez un `Input` à côté.
+
+**Anatomie** : `Slider.Root` › `Slider.Range` · `Slider.Thumb` (un par valeur) · optionnellement `Slider.Tick`, `Slider.TickLabel`, `Slider.ThumbLabel`.
+
+- `type` (**obligatoire**) : `"single"` (`value: number`) ou `"multiple"` (`value: number[]`).
+- `min`, `max`, `step` ; `bind:value`.
+
+**Accessibilité** : flèches (pas), Page préc. / suiv. (grand pas), Début / Fin. Donnez un `aria-label` à chaque `Thumb`.
+
+```svelte
+<Slider.Root type="single" bind:value min={0} max={100} step={5}>
+	<Slider.Range />
+	<Slider.Thumb index={0} aria-label="Volume" />
+</Slider.Root>
+```
+
+[API Bits UI](https://bits-ui.com/docs/components/slider)
+-->
 <script lang="ts">
 	import { Slider as SliderPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

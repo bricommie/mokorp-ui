@@ -1,3 +1,9 @@
+<!--
+@component
+**ContextMenu.SubContent** — Surface flottante d'un sous-menu.
+
+[API Bits UI](https://bits-ui.com/docs/components/context-menu)
+-->
 <script lang="ts">
 	import { ContextMenu as ContextMenuPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

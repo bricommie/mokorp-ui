@@ -1,3 +1,9 @@
+<!--
+@component
+**Calendar.NextButton** — Bouton « mois suivant » (chevron intégré).
+
+[API Bits UI](https://bits-ui.com/docs/components/calendar)
+-->
 <script lang="ts">
 	import { Calendar as CalendarPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

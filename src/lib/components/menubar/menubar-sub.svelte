@@ -1,3 +1,11 @@
+<!--
+@component
+**Menubar.Sub** — Racine d'un **sous-menu**. Utilisable avec `bind:open`.
+
+Anatomie : `Menubar.Sub` › `Menubar.SubTrigger` + `Menubar.SubContent`.
+
+[API Bits UI](https://bits-ui.com/docs/components/menubar)
+-->
 <script lang="ts">
 	import { Menubar as MenubarPrimitive } from 'bits-ui';
 

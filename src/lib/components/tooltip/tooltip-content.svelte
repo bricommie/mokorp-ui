@@ -1,3 +1,9 @@
+<!--
+@component
+**Tooltip.Content** — Bulle d'aide flottante. `sideOffset` = 8 par défaut.
+
+[API Bits UI](https://bits-ui.com/docs/components/tooltip)
+-->
 <script lang="ts">
 	import { Tooltip as TooltipPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

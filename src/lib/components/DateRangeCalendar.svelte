@@ -1,3 +1,13 @@
+<!--
+@component
+**DateRangeCalendar** — **Composition prête à l'emploi** : calendrier de **plage** complet en une balise. Début / fin en `primary`, jours intermédiaires en `muted`.
+
+Pour composer votre propre calendrier de plage : `RangeCalendar`.
+
+```svelte
+<DateRangeCalendar bind:value={range} numberOfMonths={2} />
+```
+-->
 <script lang="ts">
 	import type { DateValue } from '@internationalized/date';
 	import type { Month } from 'bits-ui';
@@ -7,18 +17,46 @@
 	type DateRange = { start: DateValue | undefined; end: DateValue | undefined };
 
 	type Props = {
+		/** Plage sélectionnée `{ start, end }` (des `DateValue`). Bindable. */
 		value?: DateRange;
+		/** Mois affiché quand aucune date n'est choisie (pilote la navigation). Bindable. */
 		placeholder?: DateValue | undefined;
+		/**
+		 * Langue des noms de mois / jours et ordre des segments (BCP 47).
+		 * @default 'fr-FR'
+		 */
 		locale?: string;
+		/** Classes Tailwind ajoutées sur le conteneur (fusionnées avec `cn`). */
 		class?: string;
+		/**
+		 * Désactive toute interaction.
+		 * @default false
+		 */
 		disabled?: boolean;
+		/**
+		 * Affiche la valeur sans permettre de la modifier.
+		 * @default false
+		 */
 		readonly?: boolean;
+		/**
+		 * Affiche toujours 6 semaines (hauteur constante d'un mois à l'autre).
+		 * @default false
+		 */
 		fixedWeeks?: boolean;
+		/**
+		 * Nombre de mois affichés côte à côte.
+		 * @default 1
+		 */
 		numberOfMonths?: number;
+		/** Première date sélectionnable. */
 		minValue?: DateValue;
+		/** Dernière date sélectionnable. */
 		maxValue?: DateValue;
+		/** Rend une date non sélectionnable et non focusable (ex. dates passées). */
 		isDateDisabled?: (date: DateValue) => boolean;
+		/** Marque une date comme indisponible (barrée, focusable mais non sélectionnable : ex. complet). */
 		isDateUnavailable?: (date: DateValue) => boolean;
+		/** Appelé à chaque changement de valeur. */
 		onValueChange?: (value: DateRange) => void;
 	};
 

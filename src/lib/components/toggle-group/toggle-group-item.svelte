@@ -1,3 +1,9 @@
+<!--
+@component
+**ToggleGroup.Item** — Une bascule du groupe. `value` **obligatoire** ; état actif en `muted`.
+
+[API Bits UI](https://bits-ui.com/docs/components/toggle-group)
+-->
 <script lang="ts">
 	import { ToggleGroup as ToggleGroupPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

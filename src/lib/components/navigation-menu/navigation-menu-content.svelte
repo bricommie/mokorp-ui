@@ -1,3 +1,9 @@
+<!--
+@component
+**NavigationMenu.Content** — Panneau déroulant de l'entrée, rendu dans le `Viewport`.
+
+[API Bits UI](https://bits-ui.com/docs/components/navigation-menu)
+-->
 <script lang="ts">
 	import { NavigationMenu as NavigationMenuPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

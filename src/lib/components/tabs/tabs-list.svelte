@@ -1,3 +1,9 @@
+<!--
+@component
+**Tabs.List** — Rangée des onglets (rôle `tablist`), défilable si elle déborde.
+
+[API Bits UI](https://bits-ui.com/docs/components/tabs)
+-->
 <script lang="ts">
 	import { Tabs as TabsPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

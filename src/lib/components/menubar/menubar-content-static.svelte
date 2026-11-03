@@ -1,3 +1,9 @@
+<!--
+@component
+**Menubar.ContentStatic** — Variante de `Menubar.Content` **sans positionnement flottant** (pour un rendu fixe, ex. dans une doc).
+
+[API Bits UI](https://bits-ui.com/docs/components/menubar)
+-->
 <script lang="ts">
 	import { Menubar as MenubarPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

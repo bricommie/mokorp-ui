@@ -1,3 +1,9 @@
+<!--
+@component
+**Command.Separator** — Filet de séparation entre groupes.
+
+[API Bits UI](https://bits-ui.com/docs/components/command)
+-->
 <script lang="ts">
 	import { Command as CommandPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

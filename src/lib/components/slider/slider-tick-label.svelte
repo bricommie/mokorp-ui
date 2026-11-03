@@ -1,3 +1,9 @@
+<!--
+@component
+**Slider.TickLabel** — Étiquette d'un repère (graduation).
+
+[API Bits UI](https://bits-ui.com/docs/components/slider)
+-->
 <script lang="ts">
 	import { Slider as SliderPrimitive } from 'bits-ui';
 

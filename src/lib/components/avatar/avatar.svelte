@@ -1,3 +1,18 @@
+<!--
+@component
+**Avatar.Root** — Image de profil avec **repli** (initiales) si l'image manque ou ne charge pas.
+
+**Anatomie** : `Avatar.Root` › `Avatar.Image` · `Avatar.Fallback`.
+
+```svelte
+<Avatar.Root>
+	<Avatar.Image src={user.photo} alt={user.name} />
+	<Avatar.Fallback>AB</Avatar.Fallback>
+</Avatar.Root>
+```
+
+[API Bits UI](https://bits-ui.com/docs/components/avatar)
+-->
 <script lang="ts">
 	import { Avatar as AvatarPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

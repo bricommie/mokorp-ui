@@ -1,3 +1,9 @@
+<!--
+@component
+**Select.ContentStatic** — Variante de `Select.Content` sans positionnement flottant.
+
+[API Bits UI](https://bits-ui.com/docs/components/select)
+-->
 <script lang="ts">
 	import { Select as SelectPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

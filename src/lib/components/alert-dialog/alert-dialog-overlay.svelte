@@ -1,3 +1,9 @@
+<!--
+@component
+**AlertDialog.Overlay** — Voile translucide derrière le dialogue.
+
+[API Bits UI](https://bits-ui.com/docs/components/alert-dialog)
+-->
 <script lang="ts">
 	import { AlertDialog as AlertDialogPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

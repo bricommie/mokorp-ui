@@ -1,3 +1,9 @@
+<!--
+@component
+**DropdownMenu.Arrow** — Flèche optionnelle qui pointe vers le déclencheur (remplie avec la couleur de la surface).
+
+[API Bits UI](https://bits-ui.com/docs/components/dropdown-menu)
+-->
 <script lang="ts">
 	import { DropdownMenu as DropdownMenuPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

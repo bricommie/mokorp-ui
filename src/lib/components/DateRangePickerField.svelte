@@ -1,3 +1,13 @@
+<!--
+@component
+**DateRangePickerField** — **Composition prête à l'emploi** : libellé + deux champs (début → fin) + bouton + calendrier de plage en popover, en une balise.
+
+Pour une composition sur mesure : `DateRangePicker`.
+
+```svelte
+<DateRangePickerField label="Période du séjour" bind:value={range} />
+```
+-->
 <script lang="ts">
 	import type { DateValue } from '@internationalized/date';
 	import type { Month, SegmentPart } from 'bits-ui';
@@ -7,17 +17,41 @@
 	type DateRange = { start: DateValue | undefined; end: DateValue | undefined };
 
 	type Props = {
+		/** Libellé visible du champ. Sans lui, donnez un nom accessible autrement. */
 		label?: string;
+		/** Plage sélectionnée `{ start, end }` (des `DateValue`). Bindable. */
 		value?: DateRange;
+		/** Mois affiché quand aucune date n'est choisie (pilote la navigation). Bindable. */
 		placeholder?: DateValue | undefined;
+		/**
+		 * Ouverture du calendrier en popover. Bindable.
+		 * @default false
+		 */
 		open?: boolean;
+		/**
+		 * Langue des noms de mois / jours et ordre des segments (BCP 47).
+		 * @default 'fr-FR'
+		 */
 		locale?: string;
+		/** Classes Tailwind ajoutées sur le conteneur (fusionnées avec `cn`). */
 		class?: string;
+		/**
+		 * Désactive toute interaction.
+		 * @default false
+		 */
 		disabled?: boolean;
+		/**
+		 * Affiche la valeur sans permettre de la modifier.
+		 * @default false
+		 */
 		readonly?: boolean;
+		/** Première date sélectionnable. */
 		minValue?: DateValue;
+		/** Dernière date sélectionnable. */
 		maxValue?: DateValue;
+		/** Marque une date comme indisponible (barrée, focusable mais non sélectionnable : ex. complet). */
 		isDateUnavailable?: (date: DateValue) => boolean;
+		/** Appelé à chaque changement de valeur. */
 		onValueChange?: (value: DateRange) => void;
 	};
 

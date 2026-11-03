@@ -1,10 +1,20 @@
+<!--
+@component
+**Kbd** — Affiche une **touche** ou un raccourci clavier (`⌘` `K`). Une touche par `Kbd`.
+
+```svelte
+<Kbd>⌘</Kbd> <Kbd>K</Kbd>
+```
+-->
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 	import type { HTMLAttributes } from 'svelte/elements';
 	import { cn } from '../cn.js';
 
 	type Props = Omit<HTMLAttributes<HTMLElement>, 'class'> & {
+		/** Classes Tailwind ajoutées (fusionnées avec `cn`). */
 		class?: string;
+		/** Contenu. */
 		children?: Snippet;
 	};
 

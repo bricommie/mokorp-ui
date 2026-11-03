@@ -1,3 +1,9 @@
+<!--
+@component
+**Tooltip.Arrow** — Flèche optionnelle, remplie avec la couleur de la bulle.
+
+[API Bits UI](https://bits-ui.com/docs/components/tooltip)
+-->
 <script lang="ts">
 	import { Tooltip as TooltipPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

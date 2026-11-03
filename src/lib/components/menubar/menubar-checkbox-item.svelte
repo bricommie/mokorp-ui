@@ -1,3 +1,9 @@
+<!--
+@component
+**Menubar.CheckboxItem** — Élément **à cocher** (coche intégrée à gauche). Utilisable avec `bind:checked`.
+
+[API Bits UI](https://bits-ui.com/docs/components/menubar)
+-->
 <script lang="ts">
 	import { Menubar as MenubarPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

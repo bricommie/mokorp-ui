@@ -1,10 +1,18 @@
+<!--
+@component
+**Dialog.Footer** — Pied : actions alignées à droite, empilées sur mobile.
+
+[API Bits UI](https://bits-ui.com/docs/components/dialog)
+-->
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 	import type { HTMLAttributes } from 'svelte/elements';
 	import { cn } from '../../cn.js';
 
 	type Props = Omit<HTMLAttributes<HTMLDivElement>, 'class'> & {
+		/** Classes Tailwind ajoutées (fusionnées avec `cn`). */
 		class?: string;
+		/** Contenu. */
 		children?: Snippet;
 	};
 

@@ -199,6 +199,53 @@ Bordure : toujours `border-(length:--border-width)`, jamais `border-2`.
 - Motif « Label » : `font-body text-sm font-semibold` (casse normale).
 - Titres : `font-display`.
 
+## 5 bis. Documentation IDE (obligatoire)
+
+L'aide affichée au survol d'une balise et dans l'autocomplétion (Svelte for VS Code,
+WebStorm) vient de deux sources, toutes deux recopiées par `svelte-package` en JSDoc
+dans `dist/**/*.svelte.d.ts`, donc visibles aussi chez les applications consommatrices.
+
+**1. Le bloc `@component`, en tête de fichier (avant `<script>`)** :
+
+```svelte
+<!--
+@component
+**Select.Item** — Option de la liste. `value` (**obligatoire**) et `label` : le libellé
+est affiché par défaut, avec la coche si l'option est sélectionnée.
+
+[API Bits UI](https://bits-ui.com/docs/components/select)
+-->
+<script lang="ts">
+```
+
+- Première ligne : `**Nom** — description`, où `Nom` est ce que le consommateur
+  écrit (`Button`, `Select.Item`).
+- **Composant racine ou mono-partie** : quand l'utiliser (et quoi utiliser à la place),
+  **Anatomie** pour un multi-parties, props clés en liste (`bind:` possibles, props
+  obligatoires), **Accessibilité**, puis un exemple en bloc ` ```svelte `.
+- **Partie** d'un composant : une à trois phrases (rôle, props obligatoires,
+  comportement intégré comme une coche ou un chevron).
+- Wrapper Bits UI : terminer par le lien `[API Bits UI](…)`.
+- Jamais de `<!--` ni de `<script>` dans le bloc : le premier fermerait le commentaire,
+  le second trompe certains préprocesseurs.
+
+**2. Le JSDoc des props ajoutées par Mokorp** (pas celles héritées de Bits UI ou des
+attributs HTML, déjà documentées par leurs types) :
+
+```ts
+type Props = WithoutChild<ButtonPrimitive.RootProps> & {
+	/**
+	 * Rôle visuel : `primary` (une seule action principale par vue), `secondary`…
+	 * @default 'primary'
+	 */
+	variant?: ButtonVariant;
+};
+```
+
+Une phrase sur l'effet de la prop, les valeurs possibles pour un variant, et `@default`
+dès que la prop a une valeur par défaut. Le test `src/lib/components/docs.test.ts`
+échoue si un composant n'a pas de bloc `@component`.
+
 ## 6. Stories (obligatoire, au moins une « Default »)
 
 Guide complet dans Storybook : **Guides › Écrire une story**. L'essentiel :

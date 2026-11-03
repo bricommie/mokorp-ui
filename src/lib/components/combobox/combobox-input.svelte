@@ -1,3 +1,9 @@
+<!--
+@component
+**Combobox.Input** — Champ de saisie du combobox. À placer dans un `flex` avec `Combobox.Trigger` (ils se collent).
+
+[API Bits UI](https://bits-ui.com/docs/components/combobox)
+-->
 <script lang="ts">
 	import { Combobox as ComboboxPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';

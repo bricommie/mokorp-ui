@@ -1,3 +1,9 @@
+<!--
+@component
+**Accordion.Trigger** — Bouton qui ouvre / ferme la section. Chevron intégré qui pivote à l'ouverture.
+
+[API Bits UI](https://bits-ui.com/docs/components/accordion)
+-->
 <script lang="ts">
 	import { Accordion as AccordionPrimitive } from 'bits-ui';
 	import { cn } from '../../cn.js';
