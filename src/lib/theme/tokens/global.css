@@ -31,4 +31,19 @@
 	--font-body: 'Archivo Variable', 'Archivo', ui-sans-serif, system-ui, sans-serif;
 	--font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
 	--font-serif: Georgia, 'Times New Roman', serif;
+
+	/*
+	 * Display condensé — PROTOTYPE (story « Prototypes/Display condensé et highlight »).
+	 * Archivo est variable en largeur (axe `wdth`, 62 → 125 %) : on obtient un display
+	 * condensé sans charger de nouvelle police. Tailles fluides : la part en `rem` suit
+	 * le réglage de taille du navigateur (WCAG 1.4.4), la part en `vw` adapte au viewport.
+	 * Utilitaires : `text-display-sm|md|lg` (taille + interlignage + approche),
+	 * `font-stretch-(--font-display-stretch)`.
+	 */
+	--font-display-stretch: 75%;
+	--leading-display: 0.9;
+	--tracking-display: -0.01em;
+	--text-display-sm: clamp(2.5rem, 1.75rem + 3vw, 4rem);
+	--text-display-md: clamp(3rem, 2rem + 5vw, 6rem);
+	--text-display-lg: clamp(3.5rem, 2rem + 7.5vw, 8.5rem);
 }

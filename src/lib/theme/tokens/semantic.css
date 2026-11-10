@@ -60,6 +60,10 @@
 	--color-link: var(--link);
 	--color-indicator: var(--indicator);
 
+	/* Highlight — PROTOTYPE : tags et catégories, non interactifs (≠ primary = action) */
+	--color-highlight: var(--highlight);
+	--color-highlight-foreground: var(--highlight-foreground);
+
 	/* Graphiques */
 	--color-chart-1: var(--chart-1);
 	--color-chart-2: var(--chart-2);
@@ -87,6 +91,17 @@
 	--font-body: var(--font-body);
 	--font-mono: var(--font-mono);
 	--font-serif: var(--font-serif);
+
+	/* Display condensé — PROTOTYPE : `text-display-sm|md|lg` */
+	--text-display-sm: var(--text-display-sm);
+	--text-display-sm--line-height: var(--leading-display);
+	--text-display-sm--letter-spacing: var(--tracking-display);
+	--text-display-md: var(--text-display-md);
+	--text-display-md--line-height: var(--leading-display);
+	--text-display-md--letter-spacing: var(--tracking-display);
+	--text-display-lg: var(--text-display-lg);
+	--text-display-lg--line-height: var(--leading-display);
+	--text-display-lg--letter-spacing: var(--tracking-display);
 
 	/* Ombres — §4 (valeurs par thème, voir `themes/*.css`) */
 	--shadow-2xs: var(--shadow-2xs);
