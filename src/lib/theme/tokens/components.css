@@ -6,6 +6,11 @@
 /* `dark:` suit la classe `.dark` (et non `prefers-color-scheme`) — cohérent avec les thèmes. */
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* Largeur condensée du display (§6) : `font-display font-condensed text-display-lg`. */
+@utility font-condensed {
+	font-stretch: var(--font-display-stretch);
+}
+
 @layer base {
 	*,
 	::before,

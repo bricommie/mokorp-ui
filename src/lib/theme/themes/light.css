@@ -54,9 +54,9 @@
 	--link: #6a2fb0;
 
 	/*
-	 * Highlight — PROTOTYPE. Tags et catégories (non interactifs). Lilas plutôt que
-	 * soufre ou menthe : le jaune-vert est déjà pris par le lime, qui veut dire
-	 * « cliquable ». Texte 14,19:1.
+	 * Highlight — tags et catégories (non interactifs). Lilas plutôt que soufre ou
+	 * menthe : le jaune-vert est déjà pris par le lime, qui veut dire « cliquable ».
+	 * Texte 14,19:1.
 	 */
 	--highlight: #e6dcff;
 	--highlight-foreground: #16111c;

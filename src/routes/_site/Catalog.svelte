@@ -24,9 +24,7 @@
 >
 	<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-24">
 		<div class="max-w-2xl">
-			<h2
-				class="font-display text-[clamp(2.25rem,5vw,3.75rem)] font-bold leading-[0.95] tracking-[-0.02em]"
-			>
+			<h2 class="font-display font-condensed text-display-sm font-extrabold">
 				Chaque composant est monté sur la page
 			</h2>
 			<p class="mt-4 max-w-xl text-base leading-relaxed">

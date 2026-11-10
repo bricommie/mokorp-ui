@@ -86,7 +86,16 @@ pour une bordure de contrôle, un indicateur ou un anneau de focus (WCAG 1.4.11)
 			),
 			against: 'accent-foreground'
 		},
-		{ name: 'link', usage: 'Liens dans le texte', against: 'background' }
+		{ name: 'link', usage: 'Liens dans le texte', against: 'background' },
+		{
+			name: 'highlight',
+			usage: (
+				<>
+					Tags et catégories, non interactifs (<code>Badge variant="highlight"</code>)
+				</>
+			),
+			against: 'highlight-foreground'
+		}
 	]}
 />
 

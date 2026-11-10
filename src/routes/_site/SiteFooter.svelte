@@ -7,9 +7,7 @@
 	<div class="mx-auto max-w-7xl px-4 py-14 sm:px-6">
 		<div class="grid gap-10 md:grid-cols-12">
 			<div class="md:col-span-6">
-				<p
-					class="max-w-md text-balance font-display text-[clamp(2rem,4.5vw,3.25rem)] font-bold leading-[0.95] tracking-[-0.02em]"
-				>
+				<p class="max-w-md text-balance font-display font-condensed text-display-sm font-extrabold">
 					Prêt à retourner la pièce ?
 				</p>
 				<div class="mt-6 flex flex-wrap gap-3">
