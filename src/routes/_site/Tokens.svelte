@@ -56,9 +56,7 @@
 <section id="tokens" class="scroll-mt-20 border-t-(length:--border-width) border-border">
 	<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-24">
 		<div class="max-w-2xl">
-			<h2
-				class="font-display text-[clamp(2.25rem,5vw,3.75rem)] font-bold leading-[0.95] tracking-[-0.02em]"
-			>
+			<h2 class="font-display font-condensed text-display-sm font-extrabold">
 				Changer de thème, c’est changer un bloc CSS
 			</h2>
 			<p class="mt-4 max-w-xl text-base leading-relaxed">
@@ -93,10 +91,8 @@
 					class="mt-5 divide-y-(length:--border-width) divide-border border-y-(length:--border-width) border-border"
 				>
 					<div class="grid gap-1 py-4 sm:grid-cols-[11rem_1fr] sm:items-baseline">
-						<dt class="font-mono text-sm font-semibold">Archivo, large</dt>
-						<dd
-							class="font-display text-4xl font-extrabold leading-none tracking-[-0.02em] [font-stretch:115%]"
-						>
+						<dt class="font-mono text-sm font-semibold">Archivo, condensé</dt>
+						<dd class="font-display font-condensed text-5xl font-extrabold leading-none">
 							Titres et grands chiffres
 						</dd>
 					</div>

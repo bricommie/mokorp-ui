@@ -35,9 +35,7 @@
 	class="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 pb-16 pt-10 sm:px-6 lg:grid-cols-[1.02fr_1fr] lg:items-center lg:gap-14 lg:pb-24 lg:pt-16"
 >
 	<div class="flex flex-col gap-7">
-		<h1
-			class="font-display text-[clamp(3rem,7.2vw,6.25rem)] font-bold leading-[0.9] tracking-[-0.03em]"
-		>
+		<h1 class="font-display font-condensed text-display-lg font-extrabold">
 			Une pièce,<br />deux faces.
 		</h1>
 		<p class="max-w-[34rem] text-base leading-relaxed">

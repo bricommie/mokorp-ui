@@ -2,7 +2,9 @@
 @component
 **Badge** — Étiquette courte de **statut** ou de catégorie (« Publié », « Bêta »). Non interactif : pour une action, utilisez `Button`.
 
-- `variant` : `primary` (défaut) · `secondary` · `outline` · `success` · `warning` · `destructive`.
+- `variant` : `primary` (défaut) · `secondary` · `outline` · `highlight` · `success` · `warning` · `destructive`.
+
+`highlight` sert aux catégories et tags (« Annonce », « Guide ») : il ne ressemble pas à une action.
 
 **Accessibilité** : le texte porte le sens, pas la couleur seule (« Échec », pas un badge rouge vide).
 
@@ -18,8 +20,9 @@
 
 	type Props = Omit<HTMLAttributes<HTMLSpanElement>, 'class'> & {
 		/**
-		 * Ton du badge : `primary`, `secondary`, `outline`, `success`, `warning`,
-		 * `destructive`. Le texte doit porter le sens, pas la couleur seule.
+		 * Ton du badge : `primary`, `secondary`, `outline`, `highlight` (catégorie, tag),
+		 * `success`, `warning`, `destructive`. Le texte doit porter le sens, pas la
+		 * couleur seule.
 		 * @default 'primary'
 		 */
 		variant?: BadgeVariant;

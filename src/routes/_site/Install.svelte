@@ -38,9 +38,7 @@ ${'<'}/script>
 		class="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-4 py-16 sm:px-6 lg:grid-cols-12 lg:py-24"
 	>
 		<div class="min-w-0 lg:col-span-5">
-			<h2
-				class="font-display text-[clamp(2.25rem,5vw,3.75rem)] font-bold leading-[0.95] tracking-[-0.02em]"
-			>
+			<h2 class="font-display font-condensed text-display-sm font-extrabold">
 				Trois lignes pour démarrer
 			</h2>
 			<ol class="mt-6 grid max-w-md gap-4 text-base leading-relaxed">

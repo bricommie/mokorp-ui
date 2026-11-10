@@ -64,7 +64,7 @@ Règles :
 | Accent     | `--accent`, `--accent-foreground`                                                                                                            |
 | États      | `--destructive`, `--destructive-foreground`, `--destructive-hover`, `--success`, `--success-foreground`, `--warning`, `--warning-foreground` |
 | Lignes     | `--border` (contrôles, ≥ 3:1), `--border-subtle` (surfaces), `--input`, `--ring` (focus)                                                     |
-| Divers     | `--link` (liens), `--indicator` (jauges, barres de progression, curseurs)                                                                    |
+| Divers     | `--link` (liens), `--indicator` (jauges, barres de progression, curseurs), `--highlight`, `--highlight-foreground` (tags, catégories)        |
 | Graphiques | `--chart-1` … `--chart-5`                                                                                                                    |
 | Sidebar    | `--sidebar`, `--sidebar-foreground`, `--sidebar-primary`, `--sidebar-accent`, `--sidebar-border`, `--sidebar-ring`                           |
 
@@ -74,7 +74,9 @@ Règles :
   `--radius-control`, `--radius-pill` (utilitaires `rounded-surface`, etc.).
 - Bordure : `--border-width` (utilitaire `border-(length:--border-width)`).
 - Ombres : `--shadow-2xs` … `--shadow-2xl`, plus `--shadow-color`.
-- Typo : `--font-display`, `--font-body`, `--font-mono`, `--font-serif`.
+- Typo : `--font-display`, `--font-body`, `--font-mono`, `--font-serif`, plus le display
+  condensé `--font-display-stretch`, `--leading-display`, `--tracking-display`,
+  `--text-display-sm|md|lg` (utilitaires `font-condensed`, `text-display-*`). Voir §6.
 - Mouvement : `--duration-instant|fast|base|slow`, `--ease-standard|enter|exit|emphasized`
   (utilitaires `duration-fast`, `ease-enter`…). Voir §6 bis.
 - Espacement : échelle native de Tailwind v4 (`--spacing` = 0.25rem), pas de token dédié.
@@ -106,6 +108,11 @@ source de vérité, ce tableau n'en est qu'un résumé.
 | `ring`                 | `#16111C`                 | `#C8FF4D`        |
 | `link`                 | `#6A2FB0`                 | `#B48CFF`        |
 | `indicator`            | `#6A2FB0`                 | `#C8FF4D`        |
+| `highlight`            | `#E6DCFF`                 | `#3D2E63`        |
+| `highlight-foreground` | `#16111C`                 | `#F2EFF6`        |
+
+`highlight` étiquette une catégorie ou un tag (`Badge variant="highlight"`). Il est
+lilas, pas jaune ni vert : le jaune-vert appartient au lime, qui signale l'action.
 
 Tous les couples texte/fond passent 4,5:1, et les bordures de contrôle et le focus
 passent 3:1, dans les deux faces.
@@ -120,7 +127,7 @@ gardent une ombre douce pour se détacher du contenu recouvert.
 
 ## 5. Géométrie
 
-- **Rayons par rôle**, jamais par valeur : `surface` 18px (cartes, alertes, menus,
+- **Rayons par rôle**, jamais par valeur : `surface` 24px (cartes, alertes, menus,
   dialogues), `field` 12px (champs), `item` 8px (option de menu, jour, case à cocher),
   `control` pilule (boutons), `pill` pilule (badges, avatars, interrupteurs, curseurs).
 - **Bordures** : `--border-width` (1,5px). `border-subtle` sépare les surfaces,
@@ -134,16 +141,31 @@ gardent une ombre douce pour se détacher du contenu recouvert.
 
 | Slot      | Police            | Rôle                                                |
 | --------- | ----------------- | --------------------------------------------------- |
-| `display` | **Archivo** large | titres, héros, gros chiffres, logo                  |
+| `display` | **Archivo**       | titres, héros, gros chiffres, logo                  |
 | `body`    | **Archivo**       | corps de texte, labels, boutons, valeurs            |
 | `mono`    | **IBM Plex Mono** | code, données, timestamps, tags                     |
 | `serif`   | **Georgia**       | accent éditorial (légendes, citations, états vides) |
+
+**Display condensé** : Archivo est variable en largeur (axe `wdth`). Les grands
+titres (40px et plus) passent à 75 % de largeur avec `font-condensed`, graisse 800,
+interlignage 0,9 et approche -0,01em. Trois tailles fluides en `clamp()`, dont la part
+en `rem` suit le réglage de taille du navigateur (WCAG 1.4.4) :
+
+| Utilitaire        | Taille                                |
+| ----------------- | ------------------------------------- |
+| `text-display-lg` | `clamp(3.5rem, 2rem + 7.5vw, 8.5rem)` |
+| `text-display-md` | `clamp(3rem, 2rem + 5vw, 6rem)`       |
+| `text-display-sm` | `clamp(2.5rem, 1.75rem + 3vw, 4rem)`  |
+
+Usage : `font-display font-condensed text-display-lg font-extrabold`. En dessous de
+40px, le display reste en largeur normale. Les capitales sont permises pour un titre
+court (effet affiche), jamais pour un paragraphe.
 
 Échelle :
 
 | Niveau       | Taille                     | Leading |
 | ------------ | -------------------------- | ------- |
-| hero         | `4rem`                     | `0.95`  |
+| hero         | `text-display-*` (fluide)  | `0.9`   |
 | h1 / h2 / h3 | `3rem` / `2rem` / `1.5rem` | `0.95`  |
 | body         | `16px` (sm `14px`)         | `1.5`   |
 | label        | `12px`                     | `1.3`   |

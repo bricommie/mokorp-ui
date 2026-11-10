@@ -53,6 +53,14 @@
 	--indicator: #6a2fb0; /* jauges et barres : le lime ferait 1,2:1 sur la piste */
 	--link: #6a2fb0;
 
+	/*
+	 * Highlight — tags et catégories (non interactifs). Lilas plutôt que soufre ou
+	 * menthe : le jaune-vert est déjà pris par le lime, qui veut dire « cliquable ».
+	 * Texte 14,19:1.
+	 */
+	--highlight: #e6dcff;
+	--highlight-foreground: #16111c;
+
 	/* Graphiques */
 	--chart-1: #6a2fb0;
 	--chart-2: #16111c;
